@@ -1,7 +1,6 @@
 ![A portrait of Dylan Langston](https://avatars.githubusercontent.com/u/16236219?v=4)
 
-Dylan Langston
-==============
+# Dylan Langston
 
 Full Stack Developer & Aspiring Game Developer
 
@@ -9,16 +8,15 @@ Seasoned full stack developer with proven enterprise expertise in building robus
 
 Alexandria, Virgina
 
-[mail@dylanlangston.com](mailto:mail@dylanlangston.com)
+<mail@dylanlangston.com>
 
-[https://dylanlangston.com/](https://dylanlangston.com/)
+<https://dylanlangston.com/>
 
-*   [LinkedIn](https://www.linkedin.com/in/dylan-langston/)
-*   [GitHub](https://github.com/dylanlangston)
-*   [Itch.io](https://dylanlangston.itch.io/)
+* [LinkedIn](https://www.linkedin.com/in/dylan-langston/)
+* [GitHub](https://github.com/dylanlangston)
+* [Itch.io](https://dylanlangston.itch.io/)
 
-Work Experience
----------------
+## Work Experience
 
 ### Cloudforce
 
@@ -28,8 +26,8 @@ Work Experience
 
 Developing both frontend (React) and backend (C#) applications in a collaborative Agile & DevOps culture. Engaging with technical and business users to refine user stories, taking ownership of solutions from inception to production release, ensuring code quality through automated tests, and monitoring system health to resolve issues promptly.
 
-*   Created frontend testing processes using Playwright, Vitest, and GitHub Actions.
-*   Developed a marketplace deployment app using React and Azure Functions.
+* Created frontend testing processes using Playwright, Vitest, and GitHub Actions.
+* Developed a marketplace deployment app using React and Azure Functions.
 
 ### Maryland Department of Transportation Motor Vehicle Administration
 
@@ -39,8 +37,8 @@ Developing both frontend (React) and backend (C#) applications in a collaborativ
 
 Led collaborative efforts to enhance software functionality, mentor junior developers, and ensure high-quality deliverables aligned with government standards.
 
-*   Enhanced software functionality while aligning with critical business processes.
-*   Mentored junior developers and ensured rigorous testing and documentation practices.
+* Enhanced software functionality while aligning with critical business processes.
+* Mentored junior developers and ensured rigorous testing and documentation practices.
 
 ### Digitech Systems, LLC
 
@@ -50,11 +48,11 @@ Led collaborative efforts to enhance software functionality, mentor junior devel
 
 Automated critical software tests and upgraded applications, contributing to enhanced reliability and improved user experience.
 
-*   Developed multiple desktop applications using .NET technologies (WinForms, WPF) integrated with SQL databases.
-*   Designed and implemented AWS Lambda microservices with API Gateway and CloudFormation for scalable cloud solutions.
-*   Contributed to front-end development projects using Angular and TypeScript.
-*   Utilized Scrum methodology to ensure efficient development cycles and timely deliveries.
-*   Automated critical software tests, significantly enhancing application reliability.
+* Developed multiple desktop applications using .NET technologies (WinForms, WPF) integrated with SQL databases.
+* Designed and implemented AWS Lambda microservices with API Gateway and CloudFormation for scalable cloud solutions.
+* Contributed to front-end development projects using Angular and TypeScript.
+* Utilized Scrum methodology to ensure efficient development cycles and timely deliveries.
+* Automated critical software tests, significantly enhancing application reliability.
 
 ### Nebraska College of Business
 
@@ -64,20 +62,19 @@ Automated critical software tests and upgraded applications, contributing to enh
 
 Provided Tier 2 technical support, facilitated technology acquisitions, and ensured a smooth relocation process during a major campus transition.
 
-*   Resolved complex issues for both Windows and Mac OS environments.
-*   Played a key role in acquiring and implementing new technology solutions.
-*   Supported an 84-million-dollar building relocation project by ensuring seamless computer migrations and minimizing downtime.
+* Resolved complex issues for both Windows and Mac OS environments.
+* Played a key role in acquiring and implementing new technology solutions.
+* Supported an 84-million-dollar building relocation project by ensuring seamless computer migrations and minimizing downtime.
 
-Projects
---------
+## Projects
 
 ### Asteroids Arena
 
 A twist on the classic game with an expanded world where asteroids bounce off the walls and rogue aliens add to the challenge.
 
-[https://asteroids.dylanlangston.com](https://asteroids.dylanlangston.com)
+<https://asteroids.dylanlangston.com>
 
-*   Achieved 3rd place in the “Implementation of the theme game” category at the 2023 Raylib Slo-Jam event.
+* Achieved 3rd place in the “Implementation of the theme game” category at the 2023 Raylib Slo-Jam event.
 
 Technologies: Raylib, Emscripten, Binaryen, Svelte, TypeScript, TailwindCSS
 
@@ -85,13 +82,13 @@ Technologies: Raylib, Emscripten, Binaryen, Svelte, TypeScript, TailwindCSS
 
 An intelligent information management platform designed to streamline business processes through automation and efficient data management.
 
-[https://sys.tm](https://sys.tm)
+<https://sys.tm>
 
-*   Developed an Automated Testing Suite in C# using NUnit, Selenium, AWS SDK, and CDKs.
-*   Built an Angular 13 Web App featuring a web worker for parallel file uploads, enhancing UI responsiveness.
-*   Created a RESTful microservice in AWS (API Gateway and Lambda) using Java and Apache Tika.
-*   Enhanced an RPA solution by updating to .NET 6 and compiling automations to DLLs for improved performance.
-*   Developed a custom CI/CD pipeline extending AWS CodePipeline for creating InstallShield installers on EC2 instances.
+* Developed an Automated Testing Suite in C# using NUnit, Selenium, AWS SDK, and CDKs.
+* Built an Angular 13 Web App featuring a web worker for parallel file uploads, enhancing UI responsiveness.
+* Created a RESTful microservice in AWS (API Gateway and Lambda) using Java and Apache Tika.
+* Enhanced an RPA solution by updating to .NET 6 and compiling automations to DLLs for improved performance.
+* Developed a custom CI/CD pipeline extending AWS CodePipeline for creating InstallShield installers on EC2 instances.
 
 Technologies: C#, .NET Framework, Angular, AWS, Java, RESTful APIs, RPA, CI/CD, Selenium, API Gateway, Lambda, Apache Tika, AWS CodePipeline, InstallShield, .NET 6
 
@@ -99,14 +96,13 @@ Technologies: C#, .NET Framework, Angular, AWS, Java, RESTful APIs, RPA, CI/CD, 
 
 An Oregon Trail clone themed for the Apollo Missions. Submitted for Game Off 2020 under the title 'MOONSHOT'. Developed using Raylib-cs and .NET Core.
 
-[https://dylanlangston.itch.io/moonshot](https://dylanlangston.itch.io/moonshot)
+<https://dylanlangston.itch.io/moonshot>
 
-*   Blended classic gameplay with modern game development techniques to create a unique indie game experience.
+* Blended classic gameplay with modern game development techniques to create a unique indie game experience.
 
 Technologies: Raylib-cs, .NET Core
 
-Education
----------
+## Education
 
 ### University of Nebraska-Lincoln
 
@@ -118,120 +114,118 @@ GPA: Not Graduated; Completed 1 year of coursework towards a degree in Computer 
 
 ##### Relevant Courses
 
-*   CSCE231 Project: Mimicked I/O components of a vending machine using the Altera DE1 board to enable parallel software development.
+* CSCE231 Project: Mimicked I/O components of a vending machine using the Altera DE1 board to enable parallel software development.
 
-Skills
-------
+## Skills
 
 ### Game Development
 
 Level: Beginner/Intermediate
 
-*   Game Engines
-*   Unity
-*   Unreal Engine
-*   Godot
-*   Game Logic
-*   Gameplay Programming
-*   Shader Programming (GLSL)
-*   3D Modeling (Basic)
-*   Level Design
-*   Animation (Basic)
-*   Game Testing
-*   Performance Optimization
-*   Cross-Platform Development
+* Game Engines
+* Unity
+* Unreal Engine
+* Godot
+* Game Logic
+* Gameplay Programming
+* Shader Programming (GLSL)
+* 3D Modeling (Basic)
+* Level Design
+* Animation (Basic)
+* Game Testing
+* Performance Optimization
+* Cross-Platform Development
 
 ### Concepts and Methodologies
 
 Level: Intermediate/Advanced
 
-*   Agile Methodologies
-*   Continuous Integration/Deployment (CI/CD)
-*   DevOps
-*   Databases
-*   IT Operations
-*   Object-Oriented Programming (OOP)
-*   Pair Programming
-*   Scrum
-*   Technical Support
-*   Test-driven Development
-*   Troubleshooting
-*   Unit Testing
-*   Version Control
+* Agile Methodologies
+* Continuous Integration/Deployment (CI/CD)
+* DevOps
+* Databases
+* IT Operations
+* Object-Oriented Programming (OOP)
+* Pair Programming
+* Scrum
+* Technical Support
+* Test-driven Development
+* Troubleshooting
+* Unit Testing
+* Version Control
 
 ### Development and Design
 
 Level: Advanced
 
-*   API Development
-*   Command Line Application
-*   Front-End Development
-*   Full-Stack Development
-*   Graphical User Interface Application
-*   Microservice
-*   Progressive Web App
-*   Prototyping
-*   Responsive Web Design
-*   REST APIs
-*   Software Development
-*   Web Applications
-*   Web Design
-*   Web Development
+* API Development
+* Command Line Application
+* Front-End Development
+* Full-Stack Development
+* Graphical User Interface Application
+* Microservice
+* Progressive Web App
+* Prototyping
+* Responsive Web Design
+* REST APIs
+* Software Development
+* Web Applications
+* Web Design
+* Web Development
 
 ### Programming Languages and Frameworks
 
 Level: Master/Expert
 
-*   ASP.NET
-*   Angular
-*   Avalonia
-*   C
-*   C#
-*   C++
-*   GLSL
-*   HTML
-*   Java
-*   JavaScript
-*   JSON
-*   Makefile
-*   Node.js
-*   Objective-C
-*   Powershell
-*   Python
-*   React.js
-*   Rust
-*   Shell Script (bash)
-*   SQL
-*   Svelte
-*   TypeScript
-*   XML
-*   XAML/WPF
-*   Zig
+* ASP.NET
+* Angular
+* Avalonia
+* C
+* C#
+* C++
+* GLSL
+* HTML
+* Java
+* JavaScript
+* JSON
+* Makefile
+* Node.js
+* Objective-C
+* Powershell
+* Python
+* React.js
+* Rust
+* Shell Script (bash)
+* SQL
+* Svelte
+* TypeScript
+* XML
+* XAML/WPF
+* Zig
 
 ### Technologies and Tools
 
 Level: Master/Expert
 
-*   Amazon Web Services (AWS)
-*   Android
-*   Cascading Style Sheets (CSS)
-*   Docker
-*   Eclipse
-*   ELK Stack
-*   Figma
-*   Git
-*   Kubernetes
-*   Linux
-*   Mac OS
-*   Microsoft Office
-*   Microsoft SQL Server
-*   Visual Studio
-*   Visual Studio Code
-*   Windows
-*   Windows Presentation Foundation (WPF)
+* Amazon Web Services (AWS)
+* Android
+* Cascading Style Sheets (CSS)
+* Docker
+* Eclipse
+* ELK Stack
+* Figma
+* Git
+* Kubernetes
+* Linux
+* Mac OS
+* Microsoft Office
+* Microsoft SQL Server
+* Visual Studio
+* Visual Studio Code
+* Windows
+* Windows Presentation Foundation (WPF)
 
-Certificates
-------------
+## Certificates
 
 ### AWS Certified Cloud Practitioner
 
@@ -239,30 +233,27 @@ Issuer: Amazon Web Services (AWS)
 
 [View Certificate](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
 
-Languages
----------
+## Languages
 
 English: Native Speaker
 
-Interests
----------
+## Interests
 
 ### Indie Game Design
 
-*   Creative Game Mechanics
-*   Narrative Design
+* Creative Game Mechanics
+* Narrative Design
 
 ### Open Source Contributions
 
-*   Community Projects
-*   Collaborative Development
+* Community Projects
+* Collaborative Development
 
 ### Tech Innovation
 
-*   Emerging Technologies
-*   Cutting-edge Tools
+* Emerging Technologies
+* Cutting-edge Tools
 
-References
-----------
+## References
 
 Available upon request.
