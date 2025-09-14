@@ -3,9 +3,9 @@ import { h } from 'hastscript';
 import { toHtml } from 'hast-util-to-html';
 import {toMdast} from 'hast-util-to-mdast'
 import {toMarkdown} from 'mdast-util-to-markdown'
-// @ts-ignore: css as text
 import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
+import tailwindScript from "./node_modules/@tailwindcss/browser/dist/index.global.js" assert { type: "text" };
 
 type Resume = Parameters<typeof resumed.render>[0];
 
@@ -13,7 +13,7 @@ const renderSection = (title: string, content: (Element | string)[] | undefined)
   if (!content || content.length === 0) {
     return null;
   }
-  return h('section', { className: 'my-8 page-break' }, [
+  return h('section', { className: 'my-8 break-before-page' }, [
     h('h2', { className: 'text-2xl font-bold border-b-2 border-gray-200 pb-2 mb-4' }, title),
     ...content
   ]);
@@ -50,7 +50,7 @@ const getTree = (resume: Resume) => {
       h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
       h('title', basics?.name ? `${basics.name}'s Resume` : 'Resume'),
       h('style', styles),
-      h('script', { src: 'https://cdn.tailwindcss.com' })
+      h('script', [], tailwindScript)
     ]),
     h('body', { className: 'leading-normal text-gray-800 text-sm' }, [
       h('div', { className: 'max-w-4xl mx-auto bg-white p-6' }, [
