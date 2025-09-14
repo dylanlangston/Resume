@@ -1,9 +1,9 @@
-import { render as localTheme } from "./theme";
+import { render as renderHtml } from "./theme";
 import { render } from "resumed";
 import * as resume from "./resume/resume.json" assert { type: "json" };
 
 const html: string = await render(resume, {
-    render: localTheme
+    render: renderHtml
 });
 
 Bun.serve({

@@ -2,6 +2,8 @@
   "private": true,
   "devDependencies": {
     "hast-util-to-html": "^9.0.5",
-    "hastscript": "^9.0.1"
+    "hast-util-to-mdast": "^10.1.2",
+    "hastscript": "^9.0.1",
+    "mdast-util-to-markdown": "^2.1.2"
   }
 }
