@@ -11,8 +11,6 @@
         "pdf-lib": "^1.17.1",
         "puppeteer": "^24.20.0",
         "resumed": "^6.0.0",
-        "turndown": "^7.2.1",
-        "turndown-plugin-gfm": "^1.0.2",
       },
       "peerDependencies": {
         "typescript": "^5.9.2",
@@ -25,8 +23,6 @@
     "@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.27.1", "", {}, ""],
 
     "@jsonresume/schema": ["@jsonresume/schema@1.2.1", "", { "dependencies": { "jsonschema": "^1.4.1" } }, ""],
-
-    "@mixmark-io/domino": ["@mixmark-io/domino@2.2.0", "", {}, "sha512-Y28PR25bHXUg88kCV7nivXrP2Nj2RueZ3/l/jdx6J9f8J4nsEGcgX0Qe6lt7Pa+J79+kPiJU3LguR6O/6zrLOw=="],
 
     "@pdf-lib/standard-fonts": ["@pdf-lib/standard-fonts@1.0.0", "", { "dependencies": { "pako": "^1.0.6" } }, ""],
 
@@ -227,10 +223,6 @@
     "text-decoder": ["text-decoder@1.2.3", "", { "dependencies": { "b4a": "^1.6.4" } }, ""],
 
     "tslib": ["tslib@1.14.1", "", {}, ""],
-
-    "turndown": ["turndown@7.2.1", "", { "dependencies": { "@mixmark-io/domino": "^2.2.0" } }, "sha512-7YiPJw6rLClQL3oUKN3KgMaXeJJ2lAyZItclgKDurqnH61so4k4IH/qwmMva0zpuJc/FhRExBBnk7EbeFANlgQ=="],
-
-    "turndown-plugin-gfm": ["turndown-plugin-gfm@1.0.2", "", {}, "sha512-vwz9tfvF7XN/jE0dGoBei3FXWuvll78ohzCZQuOb+ZjWrs3a0XhQVomJEb2Qh4VHTPNRO4GPZh0V7VRbiWwkRg=="],
 
     "typed-query-selector": ["typed-query-selector@2.12.0", "", {}, ""],
 

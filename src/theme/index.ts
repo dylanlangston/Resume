@@ -1,6 +1,8 @@
 import { type Element } from 'hast'
 import { h } from 'hastscript';
 import { toHtml } from 'hast-util-to-html';
+import {toMdast} from 'hast-util-to-mdast'
+import {toMarkdown} from 'mdast-util-to-markdown'
 // @ts-ignore: css as text
 import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
@@ -26,7 +28,7 @@ const renderHighlights = (highlights: string[] | undefined): Element | null => {
   );
 };
 
-const render = (resume: Resume): string => {
+const getTree = (resume: Resume) => {
   const {
     basics,
     work,
@@ -185,7 +187,19 @@ const render = (resume: Resume): string => {
     ])
   ]);
 
+  return tree;
+};
+
+const render = (resume: Resume): string => {
+  const tree = getTree(resume);
+
   return toHtml(tree);
 };
 
-export { render, type Resume };
+const renderMarkdown = (resume: Resume): string => {
+  const tree = getTree(resume);
+  const mdast = toMdast(tree, { handlers: {} });
+  return toMarkdown(mdast);
+}
+
+export { render, renderMarkdown, type Resume };

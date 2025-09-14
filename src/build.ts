@@ -1,5 +1,5 @@
 import { promises as fs } from "fs";
-import { render as localTheme } from "jsonresume-theme-local";
+import { render as renderHtml, renderMarkdown } from "jsonresume-theme-local";
 import puppeteer from "puppeteer";
 import { render } from "resumed";
 import { PDFDocument } from "pdf-lib";
@@ -7,9 +7,6 @@ import { readFile } from 'fs/promises';
 import type { AxeResults } from "axe-core";
 import path from "path";
 import * as resume from "./resume/resume.json" assert { type: "json" };
-import TurndownService from "turndown";
-// @ts-ignore: plugin has no types
-import { gfm } from "turndown-plugin-gfm";
 
 const axeSource = await readFile('./node_modules/axe-core/axe.min.js', 'utf-8');
 
@@ -18,16 +15,16 @@ const filename = "../dist/resume.pdf";
 fs.mkdir("../dist").catch(() => { });
 
 const html: string = await render(resume, {
-  render: localTheme
+  render: renderHtml
 });
 
 fs.writeFile("../dist/resume.html", html);
 console.log("HTML generated at", path.resolve("../dist/resume.html"));
 
-const turndownService = new TurndownService();
-turndownService.remove(['style', 'title']);
-turndownService.use(gfm);
-const markdown = turndownService.turndown(html);
+const markdown: string = await render(resume, {
+  render: renderMarkdown
+});
+
 fs.writeFile("../dist/resume.md", markdown);
 console.log("Markdown generated at", path.resolve("../dist/resume.md"));
 
