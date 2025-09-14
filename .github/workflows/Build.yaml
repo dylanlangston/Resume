@@ -3,8 +3,11 @@ name: Build
 on:
   push:
     branches: ["main"]
-    paths-ignore:
-      - 'dist'
+    paths:
+      - 'src/**'
+      - 'Makefile'
+      - 'Dockerfile'
+      - '.github/workflows/Build.yaml'
     
   workflow_dispatch:
 
