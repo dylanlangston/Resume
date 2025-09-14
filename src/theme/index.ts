@@ -6,6 +6,7 @@ import {toMarkdown} from 'mdast-util-to-markdown'
 import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
 import tailwindScript from "./node_modules/@tailwindcss/browser/dist/index.global.js" assert { type: "text" };
+import sourceCodePro from './source-code-pro';
 
 type Resume = Parameters<typeof resumed.render>[0];
 
@@ -28,7 +29,15 @@ const renderHighlights = (highlights: string[] | undefined): Element | null => {
   );
 };
 
-const getTree = (resume: Resume) => {
+const embedImage = async (uri: string): Promise<string> => {
+  const response = await fetch(uri);
+  const buffer = Buffer.from(await response.arrayBuffer())
+  const mimeType = response.headers.get('content-type')
+
+  return `data:${mimeType};base64,${buffer.toString('base64')}`;
+};
+
+const getTree = async (resume: Resume) => {
   const {
     basics,
     work,
@@ -49,6 +58,7 @@ const getTree = (resume: Resume) => {
       h('meta', { charSet: 'utf-8' }),
       h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
       h('title', basics?.name ? `${basics.name}'s Resume` : 'Resume'),
+      h('style', sourceCodePro),
       h('style', styles),
       h('script', [], tailwindScript)
     ]),
@@ -56,11 +66,16 @@ const getTree = (resume: Resume) => {
       h('div', { className: 'max-w-4xl mx-auto bg-white p-6' }, [
 
         basics && h('header', { className: 'text-center mb-6' }, [
-          basics.image && h('img', { 
-            className: 'w-32 h-32 rounded-full mx-auto mb-3', 
-            src: basics.image, 
-            alt: `A portrait of ${basics.name}` 
-          }),
+          basics.image && h('picture', [
+            basics.image && h('source', {
+              srcset: await embedImage(basics.image)
+            }),
+            basics.image && h('img', { 
+              className: 'w-32 h-32 rounded-full mx-auto mb-3', 
+              src: basics.image,
+              alt: `A portrait of ${basics.name}`
+            }),
+          ]),
           basics.name && h('h1', { className: 'text-3xl font-bold text-gray-900' }, basics.name),
           basics.label && h('p', { className: 'text-lg text-gray-600 mt-1' }, basics.label),
           basics.summary && h('p', { className: 'mt-2 text-gray-700 text-base' }, basics.summary),
@@ -190,14 +205,14 @@ const getTree = (resume: Resume) => {
   return tree;
 };
 
-const render = (resume: Resume): string => {
-  const tree = getTree(resume);
+const render = async (resume: Resume): Promise<string> => {
+  const tree = await getTree(resume);
 
   return toHtml(tree);
 };
 
-const renderMarkdown = (resume: Resume): string => {
-  const tree = getTree(resume);
+const renderMarkdown = async (resume: Resume): Promise<string> => {
+  const tree = await getTree(resume);
   const mdast = toMdast(tree, { handlers: {} });
   return toMarkdown(mdast);
 }

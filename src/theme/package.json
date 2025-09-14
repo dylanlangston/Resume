@@ -1,6 +1,7 @@
 {
   "private": true,
   "devDependencies": {
+    "@fontsource/source-code-pro": "^5.2.7",
     "@tailwindcss/browser": "^4.1.13",
     "hast-util-to-html": "^9.0.5",
     "hast-util-to-mdast": "^10.1.2",
