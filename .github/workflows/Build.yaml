@@ -3,6 +3,8 @@ name: Build
 on:
   push:
     branches: ["main"]
+    paths-ignore:
+      - 'dist'
     
   workflow_dispatch:
 
@@ -29,5 +31,15 @@ jobs:
         id: upload
         uses: actions/upload-artifact@v4
         with:
-          name: resume.pdf
+          name: Resume
           path: './dist/resume.pdf'
+      - name: Commit PDF to Repository
+        if: github.ref == 'refs/heads/main' && github.repository == 'dylanlangston/resume'
+        id: commit
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout main
+          git add dist/resume.pdf
+          git commit -m "PDF Update: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" || echo "No changes to commit"
+          git push origin main
