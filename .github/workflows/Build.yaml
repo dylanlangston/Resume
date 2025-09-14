@@ -1,0 +1,31 @@
+name: Build
+
+on:
+  push:
+    branches: ["main"]
+    
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  Build:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v5
+      - name: Checkout Submodules
+        run: make setup-git-clone
+      - name: Build PDF
+        id: build
+        run: make build-docker
+      - name: Upload PDF artifact
+        id: upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume.pdf
+          path: './dist/resume.pdf'

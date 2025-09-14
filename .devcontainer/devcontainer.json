@@ -1,0 +1,27 @@
+{
+	"name": "dylanlangston",
+	"build": { 
+		"dockerfile": "devcontainer.Dockerfile",
+		"target": "base",
+		"context": ".."
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"containerUser": "vscode",
+	"postCreateCommand": "npm install --prefix ./src",
+	"runArgs": ["--volume=/var/lib/docker", "--privileged"],
+	"customizations": {
+		"vscode": {
+			"extensions": [
+                "ms-vscode.makefile-tools",
+				"oven.bun-vscode",
+                "ms-azuretools.vscode-docker",
+                "bierner.markdown-preview-github-styles",
+                "ms-vscode-remote.remote-containers"
+			],
+			"settings": {
+			}
+		}
+	}
+}
