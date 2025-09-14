@@ -53,7 +53,7 @@ if (axeResults.violations.length > 0) {
   });
   process.exit(1);
 }
-await page.pdf({ path: filename, format: "a4", printBackground: true });
+await page.pdf({ path: filename, printBackground: true, preferCSSPageSize: true, tagged: true, outline: true, });
 
 await browser.close();
 
@@ -67,6 +67,13 @@ pdf.setAuthor("Dylan Langston");
 pdf.setSubject("Resume");
 pdf.setCreationDate(new Date("1998-03-22T00:00:00Z"));
 pdf.setKeywords(resume.skills?.flatMap(skill => skill.keywords).filter((name): name is string => typeof name === "string") ?? []);
+
+pdf.attach(markdown, "resume.md", {
+  mimeType: "text/markdown",
+  description: "Markdown version of the resume",
+  creationDate: new Date("1998-03-22T00:00:00Z"),
+  modificationDate: new Date()
+});
 
 const optimized = await pdf.save({
   useObjectStreams: true,
