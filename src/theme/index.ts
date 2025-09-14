@@ -123,8 +123,8 @@ const render = (resume: Resume): string => {
           h('.skill-item', { className: 'mb-4' }, [
             skill.name && h('h3', { className: 'text-lg font-semibold' }, skill.name),
             skill.level && h('p', { className: 'text-xs text-gray-600' }, `Level: ${skill.level}`),
-            skill.keywords && h('div', { className: 'flex flex-wrap gap-1 mt-1' }, 
-              skill.keywords.map(keyword => h('span', { className: 'bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded' }, keyword))
+            skill.keywords && h('ul', { className: 'flex flex-wrap gap-1 mt-1' }, 
+              skill.keywords.map(keyword => h('li', { className: 'bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded' }, keyword))
             ),
           ])
         )),
@@ -169,8 +169,8 @@ const render = (resume: Resume): string => {
         renderSection('Interests', interests?.map(interest =>
           h('.interest-item', { className: 'mb-4' }, [
             interest.name && h('h3', { className: 'text-lg font-semibold' }, interest.name),
-            interest.keywords && h('div', { className: 'flex flex-wrap gap-1 mt-1' }, 
-              interest.keywords.map(keyword => h('span', { className: 'bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded' }, keyword))
+            interest.keywords && h('ul', { className: 'flex flex-wrap gap-1 mt-1' }, 
+              interest.keywords.map(keyword => h('li', { className: 'bg-gray-200 text-gray-800 text-xs font-medium px-2 py-0.5 rounded' }, keyword))
             ),
           ])
         )),
