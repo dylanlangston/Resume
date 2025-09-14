@@ -42,8 +42,8 @@ jobs:
       - name: Update screenshot
         id: screenshot
         run: |
-          apt-get update
-          apt-get -y install --no-install-recommends poppler-utils
+          sudo apt-get update
+          sudo apt-get -y install --no-install-recommends poppler-utils
           make update-readme-screenshot
       - name: Commit PDF to Repository
         if: github.ref == 'refs/heads/main' && github.repository == 'dylanlangston/resume'
