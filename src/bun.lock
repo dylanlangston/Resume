@@ -5,6 +5,7 @@
       "name": "resume",
       "devDependencies": {
         "@types/bun": "latest",
+        "axe-core": "^4.10.3",
         "jsonresume-theme-local": "./theme",
         "pdf-lib": "^1.17.1",
         "puppeteer": "^24.20.0",
@@ -47,6 +48,8 @@
     "argparse": ["argparse@2.0.1", "", {}, ""],
 
     "ast-types": ["ast-types@0.13.4", "", { "dependencies": { "tslib": "^2.0.1" } }, ""],
+
+    "axe-core": ["axe-core@4.10.3", "", {}, "sha512-Xm7bpRXnDSX2YE2YFfBk2FnF0ep6tmG7xPh8iHee8MIcrgq762Nkce856dYtJYLkuIoYZvGfTs/PbZhideTcEg=="],
 
     "b4a": ["b4a@1.7.1", "", { "peerDependencies": { "react-native-b4a": "*" }, "optionalPeers": ["react-native-b4a"] }, ""],
 

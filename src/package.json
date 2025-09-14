@@ -2,10 +2,11 @@
   "name": "resume",
   "devDependencies": {
     "@types/bun": "latest",
+    "jsonresume-theme-local": "./theme",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.20.0",
     "resumed": "^6.0.0",
-    "jsonresume-theme-local": "./theme"
+    "axe-core": "^4.10.3"
   },
   "peerDependencies": {
     "typescript": "^5.9.2"
