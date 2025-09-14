@@ -3,6 +3,7 @@
   "workspaces": {
     "": {
       "devDependencies": {
+        "@fontsource/source-code-pro": "^5.2.7",
         "@tailwindcss/browser": "^4.1.13",
         "hast-util-to-html": "^9.0.5",
         "hast-util-to-mdast": "^10.1.2",
@@ -12,6 +13,8 @@
     },
   },
   "packages": {
+    "@fontsource/source-code-pro": ["@fontsource/source-code-pro@5.2.7", "", {}, "sha512-7papq9TH94KT+S5VSY8cU7tFmwuGkIe3qxXRMscuAXH6AjMU+KJI75f28FzgBVDrlMfA0jjlTV4/x5+H5o/5EQ=="],
+
     "@tailwindcss/browser": ["@tailwindcss/browser@4.1.13", "", {}, "sha512-Ht8ok6LnmOK0mVWMT5jx1Uq/Kzr7oDupLa2MUlWyuFe0VOHmTiMyk2SKyoGRP5+MdlWGkSnPhFYu0htD2DKbTw=="],
 
     "@types/hast": ["@types/hast@3.0.4", "", { "dependencies": { "@types/unist": "*" } }, "sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ=="],
