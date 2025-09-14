@@ -1,9 +1,6 @@
-import { render as localTheme, type Resume } from "./theme";
+import { render as localTheme } from "./theme";
 import { render } from "resumed";
-import { fetch } from "bun";
-import config from "./config.json" assert { type: "json" };
-
-const resume = await (await fetch(config.resumeUrl)).json() as Resume;
+import * as resume from "./resume/resume.json" assert { type: "json" };
 
 const html: string = await render(resume, {
     render: localTheme
