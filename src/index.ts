@@ -3,16 +3,14 @@ import {render as localTheme} from "jsonresume-theme-local";
 import puppeteer from "puppeteer";
 import { render } from "resumed";
 import { PDFDocument } from "pdf-lib";
+import { fetch } from "bun";
 
 type Resume = Parameters<typeof render>[0];
 
 const filename = "../dist/resume.pdf";
 fs.mkdir("../dist").catch(() => {});
 
-const resume: Resume = JSON.parse(
-  await fs.readFile("resume.json", "utf-8")
-);
-
+const resume = await (await fetch("https://gist.githubusercontent.com/dylanlangston/80380ec68b970189450dd2fae4502ff1/raw/resume.json")).json() as Resume;
 const html: string = await render(resume, {
   render: localTheme
 });
