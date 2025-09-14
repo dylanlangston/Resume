@@ -34,18 +34,28 @@ jobs:
         id: build
         run: make build-docker
       - name: Upload PDF artifact
-        id: upload
+        id: upload-pdf
         uses: actions/upload-artifact@v4
         with:
           name: Resume
           path: './dist/resume.pdf'
+      - name: Upload HTML artifact
+        id: upload-html
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: './dist/resume.html'
       - name: Update screenshot
         id: screenshot
         run: |
           sudo apt-get update
           sudo apt-get -y install --no-install-recommends poppler-utils
           make update-readme-screenshot
-      - name: Commit PDF to Repository
+      - name: Setup GitGub Pages
+        uses: actions/configure-pages@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Commit Changes to Repository
         if: github.ref == 'refs/heads/main' && github.repository == 'dylanlangston/resume'
         id: commit
         run: |
