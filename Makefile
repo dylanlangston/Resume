@@ -9,9 +9,13 @@ help: ## Display the help menu.
 
 setup: ## Setup the development environment.
 	@cd ./src; bun install
+	@cd ./src/theme; bun install
 
 build: setup ## Build the resume PDF.
 	@bun --cwd ./src build
 
 build-docker: ## Build the Docker image.
 	@docker build --rm --network=host --progress=plain -t resume . --target publish --output type=local,dest=$(OUTPUT_DIR)
+
+preview: ## Preview the resume in the browser.
+	@cd ./src; bun run preview

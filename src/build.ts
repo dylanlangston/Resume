@@ -1,25 +1,25 @@
 import { promises as fs } from "fs";
-import { render as localTheme } from "jsonresume-theme-local";
+import { render as localTheme, type Resume } from "jsonresume-theme-local";
 import puppeteer from "puppeteer";
 import { render } from "resumed";
 import { PDFDocument } from "pdf-lib";
 import { fetch } from "bun";
 import { readFile } from 'fs/promises';
 import type { AxeResults } from "axe-core";
-import { Console } from "console";
 import path from "path";
 const axeSource = await readFile('./node_modules/axe-core/axe.min.js', 'utf-8');
 
-type Resume = Parameters<typeof render>[0];
-
 const filename = "../dist/resume.pdf";
-fs.mkdir("../dist").catch(() => {});
+fs.mkdir("../dist").catch(() => { });
 
 const resume = await (await fetch("https://gist.githubusercontent.com/dylanlangston/80380ec68b970189450dd2fae4502ff1/raw/resume.json")).json() as Resume;
 
 const html: string = await render(resume, {
   render: localTheme
 });
+
+fs.writeFile("../dist/resume.html", html);
+console.log("HTML generated at", path.resolve("../dist/resume.html"));
 
 const browser = await puppeteer.launch({
   headless: true,
@@ -30,10 +30,7 @@ const page = await browser.newPage();
 
 await page.setContent(html, { waitUntil: "networkidle0" });
 
-// Inject axe-core script into the page
 await page.addScriptTag({ content: axeSource });
-
-// Run accessibility check in browser context
 const axeResults: AxeResults = await page.evaluate(async () => {
   // @ts-ignore: 'window' is available in the browser context
   return await window.axe.run({
@@ -57,7 +54,7 @@ const raw = await fs.readFile(filename);
 const pdf = await PDFDocument.load(raw, { updateMetadata: true });
 
 pdf.setTitle("Dylan Langston's Resume");
-pdf.setProducer("");
+pdf.setProducer("https://github.com/dylanlangston/resume");
 pdf.setCreator("Dylan Langston");
 pdf.setAuthor("Dylan Langston");
 pdf.setSubject("Resume");
