@@ -1,6 +1,7 @@
 {
   "private": true,
   "devDependencies": {
+    "@tailwindcss/browser": "^4.1.13",
     "hast-util-to-html": "^9.0.5",
     "hast-util-to-mdast": "^10.1.2",
     "hastscript": "^9.0.1",

@@ -3,6 +3,7 @@
   "workspaces": {
     "": {
       "devDependencies": {
+        "@tailwindcss/browser": "^4.1.13",
         "hast-util-to-html": "^9.0.5",
         "hast-util-to-mdast": "^10.1.2",
         "hastscript": "^9.0.1",
@@ -11,6 +12,8 @@
     },
   },
   "packages": {
+    "@tailwindcss/browser": ["@tailwindcss/browser@4.1.13", "", {}, "sha512-Ht8ok6LnmOK0mVWMT5jx1Uq/Kzr7oDupLa2MUlWyuFe0VOHmTiMyk2SKyoGRP5+MdlWGkSnPhFYu0htD2DKbTw=="],
+
     "@types/hast": ["@types/hast@3.0.4", "", { "dependencies": { "@types/unist": "*" } }, "sha512-WPs+bbQw5aCj+x6laNGWLH3wviHtoCv/P3+otBhbOhJgG8qtpdAMlTCxLtsTWA7LH1Oh/bFCHsBn0TPS5m30EQ=="],
 
     "@types/mdast": ["@types/mdast@4.0.4", "", { "dependencies": { "@types/unist": "*" } }, "sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA=="],

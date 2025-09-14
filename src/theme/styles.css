@@ -8,16 +8,11 @@ body {
 
 @media print {
     @page {
-        size: A4;
+        size: Letter;
     }
 
     body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
-    }
-
-    /* This class can be used to force a page break if absolutely needed */
-    .page-break {
-        break-before: page;
     }
 }
