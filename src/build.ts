@@ -8,6 +8,9 @@ import { readFile } from 'fs/promises';
 import type { AxeResults } from "axe-core";
 import path from "path";
 import config from "./config.json" assert { type: "json" };
+import TurndownService from "turndown";
+// @ts-ignore: plugin has no types
+import { gfm } from "turndown-plugin-gfm";
 
 const axeSource = await readFile('./node_modules/axe-core/axe.min.js', 'utf-8');
 
@@ -23,6 +26,13 @@ const html: string = await render(resume, {
 
 fs.writeFile("../dist/resume.html", html);
 console.log("HTML generated at", path.resolve("../dist/resume.html"));
+
+const turndownService = new TurndownService();
+turndownService.remove(['style', 'title']);
+turndownService.use(gfm);
+const markdown = turndownService.turndown(html);
+fs.writeFile("../dist/resume.md", markdown);
+console.log("Markdown generated at", path.resolve("../dist/resume.md"));
 
 const browser = await puppeteer.launch({
   headless: true,
