@@ -9,8 +9,6 @@ import sourceCodeProVietnamese from "./node_modules/@fontsource/source-code-pro/
 import sourceCodeProLatinExt from "./node_modules/@fontsource/source-code-pro/files/source-code-pro-latin-ext-400-normal.woff2";
 import sourceCodeProLatin from "./node_modules/@fontsource/source-code-pro/files/source-code-pro-latin-400-normal.woff2";
 
-console.log(sourceCodeProCyrillicExt)
-
 const base64Prefix = "data:font/woff2;base64,";
 const sourceCodeProCyrillicExtBase64 = base64Prefix + (await readFile(sourceCodeProCyrillicExt)).toString("base64");
 const sourceCodeProCyrillicBase64 = base64Prefix + (await readFile(sourceCodeProCyrillic)).toString("base64");
