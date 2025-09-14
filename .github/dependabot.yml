@@ -21,3 +21,13 @@ updates:
     labels:
       - ":label: Dependencies"
       - ":technologist: Github Actions :brown_circle:"
+  - package-ecosystem: "gitsubmodule"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "Submodule - "
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    labels:
+      - ":label: Dependencies"
+      - ":technologist: Submodules :large_blue_circle:"
