@@ -7,12 +7,15 @@ import { fetch } from "bun";
 import { readFile } from 'fs/promises';
 import type { AxeResults } from "axe-core";
 import path from "path";
+import config from "./config.json" assert { type: "json" };
+
 const axeSource = await readFile('./node_modules/axe-core/axe.min.js', 'utf-8');
+
 
 const filename = "../dist/resume.pdf";
 fs.mkdir("../dist").catch(() => { });
 
-const resume = await (await fetch("https://gist.githubusercontent.com/dylanlangston/80380ec68b970189450dd2fae4502ff1/raw/resume.json")).json() as Resume;
+const resume = await (await fetch(config.resumeUrl)).json() as Resume;
 
 const html: string = await render(resume, {
   render: localTheme
