@@ -1,8 +1,5 @@
-<h1 align="center"><a href="./dist/resume.pdf">My Resume</a></h1>
-<p align="center">
-  <a href="https://github.com/dylanlangston/Resume/actions/workflows/Build.yaml"><img alt="GitHub Workflow CI/CD" src="https://img.shields.io/github/actions/workflow/status/dylanlangston/Resume/Build.yaml?label=CI%2FCD"></a>
-  <a href="https://github.com/dylanlangston/Resume/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/dylanlangston/dylanlangston.com?label=License"></a>
-  <a href="https://api.github.com/repos/dylanlangston/Resume"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/dylanlangston/Resume?label=Repo%20Size"></a>
+<h1 align="center"><a href="./dist/resume.pdf"><img alt="My Resume" src="./screenshot.png" /></a></h1>
+<a href="https://api.github.com/repos/dylanlangston/Resume"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/dylanlangston/Resume?label=Repo%20Size"></a>
 </p>
 
 This repository contains the source code used to build my resume. The resume is generated as a PDF from a `resume.json` file that follows the [JSON Resume standard](https://jsonresume.org/) and which is hosted as a [GitHub Gist](https://gist.github.com/dylanlangston/80380ec68b970189450dd2fae4502ff1).
