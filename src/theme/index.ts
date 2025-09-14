@@ -1,37 +1,54 @@
-import * as resume from "resumed";
+import { h } from 'hastscript';
+import { toHtml } from 'hast-util-to-html';
 
-type Resume = Parameters<typeof resume.render>[0];
-
-const render = (resume: Resume) => {
-    const {basics} = resume;
-
-    if (!basics || !basics.location || !basics.profiles) {
-        throw new Error("Resume 'basics' section is required.");
-    }
-
-    return `
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>${basics.name}</title>
-  </head>
-  <body>
-    <h1>${basics.name}</h1>
-    <h2>${basics.label}</h2>
-    <p>${basics.summary}</p>
-    <ul>
-      <li>${basics.location.city} ${basics.location.countryCode}</li>
-      <li><a href="mailto:${basics.email}">${basics.email}</a></li>
-      <li><a href="tel:${basics.phone}">${basics.phone}</a></li>
-      <li><a href="${basics.url}">${basics.url}</a></li>
-      ${basics.profiles
-        .map(profile => `<li>${profile.username} (${profile.network})</li>`)
-        .join('')}
-    </ul>
-  </body>
-</html>
-`;
+type Resume = {
+  basics?: {
+    name?: string;
+    label?: string;
+    summary?: string;
+    location?: {
+      city?: string;
+      countryCode?: string;
+    };
+    email?: string;
+    phone?: string;
+    url?: string;
+    profiles?: {
+      network?: string;
+      username?: string;
+      url?: string;
+    }[];
+  };
 };
 
-export {render}
+const render = (resume: Resume): string => {
+  const { basics } = resume;
+
+  if (!basics || !basics.location || !basics.profiles) {
+    throw new Error("Resume 'basics' section is required.");
+  }
+
+  const tree = h('html', { lang: 'en' }, [
+    h('head', [
+      h('meta', { charSet: 'utf-8' }),
+      h('title', basics.name),
+    ]),
+    h('body', [
+      h('h1', basics.name),
+      h('h2', basics.label),
+      h('p', basics.summary),
+      h('ul', [
+        h('li', `${basics.location.city} ${basics.location.countryCode}`),
+        h('li', [h('a', { href: `mailto:${basics.email}` }, basics.email)]),
+        h('li', [h('a', { href: basics.url }, basics.url)]),
+        ...basics.profiles.map(profile =>
+          h('li', `${profile.username} (${profile.network})`)
+        ),
+      ]),
+    ]),
+  ]);
+
+  return toHtml(tree);
+};
+
+export { render };
