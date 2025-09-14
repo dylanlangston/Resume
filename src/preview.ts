@@ -1,12 +1,9 @@
-import { promises as fs } from "fs";
 import { render as localTheme, type Resume } from "./theme";
 import { render } from "resumed";
 import { fetch } from "bun";
+import config from "./config.json" assert { type: "json" };
 
-const filename = "../dist/resume.pdf";
-fs.mkdir("../dist").catch(() => { });
-
-const resume = await (await fetch("https://gist.githubusercontent.com/dylanlangston/80380ec68b970189450dd2fae4502ff1/raw/resume.json")).json() as Resume;
+const resume = await (await fetch(config.resumeUrl)).json() as Resume;
 
 const html: string = await render(resume, {
     render: localTheme
@@ -14,7 +11,7 @@ const html: string = await render(resume, {
 
 Bun.serve({
     port: 3000,
-    fetch(req) {
+    fetch(_) {
         return new Response(html, {
             headers: {
                 "Content-Type": "text/html; charset=utf-8"
