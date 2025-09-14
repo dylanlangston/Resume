@@ -39,6 +39,11 @@ jobs:
         with:
           name: Resume
           path: './dist/resume.pdf'
+      - name: Update screenshot
+        id: screenshot
+        run: |
+          apt-get update && && apt-get -y install --no-install-recommends poppler-utils
+          make update-readme-screenshot
       - name: Commit PDF to Repository
         if: github.ref == 'refs/heads/main' && github.repository == 'dylanlangston/resume'
         id: commit
@@ -46,8 +51,6 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git checkout main
-          git add dist/resume.pdf
-          git commit -m "PDF Update: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" || echo "No changes to commit"
-          git add dist/resume.md
-          git commit -m "Markdown Update: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" || echo "No changes to commit"
+          git add .
+          git commit -m "Update: $(date -u +"%Y-%m-%d %H:%M:%S UTC")" || echo "No changes to commit"
           git push origin main

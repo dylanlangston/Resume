@@ -22,3 +22,6 @@ build-docker: ## Build the Docker image.
 
 preview: ## Preview the resume in the browser.
 	@cd ./src; bun run preview
+
+update-readme-screenshot: ## Update the README screenshot.
+	@pdftoppm -png -singlefile -r 300 ./dist/resume.pdf screenshot
