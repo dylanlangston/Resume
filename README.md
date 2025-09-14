@@ -27,7 +27,8 @@ A `Makefile` is included to streamline common tasks.
 | `build-docker` | Build the Docker image. | 
 | `build` | Build the resume PDF. | 
 | `help` | Display the help menu. | 
-| `preview` | Preview the resume in the browser. | 
+| `preview` | Preview the resume in the browser. |
+| `setup-git-clone` | Clone git submodules. |
 | `setup` | Setup the development environment. | 
 
 ### Dev Container

@@ -27,6 +27,9 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v5
+      - name: Checkout Submodules
+        id: submodules
+        run: make setup-git-clone
       - name: Build PDF
         id: build
         run: make build-docker

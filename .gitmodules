@@ -1,0 +1,3 @@
+[submodule "src/resume"]
+	path = src/resume
+	url = https://gist.github.com/80380ec68b970189450dd2fae4502ff1.git
