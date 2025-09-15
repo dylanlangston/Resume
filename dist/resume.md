@@ -20,7 +20,7 @@ Itch.io: [dylanlangston](https://dylanlangston.itch.io/)
 
 ### Game Development
 
-Level: Beginner/Intermediate
+#### Level: Beginner/Intermediate
 
 * Game Engines
 * Unity
@@ -38,7 +38,7 @@ Level: Beginner/Intermediate
 
 ### Concepts and Methodologies
 
-Level: Intermediate/Advanced
+#### Level: Intermediate/Advanced
 
 - Agile Methodologies
 - Continuous Integration/Deployment (CI/CD)
@@ -56,7 +56,7 @@ Level: Intermediate/Advanced
 
 ### Development and Design
 
-Level: Advanced
+#### Level: Advanced
 
 * API Development
 * Command Line Application
@@ -75,7 +75,7 @@ Level: Advanced
 
 ### Programming Languages and Frameworks
 
-Level: Master/Expert
+#### Level: Master/Expert
 
 - ASP.NET
 - Angular
@@ -105,7 +105,7 @@ Level: Master/Expert
 
 ### Technologies and Tools
 
-Level: Master/Expert
+#### Level: Master/Expert
 
 * Amazon Web Services (AWS)
 * Android
@@ -185,15 +185,17 @@ Provided Tier 2 technical support, facilitated technology acquisitions, and ensu
 
 [View Project](https://asteroids.dylanlangston.com)
 
+#### Technologies: Raylib, Emscripten, Binaryen, Svelte, TypeScript, TailwindCSS
+
 A twist on the classic game with an expanded world where asteroids bounce off the walls and rogue aliens add to the challenge.
 
 - Achieved 3rd place in the “Implementation of the theme game” category at the 2023 Raylib Slo-Jam event.
 
-Technologies: Raylib, Emscripten, Binaryen, Svelte, TypeScript, TailwindCSS
-
 ### Sys.tm
 
 [View Project](https://sys.tm)
+
+#### Technologies: C#, .NET Framework, Angular, AWS, Java, RESTful APIs, RPA, CI/CD, Selenium, API Gateway, Lambda, Apache Tika, AWS CodePipeline, InstallShield, .NET 6
 
 An intelligent information management platform designed to streamline business processes through automation and efficient data management.
 
@@ -203,22 +205,20 @@ An intelligent information management platform designed to streamline business p
 * Enhanced an RPA solution by updating to .NET 6 and compiling automations to DLLs for improved performance.
 * Developed a custom CI/CD pipeline extending AWS CodePipeline for creating InstallShield installers on EC2 instances.
 
-Technologies: C#, .NET Framework, Angular, AWS, Java, RESTful APIs, RPA, CI/CD, Selenium, API Gateway, Lambda, Apache Tika, AWS CodePipeline, InstallShield, .NET 6
-
 ### MOONSHOOT
 
 [View Project](https://dylanlangston.itch.io/moonshot)
+
+#### Technologies: Raylib-cs, .NET Core
 
 An Oregon Trail clone themed for the Apollo Missions. Submitted for Game Off 2020 under the title 'MOONSHOT'. Developed using Raylib-cs and .NET Core.
 
 - Blended classic gameplay with modern game development techniques to create a unique indie game experience.
 
-Technologies: Raylib-cs, .NET Core
-
 ## Certificates
 
 ### AWS Certified Cloud Practitioner
 
-Issuer: Amazon Web Services (AWS)
+#### Issuer: Amazon Web Services (AWS)
 
 [View Certificate](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
