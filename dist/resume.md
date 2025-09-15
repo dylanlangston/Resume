@@ -6,9 +6,9 @@ Full Stack Developer & Aspiring Game Developer
 
 Alexandria, Virgina
 
-<mail@dylanlangston.com>
+[mail\@dylanlangston.com](mailto:mail@dylanlangston.com)
 
-<https://dylanlangston.com/>
+[https\://dylanlangston.com/](https://dylanlangston.com/)
 
 LinkedIn: [dylan-langston](https://www.linkedin.com/in/dylan-langston/)
 
@@ -133,7 +133,7 @@ Seasoned full stack developer with proven enterprise expertise in building robus
 
 ### Cloudforce
 
-2024-06-01 – Present
+2024-06-01 til Present
 
 #### Cloud Applications Engineer
 
@@ -144,7 +144,7 @@ Developing both frontend (React) and backend (C#) applications in a collaborativ
 
 ### Maryland Department of Transportation Motor Vehicle Administration
 
-2023-07 – Present
+2023-07 til Present
 
 #### IT Programmer Analyst Load/Advanced
 
@@ -155,7 +155,7 @@ Led collaborative efforts to enhance software functionality, mentor junior devel
 
 ### Digitech Systems, LLC
 
-2017-10 – 2023-07
+2017-10 til 2023-07
 
 #### Software Engineer/Software Support Engineer
 
@@ -169,7 +169,7 @@ Automated critical software tests and upgraded applications, contributing to enh
 
 ### Nebraska College of Business
 
-2016-10 – 2017-08
+2016-10 til 2017-08
 
 #### Technical Support Specialist
 
