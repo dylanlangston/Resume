@@ -29,6 +29,47 @@ h6 {
     font-style: italic;
 }
 
+.hidden-equal::after {
+    content: "=";
+    color: #0550ae;
+    margin-left: 0.5rem;
+}
+
+.hidden-open-bracket::after {
+    content: "{";
+    color: #000000;
+    margin-left: 0.5rem;
+}
+
+.hidden-close-bracket::after {
+    content: "}";
+    color: #000000;
+}
+
+.hidden-open-bracket-square::before {
+    content: "[";
+}
+
+.hidden-close-bracket-square::after {
+    content: "]";
+}
+
+.hidden-comma::after {
+    content: ",";
+}
+
+.hidden-comma:last-child::after {
+    content: "";
+}
+
+.list-equals {
+  list-style-type: '+ ';
+}
+
+li::marker {
+  color: #0550ae;
+}
+
 @media print {
     @page {
         size: Letter;

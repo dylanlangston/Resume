@@ -12,10 +12,12 @@ import sourceCodePro from './source-code-pro';
 type Resume = Parameters<typeof resumed.render>[0];
 
 const colors = {
-  fg: { default: '#1f2328', muted: '#656d76' },
-  canvas: { default: '#ffffff' },
-  border: { default: '#d8dee4', muted: '#d8dee4' },
-  accent: { fg: '#0969da' },
+  fg: { default: '#000000', muted: '#59636e' },
+  canvas: { default: '#fff' },
+  border: { default: '#000000', muted: '#d1d9e0' },
+  accent: { fg: '#6639ba' },
+  link: { fg: '#0550ae' },
+  header: { title: '#cf222e', subtitle: '#953800' },
   neutral: { subtle: '#f6f8fa' },
 };
 
@@ -27,6 +29,9 @@ const generateThemeStyles = (): string => `
     --color-border-default: ${colors.border.default};
     --color-border-muted: ${colors.border.muted};
     --color-accent-fg: ${colors.accent.fg};
+    --color-link-fg: ${colors.link.fg};
+    --color-header-title: ${colors.header.title};
+    --color-header-subtitle: ${colors.header.subtitle};
     --color-neutral-subtle: ${colors.neutral.subtle};
   }
   .bg-canvas { background-color: var(--color-canvas-default) !important; }
@@ -34,22 +39,39 @@ const generateThemeStyles = (): string => `
   .text-accent { color: var(--color-accent-fg) !important; }
   .border-muted { border-color: var(--color-border-muted) !important; }
   .bg-subtle { background-color: var(--color-neutral-subtle) !important; }
-  .link { color: var(--color-accent-fg) !important; text-decoration: none; }
-  .link:hover { text-decoration: underline; }
+  .title{ color: var(--color-header-title) !important; }
+  .subtitle { color: var(--color-header-subtitle) !important; }
+  .link { color: var(--color-link-fg) !important; text-decoration: underline; }
+  .link:hover { text-decoration: none; }
   td { vertical-align: top; }
 `;
+
+const formatTitle = (val: string): string => {
+  return val.split(' ').map(s => String(s).charAt(0).toLowerCase() + String(s).slice(1)).join('_')
+}
+
+function reverseFormatTitle(val: string): string {
+  return val.split('_').map(s => String(s).charAt(0).toUpperCase() + String(s).slice(1)).join(' ')
+}
 
 const renderSection = (title: string, content: (Element | string)[] | undefined | null): Element | null => {
   if (!content || content.length === 0) return null;
   return h('section', { className: 'pb-2 border-t-1 border-muted' }, [
-    h('h2', { className: 'pt-1 mb-1 pl-1' }, title),
-    ...content
+    h('div', { className: 'flex  pl-1 hidden-open-bracket' }, [
+      h('h2', { className: 'hidden-equal subtitle', 'title': title }, [
+        formatTitle(title),
+      ]),
+    ]),
+    [
+      ...content,
+      h('span', { 'aria-hidden': true, className: 'hidden-close-bracket' }, ''),
+    ]
   ]);
 };
 
 const renderHighlights = (highlights: string[] | undefined): Element | null => {
   if (!highlights || highlights.length === 0) return null;
-  return h('ul', { className: 'list-disc list-inside mt-2 pl-2' },
+  return h('ul', { className: 'list-equals list-inside mt-2 pl-2' },
     highlights.map(highlight => h('li', { className: 'mb-1' }, highlight))
   );
 };
@@ -89,7 +111,7 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
     ]),
     basics.profiles && h('div', { className: 'mt-1 mx-2' }, basics.profiles.map(profile =>
       h('p', { className: 'mb-1' }, [
-        h('span', { style: 'font-weight: bold;' }, `${profile.network}: `),
+        h('span', { className: 'text-accent' }, `${profile.network}: `),
         profile.url ? h('a', { className: 'link', href: profile.url, target: '_blank' }, profile.username) : profile.username
       ])
     )),
@@ -97,22 +119,26 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
 };
 
 const renderWork = (work: Resume['work']) => work?.map(job =>
-  h('.item mx-2', [
+  h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
-      h('h3', {}, job.name),
-      (job.startDate || job.endDate) && h('p', { className: 'text-xs text-muted' }, `${job.startDate || ''} – ${job.endDate || 'Present'}`),
+      h('h3', { className: 'title' }, job.name),
+      (job.startDate || job.endDate) && h('p', { className: 'text-xs min-w-fit ml-6' }, [
+        h('time', { datetime: job.startDate, className: 'text-accent' }, job.startDate),
+        h('span',  { className: 'text-muted' }, ` til `),
+        h('time', { datetime: job.endDate, className: 'text-accent' }, job.endDate ?? 'Present'),
+      ]),
     ]),
-    job.position && h('h4', { className: 'text-accent' }, job.position),
+    job.position && h('h4', { className: 'text-muted' }, job.position),
     job.summary && h('p', { className: 'mt-1' }, job.summary),
     renderHighlights(job.highlights),
   ])
 );
 
 const renderProjects = (projects: Resume['projects']) => projects?.map(project =>
-  h('.item mx-2', [
+  h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
-      h('h3', {}, project.name),
-      project.url && h('a', { className: 'link text-xs', href: project.url, target: '_blank' }, 'View Project'),
+      h('h3', { className: 'title' }, project.name),
+      project.url && h('a', { 'title': 'View Project', className: 'link text-xs', href: project.url, target: '_blank' }, 'view_project'),
     ]),
     project.description && h('p', { className: 'mt-1' }, project.description),
     renderHighlights(project.highlights),
@@ -121,19 +147,21 @@ const renderProjects = (projects: Resume['projects']) => projects?.map(project =
 );
 
 const renderSkills = (skills: Resume['skills']) => skills?.map(skill =>
-  h('.item mx-2', [
-    skill.name && h('h3', {}, skill.name),
+  h('.item ml-4 mr-2', [
+    skill.name && h('h3', { className: 'title' }, skill.name),
     skill.level && h('p', { className: 'text-xs text-muted' }, `Level: ${skill.level}`),
-    skill.keywords && h('ul', { className: 'flex flex-wrap gap-1 mt-1' },
-      skill.keywords.map(keyword => h('li', { className: 'bg-subtle text-xs font-medium px-2 py-0.5 rounded' }, keyword))
+    skill.keywords && h('ul', { className: 'flex flex-wrap gap-1 mt-1 hidden-open-bracket-square hidden-close-bracket-square' },
+      skill.keywords.map(keyword => h('li', { className: 'hidden-comma' },
+        h('span', { className: 'bg-subtle text-xs font-medium px-2 py-0.5 rounded' }, keyword)
+      ))
     ),
   ])
 );
 
 const renderAwards = (awards: Resume['awards']) => awards?.map(award =>
-  h('.item mx-2', [
+  h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
-      h('h3', {}, award.title),
+      h('h3', { className: 'title' }, award.title),
       award.date && h('p', { className: 'text-xs text-muted' }, award.date),
     ]),
     award.awarder && h('p', {}, `Awarded by: ${award.awarder}`),
@@ -142,25 +170,25 @@ const renderAwards = (awards: Resume['awards']) => awards?.map(award =>
 );
 
 const renderCertificates = (certificates: Resume['certificates']) => certificates?.map(cert =>
-  h('.item mx-2', [
+  h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
-      h('h3', {}, cert.name),
+      h('h3', { className: 'title' }, cert.name),
       cert.date && h('p', { className: 'text-xs text-muted' }, cert.date),
     ]),
     cert.issuer && h('p', {}, `Issuer: ${cert.issuer}`),
-    cert.url && h('p', { className: 'mt-1' }, [h('a', { className: 'link', href: cert.url, target: '_blank' }, 'View Certificate')]),
+    cert.url && h('p', { className: 'mt-1' }, [h('a', { 'title': 'View Certificate', className: 'link', href: cert.url, target: '_blank' }, 'view_certificate')]),
   ])
 );
 
 const renderPublications = (publications: Resume['publications']) => publications?.map(pub =>
-  h('.item mx-2', [
+  h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
-      h('h3', {}, pub.name),
+      h('h3', { className: 'title' }, pub.name),
       pub.releaseDate && h('p', { className: 'text-xs text-muted' }, pub.releaseDate),
     ]),
     pub.publisher && h('p', {}, `Publisher: ${pub.publisher}`),
     pub.summary && h('p', { className: 'mt-1' }, pub.summary),
-    pub.url && h('p', { className: 'mt-1' }, [h('a', { className: 'link', href: pub.url, target: '_blank' }, 'Read Publication')]),
+    pub.url && h('p', { className: 'mt-1' }, [h('a', { 'title': 'Read Publication', className: 'link', href: pub.url, target: '_blank' }, 'read_publication')]),
   ])
 );
 
@@ -181,7 +209,7 @@ const getTree = async (resume: Resume): Promise<Element> => {
   ].filter(Boolean) as (Element | string)[];
 
   const rightColumnContent = [
-    basics?.summary ? renderSection('About', [h('p', { className: 'mx-2' }, basics.summary)]) : null,
+    basics?.summary ? renderSection('About', [h('p', { className: 'ml-4 mr-2' }, basics.summary)]) : null,
     renderSection('Work Experience', renderWork(work)),
     renderSection('Projects', renderProjects(projects)),
     renderSection('Awards', renderAwards(awards)),
@@ -235,7 +263,20 @@ const renderMarkdown = async (resume: Resume): Promise<string> => {
     handlers: {
       table: handler(),
       tableRow: handler("\n\n"),
-      tableCell: handler("\n\n")
+      tableCell: handler("\n\n"),
+      heading: (node, _, state, info) => {
+        const { depth } = node;
+        const children: any[] = node?.children ?? [];
+        const body = children.map(child => state.handle(child, node, state, info)).filter(Boolean).join("");
+
+        return `${"#".repeat(depth)} ${reverseFormatTitle(body)}`;
+      },
+      link: (node, _, state, info) => {
+        const { url, title } = node;
+        const children: any[] = node?.children ?? [];
+        const body = children.map(child => state.handle(child, node, state, info)).filter(Boolean).join("");
+        return `[${(title ?? body)}](${url})`
+      }
     }
   });
 };
