@@ -94,13 +94,13 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
           srcset: await embedImage(basics.image)
         }),
         h('img', {
-          className: 'w-30 min-w-30 h-30 rounded-lg ml-1 my-1',
+          className: 'w-30 min-w-30 h-30 rounded-2xl ml-1 my-1',
           src: basics.image,
           alt: `A portrait of ${basics.name}`
         }),
       ]),
       h('div', { className: 'px-1 text-center' }, [
-        basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 14px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre' },
+        basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 14px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
           [
             h('span', { style: "user-select: none; position: absolute; top: 0; left: 0; line-height: 0;color: rgba(255,255,255,0.1); font-size: 4px;" }, basics.name),
             h('pre', { 'aria-hidden': true }, await figlet.text(basics.name, {
@@ -108,19 +108,19 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
             }))
           ]
         ),
-        basics.label && h('h4', { className: 'text-muted' }, basics.label),
+        basics.label && h('h4', { className: 'text-muted -mt-1' }, basics.label),
       ]),
     ]),
-    h('address', { className: 'not-italic mt-2 mx-2' }, [
-      basics.location && h('p', { className: 'mb-1' }, [
+    h('address', { className: 'not-italic mx-2' }, [
+      basics.location && h('p', { }, [
         `${basics.location.city}, ${basics.location.region}`.trim()
       ]),
-      basics.email && h('p', { className: 'mb-1' }, [h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
-      basics.phone && h('p', { className: 'mb-1' }, basics.phone),
-      basics.url && h('p', { className: 'mb-1' }, [h('a', { className: 'link', href: basics.url, target: '_blank' }, basics.url)]),
+      basics.email && h('p', { }, [h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
+      basics.phone && h('p', {  }, basics.phone),
+      basics.url && h('p', {  }, [h('a', { className: 'link', href: basics.url, target: '_blank' }, basics.url)]),
     ]),
-    basics.profiles && h('div', { className: 'mt-1 mx-2' }, basics.profiles.map(profile =>
-      h('p', { className: 'mb-1' }, [
+    basics.profiles && h('div', { className: 'mx-2' }, basics.profiles.map(profile =>
+      h('p', {  }, [
         h('span', { className: 'text-accent' }, `${profile.network}: `),
         profile.url ? h('a', { className: 'link', href: profile.url, target: '_blank' }, profile.username) : profile.username
       ])
