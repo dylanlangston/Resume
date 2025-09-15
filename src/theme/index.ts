@@ -8,6 +8,7 @@ import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
 import tailwindScript from "./node_modules/@tailwindcss/browser/dist/index.global.js" assert { type: "text" };
 import sourceCodePro from './source-code-pro';
+import figlet from 'figlet'
 
 type Resume = Parameters<typeof resumed.render>[0];
 
@@ -87,19 +88,28 @@ const embedImage = async (uri: string): Promise<string> => {
 const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
   if (!basics) return h('section', { className: 'pb-2 border-t-1 border-muted' }, []);
   return h('section', { className: 'pb-2 border-t-1 border-muted' }, [
-    basics.image && h('picture', { className: 'border-t' }, [
-      h('source', {
-        srcset: await embedImage(basics.image)
-      }),
-      h('img', {
-        className: 'w-32 h-32 rounded-lg mx-auto my-2',
-        src: basics.image,
-        alt: `A portrait of ${basics.name}`
-      }),
-    ]),
-    h('div', { className: 'text-center' }, [
-      basics.name && h('h1', {}, basics.name),
-      basics.label && h('p', { className: 'text-muted mt-1' }, basics.label),
+    h('div', { className: 'flex' }, [
+      basics.image && h('picture', {}, [
+        h('source', {
+          srcset: await embedImage(basics.image)
+        }),
+        h('img', {
+          className: 'w-30 min-w-30 h-30 rounded-lg ml-1 my-1',
+          src: basics.image,
+          alt: `A portrait of ${basics.name}`
+        }),
+      ]),
+      h('div', { className: 'px-1 text-center' }, [
+        basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 14px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre' },
+          [
+            h('span', { style: "user-select: none; position: absolute; top: 0; left: 0; line-height: 0;color: rgba(255,255,255,0.1); font-size: 4px;" }, basics.name),
+            h('pre', { 'aria-hidden': true }, await figlet.text(basics.name, {
+              font: "Tmplr"
+            }))
+          ]
+        ),
+        basics.label && h('h4', { className: 'text-muted' }, basics.label),
+      ]),
     ]),
     h('address', { className: 'not-italic mt-2 mx-2' }, [
       basics.location && h('p', { className: 'mb-1' }, [
@@ -267,8 +277,7 @@ const renderMarkdown = async (resume: Resume): Promise<string> => {
       heading: (node, _, state, info) => {
         const { depth } = node;
         const children: any[] = node?.children ?? [];
-        const body = children.map(child => state.handle(child, node, state, info)).filter(Boolean).join("");
-
+        const body = children.map(child => state.handle(child, node, state, info)).filter(Boolean).join("\n\n");
         return `${"#".repeat(depth)} ${reverseFormatTitle(body)}`;
       },
       link: (node, _, state, info) => {
