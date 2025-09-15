@@ -71,8 +71,8 @@ const renderSection = (title: string, content: (Element | string)[] | undefined 
 
 const renderHighlights = (highlights: string[] | undefined): Element | null => {
   if (!highlights || highlights.length === 0) return null;
-  return h('ul', { className: 'list-equals list-inside mt-2 pl-2' },
-    highlights.map(highlight => h('li', { className: 'mb-1' }, highlight))
+  return h('ul', { className: 'list-equals list-inside pl-2' },
+    highlights.map(highlight => h('li', {}, highlight))
   );
 };
 
@@ -122,14 +122,14 @@ const renderWork = (work: Resume['work']) => work?.map(job =>
   h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
       h('h3', { className: 'title' }, job.name),
-      (job.startDate || job.endDate) && h('p', { className: 'text-xs min-w-fit ml-6' }, [
+      (job.startDate || job.endDate) && h('p', { className: ' min-w-fit ml-6' }, [
         h('time', { datetime: job.startDate, className: 'text-accent' }, job.startDate),
-        h('span',  { className: 'text-muted' }, ` til `),
+        h('span', { className: 'text-muted' }, ` til `),
         h('time', { datetime: job.endDate, className: 'text-accent' }, job.endDate ?? 'Present'),
       ]),
     ]),
     job.position && h('h4', { className: 'text-muted' }, job.position),
-    job.summary && h('p', { className: 'mt-1' }, job.summary),
+    job.summary && h('p', {}, job.summary),
     renderHighlights(job.highlights),
   ])
 );
@@ -138,21 +138,21 @@ const renderProjects = (projects: Resume['projects']) => projects?.map(project =
   h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
       h('h3', { className: 'title' }, project.name),
-      project.url && h('a', { 'title': 'View Project', className: 'link text-xs', href: project.url, target: '_blank' }, 'view_project'),
+      project.url && h('a', { 'title': 'View Project', className: 'link ', href: project.url, target: '_blank' }, 'view_project'),
     ]),
-    project.description && h('p', { className: 'mt-1' }, project.description),
+    project.keywords && h('h4', { className: ' text-muted' }, `Technologies: ${project.keywords.join(', ')}`),
+    project.description && h('p', {}, project.description),
     renderHighlights(project.highlights),
-    project.keywords && h('p', { className: 'mt-2 text-xs text-muted' }, `Technologies: ${project.keywords.join(', ')}`),
   ])
 );
 
 const renderSkills = (skills: Resume['skills']) => skills?.map(skill =>
   h('.item ml-4 mr-2', [
     skill.name && h('h3', { className: 'title' }, skill.name),
-    skill.level && h('p', { className: 'text-xs text-muted' }, `Level: ${skill.level}`),
-    skill.keywords && h('ul', { className: 'flex flex-wrap gap-1 mt-1 hidden-open-bracket-square hidden-close-bracket-square' },
+    skill.level && h('h4', { className: ' text-muted' }, `Level: ${skill.level}`),
+    skill.keywords && h('ul', { className: 'flex flex-wrap gap-1 hidden-open-bracket-square hidden-close-bracket-square' },
       skill.keywords.map(keyword => h('li', { className: 'hidden-comma' },
-        h('span', { className: 'bg-subtle text-xs font-medium px-2 py-0.5 rounded' }, keyword)
+        h('span', { className: 'bg-subtle  font-medium px-2 rounded' }, keyword)
       ))
     ),
   ])
@@ -162,10 +162,10 @@ const renderAwards = (awards: Resume['awards']) => awards?.map(award =>
   h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
       h('h3', { className: 'title' }, award.title),
-      award.date && h('p', { className: 'text-xs text-muted' }, award.date),
+      award.date && h('p', { className: ' text-muted' }, award.date),
     ]),
     award.awarder && h('p', {}, `Awarded by: ${award.awarder}`),
-    award.summary && h('p', { className: 'mt-1' }, award.summary),
+    award.summary && h('p', {}, award.summary),
   ])
 );
 
@@ -173,10 +173,10 @@ const renderCertificates = (certificates: Resume['certificates']) => certificate
   h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
       h('h3', { className: 'title' }, cert.name),
-      cert.date && h('p', { className: 'text-xs text-muted' }, cert.date),
+      cert.date && h('p', { className: ' text-muted' }, cert.date),
     ]),
-    cert.issuer && h('p', {}, `Issuer: ${cert.issuer}`),
-    cert.url && h('p', { className: 'mt-1' }, [h('a', { 'title': 'View Certificate', className: 'link', href: cert.url, target: '_blank' }, 'view_certificate')]),
+    cert.issuer && h('h4', { className: 'text-muted' }, `Issuer: ${cert.issuer}`),
+    cert.url && h('p', {}, [h('a', { 'title': 'View Certificate', className: 'link', href: cert.url, target: '_blank' }, 'view_certificate')]),
   ])
 );
 
@@ -184,11 +184,11 @@ const renderPublications = (publications: Resume['publications']) => publication
   h('.item ml-4 mr-2', [
     h('div', { className: 'flex justify-between items-baseline' }, [
       h('h3', { className: 'title' }, pub.name),
-      pub.releaseDate && h('p', { className: 'text-xs text-muted' }, pub.releaseDate),
+      pub.releaseDate && h('p', { className: ' text-muted' }, pub.releaseDate),
     ]),
     pub.publisher && h('p', {}, `Publisher: ${pub.publisher}`),
-    pub.summary && h('p', { className: 'mt-1' }, pub.summary),
-    pub.url && h('p', { className: 'mt-1' }, [h('a', { 'title': 'Read Publication', className: 'link', href: pub.url, target: '_blank' }, 'read_publication')]),
+    pub.summary && h('p', {}, pub.summary),
+    pub.url && h('p', {}, [h('a', { 'title': 'Read Publication', className: 'link', href: pub.url, target: '_blank' }, 'read_publication')]),
   ])
 );
 
