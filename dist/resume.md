@@ -2,7 +2,14 @@
 
 # Dylan Langston
 
-Full Stack Developer & Aspiring Game Developer
+```
+┳┓  ┓      ┓             
+┃┃┓┏┃┏┓┏┓  ┃ ┏┓┏┓┏┓┏╋┏┓┏┓
+┻┛┗┫┗┗┻┛┗  ┗┛┗┻┛┗┗┫┛┗┗┛┛┗
+   ┛              ┛      
+```
+
+#### Full Stack Developer & Aspiring Game Developer
 
 Alexandria, Virgina
 
