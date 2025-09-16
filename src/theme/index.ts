@@ -113,10 +113,10 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
         }),
       ]),
       h('div', { className: 'px-1 text-center m-auto' }, [
-        basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 14px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
+        basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 12px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
           [
-            h('span', { style: "user-select: none; position: absolute; top: 0; left: 0; line-height: 0;color: rgba(255,255,255,0.1); font-size: 4px;" }, basics.name),
-            h('pre', { 'aria-hidden': true }, await figlet.text(basics.name, {
+            h('span', { style: "position: absolute;line-height: 0;color: rgba(255,255,255,0.1);font-size: 30px;margin-left: -50%;width: 100%;margin-top: 25px;color: rgba(255,255,255,0.1); font-size: 30px;" }, basics.name),
+            h('pre', { 'aria-hidden': true, style: 'user-select: none;' }, await figlet.text(basics.name, {
               font: "Tmplr"
             }))
           ]
