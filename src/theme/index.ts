@@ -95,7 +95,7 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
   }
   const profileName: Record<string, (name: string) => string> = {
     'LinkedIn': (name: string) => `linkedin.com/in/${name}`,
-    'GitHub':  (name: string) => `github.com/${name}`,
+    'GitHub': (name: string) => `github.com/${name}`,
     'Itch.io': (name: string) => `${name}.itch.io`,
   }
 
