@@ -90,4 +90,8 @@ li::marker {
     *::after {
         font-size: 12px;
     }
+
+    .min-w-print-0 {
+        min-width: 280px !important;
+    }
 }
