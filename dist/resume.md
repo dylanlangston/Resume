@@ -15,7 +15,7 @@ Alexandria, Virgina
 
 [mail\@dylanlangston.com](mailto:mail@dylanlangston.com)
 
-[https\://dylanlangston.com/](mailto:mail@dylanlangston.com)
+[https\://dylanlangston.com/](https://dylanlangston.com/)
 
 [linkedin.com/in/dylan-langston](https://www.linkedin.com/in/dylan-langston/)
 
