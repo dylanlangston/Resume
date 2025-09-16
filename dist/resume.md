@@ -1,13 +1,13 @@
 ![A portrait of Dylan Langston](https://avatars.githubusercontent.com/u/16236219?v=4)
 
-# Dylan Langston
-
 ```
 ┳┓  ┓      ┓             
 ┃┃┓┏┃┏┓┏┓  ┃ ┏┓┏┓┏┓┏╋┏┓┏┓
 ┻┛┗┫┗┗┻┛┗  ┗┛┗┻┛┗┗┫┛┗┗┛┛┗
    ┛              ┛      
 ```
+
+# Dylan Langston
 
 #### Full Stack Developer & Aspiring Game Developer
 
