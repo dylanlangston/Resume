@@ -27,12 +27,10 @@ update-readme-screenshot: ## Update the README screenshot.
 	@pdftoppm -png -singlefile -r 300 ./dist/resume.pdf screenshot
 
 create-social-preview: ## Generate an image to use for the github social preview
-	@pdftoppm -singlefile -cropbox -scale-to-x 1200 -W 1200 -H 600 -png ./dist/resume.pdf | convert png:- \
+	@pdftoppm -singlefile -cropbox -scale-to-x 1160 -W 1200 -H 640 -png ./dist/resume.pdf | convert png:- \
 	-background white \
-	-gravity north \
-	-splice 0x40 \
 	-gravity east \
-	-splice 40x0 \
+	-splice 60x0 \
 	-gravity west \
-	-splice 40x0 \
+	-splice 60x0 \
 	social-preview.png

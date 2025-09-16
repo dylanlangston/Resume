@@ -2,8 +2,10 @@
   "private": true,
   "devDependencies": {
     "@fontsource/source-code-pro": "^5.2.7",
+    "@iconify-json/pixel": "^1.2.1",
     "@tailwindcss/browser": "^4.1.13",
     "figlet": "^1.9.1",
+    "hast-util-raw": "^9.1.0",
     "hast-util-to-html": "^9.0.5",
     "hast-util-to-mdast": "^10.1.2",
     "hastscript": "^9.0.1",

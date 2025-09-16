@@ -1,14 +1,16 @@
 import { type Element } from 'hast';
-import { h } from 'hastscript';
+import { h, type Child } from 'hastscript';
 import { toHtml } from 'hast-util-to-html';
 import { toMdast } from 'hast-util-to-mdast';
 import { toMarkdown, type Handle } from 'mdast-util-to-markdown';
 import { gfmToMarkdown } from 'mdast-util-gfm'
+import { raw } from 'hast-util-raw'
 import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
 import tailwindScript from "./node_modules/@tailwindcss/browser/dist/index.global.js" assert { type: "text" };
 import sourceCodePro from './source-code-pro';
 import figlet from 'figlet'
+import pixel from '@iconify-json/pixel/icons.json'
 
 type Resume = Parameters<typeof resumed.render>[0];
 
@@ -86,6 +88,17 @@ const embedImage = async (uri: string): Promise<string> => {
 };
 
 const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
+  const profileIcons: Record<string, string> = {
+    'LinkedIn': pixel.icons.linkedin.body,
+    'GitHub': pixel.icons.github.body,
+    'Itch.io': pixel.icons.gaming.body,
+  }
+  const profileName: Record<string, (name: string) => string> = {
+    'LinkedIn': (name: string) => `linkedin.com/in/${name}`,
+    'GitHub':  (name: string) => `github.com/${name}`,
+    'Itch.io': (name: string) => `${name}.itch.io`,
+  }
+
   if (!basics) return h('section', { className: 'pb-2 border-t-1 border-muted' }, []);
   return h('section', { className: 'pb-2 border-t-1 border-muted' }, [
     h('div', { className: 'flex' }, [
@@ -112,17 +125,26 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
       ]),
     ]),
     h('address', { className: 'not-italic mx-2' }, [
-      basics.location && h('p', { }, [
+      basics.location && h('p', {}, [
         `${basics.location.city}, ${basics.location.region}`.trim()
       ]),
-      basics.email && h('p', { }, [h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
-      basics.phone && h('p', {  }, basics.phone),
-      basics.url && h('p', {  }, [h('a', { className: 'link', href: basics.url, target: '_blank' }, basics.url)]),
+      basics.email && h('p', {}, [
+        raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
+          { type: 'raw', value: pixel.icons.envelope.body } as any
+        )),
+        h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
+      basics.url && h('p', {}, [
+        raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
+          { type: 'raw', value: pixel.icons.globe.body } as any
+        )),
+        h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.url)]),
     ]),
     basics.profiles && h('div', { className: 'mx-2' }, basics.profiles.map(profile =>
-      h('p', {  }, [
-        h('span', { className: 'text-accent' }, `${profile.network}: `),
-        profile.url ? h('a', { className: 'link', href: profile.url, target: '_blank' }, profile.username) : profile.username
+      profile.network && h('p', {}, [
+        raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
+          { type: 'raw', value: profileIcons[profile.network]! } as any
+        )),
+        profile.url ? h('a', { className: 'link', href: profile.url, target: '_blank' }, `${profileName[profile.network]!(profile.username!)}`) : `${profileName[profile.network]!(profile.username!)}`
       ])
     )),
   ].filter(Boolean) as (Element | string)[]);
