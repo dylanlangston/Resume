@@ -8,7 +8,7 @@ import { raw } from 'hast-util-raw'
 import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
 import tailwindScript from "./node_modules/@tailwindcss/browser/dist/index.global.js" assert { type: "text" };
-import sourceCodePro from './source-code-pro';
+import fonts from './fonts/fonts';
 import figlet from 'figlet'
 import pixel from '@iconify-json/pixel/icons.json'
 
@@ -254,7 +254,7 @@ const getTree = async (resume: Resume): Promise<Element> => {
       h('meta', { charSet: 'utf-8' }),
       h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
       h('title', basics?.name ? `${basics.name}'s Resume` : 'Resume'),
-      h('style', sourceCodePro),
+      h('style', fonts),
       h('style', styles),
       h('script', [], tailwindScript),
       h('style', generateThemeStyles()),
