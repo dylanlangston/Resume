@@ -47,19 +47,19 @@ Alexandria, Virgina
 
 #### Level: Intermediate/Advanced
 
-- Agile Methodologies
-- Continuous Integration/Deployment (CI/CD)
-- DevOps
-- Databases
-- IT Operations
-- Object-Oriented Programming (OOP)
-- Pair Programming
-- Scrum
-- Technical Support
-- Test-driven Development
-- Troubleshooting
-- Unit Testing
-- Version Control
+* Agile Methodologies
+* Continuous Integration/Deployment (CI/CD)
+* DevOps
+* Databases
+* IT Operations
+* Object-Oriented Programming (OOP)
+* Pair Programming
+* Scrum
+* Technical Support
+* Test-driven Development
+* Troubleshooting
+* Unit Testing
+* Version Control
 
 ### Development and Design
 
@@ -84,31 +84,31 @@ Alexandria, Virgina
 
 #### Level: Master/Expert
 
-- ASP.NET
-- Angular
-- Avalonia
-- C
-- C#
-- C++
-- GLSL
-- HTML
-- Java
-- JavaScript
-- JSON
-- Makefile
-- Node.js
-- Objective-C
-- Powershell
-- Python
-- React.js
-- Rust
-- Shell Script (bash)
-- SQL
-- Svelte
-- TypeScript
-- XML
-- XAML/WPF
-- Zig
+* ASP.NET
+* Angular
+* Avalonia
+* C
+* C#
+* C++
+* GLSL
+* HTML
+* Java
+* JavaScript
+* JSON
+* Makefile
+* Node.js
+* Objective-C
+* Powershell
+* Python
+* React.js
+* Rust
+* Shell Script (bash)
+* SQL
+* Svelte
+* TypeScript
+* XML
+* XAML/WPF
+* Zig
 
 ### Technologies and Tools
 
@@ -146,8 +146,8 @@ Seasoned full stack developer with proven enterprise expertise in building robus
 
 Developing both frontend (React) and backend (C#) applications in a collaborative Agile & DevOps culture. Engaging with technical and business users to refine user stories, taking ownership of solutions from inception to production release, ensuring code quality through automated tests, and monitoring system health to resolve issues promptly.
 
-- Created frontend testing processes using Playwright, Vitest, and GitHub Actions.
-- Developed a marketplace deployment app using React and Azure Functions.
+* Created frontend testing processes using Playwright, Vitest, and GitHub Actions.
+* Developed a marketplace deployment app using React and Azure Functions.
 
 ### Maryland Department of Transportation Motor Vehicle Administration
 
@@ -168,11 +168,11 @@ Led collaborative efforts to enhance software functionality, mentor junior devel
 
 Automated critical software tests and upgraded applications, contributing to enhanced reliability and improved user experience.
 
-- Developed multiple desktop applications using .NET technologies (WinForms, WPF) integrated with SQL databases.
-- Designed and implemented AWS Lambda microservices with API Gateway and CloudFormation for scalable cloud solutions.
-- Contributed to front-end development projects using Angular and TypeScript.
-- Utilized Scrum methodology to ensure efficient development cycles and timely deliveries.
-- Automated critical software tests, significantly enhancing application reliability.
+* Developed multiple desktop applications using .NET technologies (WinForms, WPF) integrated with SQL databases.
+* Designed and implemented AWS Lambda microservices with API Gateway and CloudFormation for scalable cloud solutions.
+* Contributed to front-end development projects using Angular and TypeScript.
+* Utilized Scrum methodology to ensure efficient development cycles and timely deliveries.
+* Automated critical software tests, significantly enhancing application reliability.
 
 ### Nebraska College of Business
 
@@ -196,7 +196,7 @@ Provided Tier 2 technical support, facilitated technology acquisitions, and ensu
 
 A twist on the classic game with an expanded world where asteroids bounce off the walls and rogue aliens add to the challenge.
 
-- Achieved 3rd place in the “Implementation of the theme game” category at the 2023 Raylib Slo-Jam event.
+* Achieved 3rd place in the “Implementation of the theme game” category at the 2023 Raylib Slo-Jam event.
 
 ### Sys.tm
 
@@ -220,7 +220,7 @@ An intelligent information management platform designed to streamline business p
 
 An Oregon Trail clone themed for the Apollo Missions. Submitted for Game Off 2020 under the title 'MOONSHOT'. Developed using Raylib-cs and .NET Core.
 
-- Blended classic gameplay with modern game development techniques to create a unique indie game experience.
+* Blended classic gameplay with modern game development techniques to create a unique indie game experience.
 
 ## Certificates
 
