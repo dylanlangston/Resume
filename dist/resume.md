@@ -15,13 +15,13 @@ Alexandria, Virgina
 
 [mail\@dylanlangston.com](mailto:mail@dylanlangston.com)
 
-[https\://dylanlangston.com/](https://dylanlangston.com/)
+[https\://dylanlangston.com/](mailto:mail@dylanlangston.com)
 
-LinkedIn: [dylan-langston](https://www.linkedin.com/in/dylan-langston/)
+[linkedin.com/in/dylan-langston](https://www.linkedin.com/in/dylan-langston/)
 
-GitHub: [dylanlangston](https://github.com/dylanlangston)
+[github.com/dylanlangston](https://github.com/dylanlangston)
 
-Itch.io: [dylanlangston](https://dylanlangston.itch.io/)
+[dylanlangston.itch.io](https://dylanlangston.itch.io/)
 
 ## Skills
 
