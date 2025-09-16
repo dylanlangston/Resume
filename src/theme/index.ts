@@ -115,10 +115,10 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
       h('div', { className: 'px-1 text-center m-auto' }, [
         basics.name && h('span', { style: 'font: italic 12px monospace;line-height: 12px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
           [
-            h('h1', { className: 'name' }, basics.name),
             h('pre', { 'aria-hidden': true, style: 'user-select: none;' }, await figlet.text(basics.name, {
               font: "Tmplr"
-            }))
+            })),
+            h('h1', { className: 'name' }, basics.name),
           ]
         ),
         basics.label && h('h4', { className: 'text-muted -mt-1' }, basics.label),
