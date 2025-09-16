@@ -1,3 +1,7 @@
+ *::selection {
+    background-color: #0969da33
+}
+
 *,
 *::before,
 *::after {
