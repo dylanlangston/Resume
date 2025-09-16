@@ -1,7 +1,6 @@
 {
   "private": true,
   "devDependencies": {
-    "@fontsource/source-code-pro": "^5.2.7",
     "@iconify-json/pixel": "^1.2.1",
     "@tailwindcss/browser": "^4.1.13",
     "figlet": "^1.9.1",

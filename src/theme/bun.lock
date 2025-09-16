@@ -3,7 +3,6 @@
   "workspaces": {
     "": {
       "devDependencies": {
-        "@fontsource/source-code-pro": "^5.2.7",
         "@iconify-json/pixel": "^1.2.1",
         "@tailwindcss/browser": "^4.1.13",
         "figlet": "^1.9.1",
@@ -17,8 +16,6 @@
     },
   },
   "packages": {
-    "@fontsource/source-code-pro": ["@fontsource/source-code-pro@5.2.7", "", {}, "sha512-7papq9TH94KT+S5VSY8cU7tFmwuGkIe3qxXRMscuAXH6AjMU+KJI75f28FzgBVDrlMfA0jjlTV4/x5+H5o/5EQ=="],
-
     "@iconify-json/pixel": ["@iconify-json/pixel@1.2.1", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-XwzURAMyZ/BJKeygh4PloKo9cUvS8GfcePueApzwrePvmwCwYT8SC581AQLxJHJl2FZjGWmUMVQ2FN3b9/cYyw=="],
 
     "@iconify/types": ["@iconify/types@2.0.0", "", {}, "sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg=="],

@@ -5,7 +5,7 @@
 *,
 *::before,
 *::after {
-    font-family: "Source Code Pro", monospace;
+    font-family: "Source Code Pro", "DejaVu Sans Mono";
     font-optical-sizing: auto;
     font-style: normal;
     font-size: 16px;
