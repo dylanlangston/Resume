@@ -262,7 +262,7 @@ const getTree = async (resume: Resume): Promise<Element> => {
     h('body', { className: 'leading-normal' }, [
       h('div', { className: 'mx-auto bg-canvas' }, [
         h('div', { className: 'md:flex' }, [
-          h('div', { className: 'w-full md:w-[35%] md:min-w-[380px] border-l border-b border-r md:border-r-0 border-muted' }, leftColumnContent),
+          h('div', { className: 'w-full md:w-[35%] md:min-w-[380px] min-w-print-0 border-l border-b border-r md:border-r-0 border-muted' }, leftColumnContent),
           h('div', { className: 'w-full md:w-[65%] border-x border-b border-muted' }, rightColumnContent),
         ]),
       ]),
