@@ -113,9 +113,9 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
         }),
       ]),
       h('div', { className: 'px-1 text-center m-auto' }, [
-        basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 12px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
+        basics.name && h('span', { style: 'font: italic 12px monospace;line-height: 12px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
           [
-            h('span', { style: "position: absolute;line-height: 0;color: rgba(255,255,255,0.1);font-size: 30px;margin-left: -50%;width: 100%;margin-top: 25px;color: rgba(255,255,255,0.1); font-size: 30px;" }, basics.name),
+            h('h1', { className: 'name' }, basics.name),
             h('pre', { 'aria-hidden': true, style: 'user-select: none;' }, await figlet.text(basics.name, {
               font: "Tmplr"
             }))
@@ -137,7 +137,7 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
         raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
           { type: 'raw', value: pixel.icons.globe.body } as any
         )),
-        h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.url)]),
+        h('a', { className: 'link', href: basics.url, target: '_blank' }, basics.url)]),
     ]),
     basics.profiles && h('div', { className: 'mx-2' }, basics.profiles.map(profile =>
       profile.network && h('p', {}, [
