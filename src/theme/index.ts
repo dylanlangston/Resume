@@ -112,7 +112,7 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
           alt: `A portrait of ${basics.name}`
         }),
       ]),
-      h('div', { className: 'px-1 text-center' }, [
+      h('div', { className: 'px-1 text-center m-auto' }, [
         basics.name && h('h1', { style: 'font: italic 12px monospace;line-height: 14px;', 'aria-label': basics.name, className: 'text-accent whitespace-pre mt-1' },
           [
             h('span', { style: "user-select: none; position: absolute; top: 0; left: 0; line-height: 0;color: rgba(255,255,255,0.1); font-size: 4px;" }, basics.name),
@@ -261,13 +261,9 @@ const getTree = async (resume: Resume): Promise<Element> => {
     ]),
     h('body', { className: 'leading-normal' }, [
       h('div', { className: 'mx-auto bg-canvas' }, [
-        h('table', { className: 'w-full border-collapse' }, [
-          h('tbody', [
-            h('tr', [
-              h('td', { className: 'w-[35%] border-l border-b border-muted' }, leftColumnContent),
-              h('td', { className: 'w-[65%] border-x border-b border-muted' }, rightColumnContent),
-            ]),
-          ]),
+        h('div', { className: 'md:flex' }, [
+          h('div', { className: 'w-full md:w-[35%] md:min-w-[380px] border-l border-b border-r md:border-r-0 border-muted' }, leftColumnContent),
+          h('div', { className: 'w-full md:w-[65%] border-x border-b border-muted' }, rightColumnContent),
         ]),
       ]),
     ]),
