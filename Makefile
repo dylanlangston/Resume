@@ -24,6 +24,7 @@ release: ## Release the build artifacts.
 	@mkdir -p ./dist
 	@cp ./out/resume.md ./dist/resume.md
 	@cp ./out/resume.pdf ./dist/resume.pdf
+	@cp ./out/resume.html ./dist/resume.html
 
 preview: ## Preview the resume in the browser.
 	@cd ./src; bun run preview
