@@ -34,7 +34,7 @@ jobs:
         run: make setup-git-clone
       - name: Build PDF
         id: build
-        run: make build-docker
+        run: make build-docker release
       - name: Upload PDF artifact
         id: upload-pdf
         uses: actions/upload-artifact@v4
