@@ -26,7 +26,7 @@ const axeSource = await readFile("./node_modules/axe-core/axe.min.js", "utf-8");
 const browser = await puppeteer.launch({
   headless: true,
   executablePath: "/usr/bin/chromium",
-  args: ["--headless", "--enable-tagging"],
+  args: ["--headless", "--no-sandbox", "--disable-setuid-sandbox", "--enable-tagging"],
 });
 const page = await browser.newPage();
 await page.setContent(html, { waitUntil: "networkidle0" });
