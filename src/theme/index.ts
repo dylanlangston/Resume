@@ -1,4 +1,4 @@
-import { type Element } from 'hast';
+import { type Element, type Root } from 'hast';
 import { h, type Child } from 'hastscript';
 import { toHtml } from 'hast-util-to-html';
 import { toMdast } from 'hast-util-to-mdast';
@@ -127,18 +127,18 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
     h('address', { className: 'not-italic mx-2' }, [
       basics.location && h('p', {}, [
         `${basics.location.city}, ${basics.location.region}`.trim()
-      ]),
-      basics.email && h('p', {}, [
-        raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
-          { type: 'raw', value: pixel.icons.envelope.body } as any
-        )),
-        h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
-      basics.url && h('p', {}, [
-        raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
-          { type: 'raw', value: pixel.icons.globe.body } as any
-        )),
-        h('a', { className: 'link', href: basics.url, target: '_blank' }, basics.url)]),
+      ])
     ]),
+    basics.email && h('p', {}, [
+      raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
+        { type: 'raw', value: pixel.icons.envelope.body } as any
+      )),
+      h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
+    basics.url && h('p', {}, [
+      raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
+        { type: 'raw', value: pixel.icons.globe.body } as any
+      )),
+      h('a', { className: 'link', href: basics.url, target: '_blank' }, basics.url)]),
     basics.profiles && h('div', { className: 'mx-2' }, basics.profiles.map(profile =>
       profile.network && h('p', {}, [
         raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
@@ -224,7 +224,7 @@ const renderPublications = (publications: Resume['publications']) => publication
   ])
 );
 
-const getTree = async (resume: Resume): Promise<Element> => {
+const getTree = async (resume: Resume): Promise<Root> => {
   const {
     basics,
     work,
@@ -249,25 +249,43 @@ const getTree = async (resume: Resume): Promise<Element> => {
     renderSection('Publications', renderPublications(publications)),
   ].filter(Boolean) as (Element | string)[];
 
-  return h('html', { lang: 'en' }, [
-    h('head', [
-      h('meta', { charSet: 'utf-8' }),
-      h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
-      h('title', basics?.name ? `${basics.name}'s Resume` : 'Resume'),
-      h('style', fonts),
-      h('style', styles),
-      h('script', [], tailwindScript),
-      h('style', generateThemeStyles()),
-    ]),
-    h('body', { className: 'leading-normal' }, [
-      h('div', { className: 'mx-auto bg-canvas' }, [
-        h('div', { className: 'md:flex' }, [
-          h('div', { className: 'w-full md:w-[35%] md:min-w-[380px] min-w-print-0 border-l border-b border-r md:border-r-0 border-muted' }, leftColumnContent),
-          h('div', { className: 'w-full md:w-[65%] border-x border-b border-muted' }, rightColumnContent),
+  return {
+    type: 'root',
+    children: [
+      { type: 'doctype', data: 'html' },
+      h('html', { lang: 'en' }, [
+        h('head', [
+          h('meta', { charSet: 'utf-8' }),
+          h('meta', { 'http-equiv': "Content-Security-Policy", content: `default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data:; connect-src 'self'; font-src 'self' data:;` }),
+          h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
+          // <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚡</text></svg>'>
+          h('link', { rel: "icon", type: "image/svg+xml", href: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="white"/>${pixel.icons['code-solid'].body}</svg>` }),
+          h('title', basics?.name ? `${basics.name}'s Resume` : 'Resume'),
+          h('style', fonts),
+          h('style', styles),
+          h('script', [], tailwindScript),
+          h('style', generateThemeStyles()),
+        ]),
+        h('body', { className: 'leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards]' }, [
+          h('div', { className: 'mx-auto bg-canvas' }, [
+            h('div', { className: 'md:flex' }, [
+              h('div', { className: 'w-full md:w-[35%] md:min-w-[380px] min-w-print-0 border-l border-b border-r md:border-r-0 border-muted' }, leftColumnContent),
+              h('div', { className: 'w-full md:w-[65%] border-x border-b border-muted' }, rightColumnContent),
+            ]),
+          ]),
+          h('script', { async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-2QY59QNZZL" }),
+          h('script', {},
+            `
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-2QY59QNZZL');
+`)
         ]),
       ]),
-    ]),
-  ]);
+    ],
+  };
 };
 
 const render = async (resume: Resume): Promise<string> => {
