@@ -4,7 +4,7 @@ USER root
 WORKDIR /root/
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-     && apt-get -y install --no-install-recommends ca-certificates bash curl unzip xz-utils git make zip chromium
+     && apt-get -y install --no-install-recommends ca-certificates bash curl unzip xz-utils git make zip chromium fonts-liberation
 
 COPY ./src/package.json /root/src/package.json
 COPY ./src/bun.lock /root/src/bun.lock
