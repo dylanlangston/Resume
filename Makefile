@@ -21,6 +21,7 @@ build-docker: ## Build the Docker image.
 	@docker build --rm --network=host --progress=plain -t resume . --target publish --output type=local,dest=$(OUTPUT_DIR)
 
 release: ## Release the build artifacts.
+	@mkdir ./dist
 	@cp ./out/resume.md ./dist/resume.md
 	@cp ./out/resume.pdf ./dist/resume.pdf
 
