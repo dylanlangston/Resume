@@ -256,7 +256,7 @@ const getTree = async (resume: Resume): Promise<Root> => {
       h('html', { lang: 'en' }, [
         h('head', [
           h('meta', { charSet: 'utf-8' }),
-          h('meta', { 'http-equiv': "Content-Security-Policy", content: `default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data:; connect-src 'self'; font-src 'self' data:;` }),
+          h('meta', { 'http-equiv': "Content-Security-Policy", content: `default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:;` }),
           h('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
           // <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">⚡</text></svg>'>
           h('link', { rel: "icon", type: "image/svg+xml", href: `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="white"/>${pixel.icons['code-solid'].body}</svg>` }),
