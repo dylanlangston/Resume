@@ -129,12 +129,12 @@ const renderBasics = async (basics: Resume['basics']): Promise<Element> => {
         `${basics.location.city}, ${basics.location.region}`.trim()
       ])
     ]),
-    basics.email && h('p', {}, [
+    basics.email && h('p', { className: 'mx-2' }, [
       raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
         { type: 'raw', value: pixel.icons.envelope.body } as any
       )),
       h('a', { className: 'link', href: `mailto:${basics.email}` }, basics.email)]),
-    basics.url && h('p', {}, [
+    basics.url && h('p', { className: 'mx-2' }, [
       raw(h('svg', { height: '16', width: '16', viewBox: "0 0 24 24", color: '#6639ba', className: 'inline mr-1', xmlns: 'http://www.w3.org/2000/svg' },
         { type: 'raw', value: pixel.icons.globe.body } as any
       )),
