@@ -1,7 +1,7 @@
 SHELL=/bin/bash
 
 ifeq ($(OUTPUT_DIR),)
-	OUTPUT_DIR = './dist'
+	OUTPUT_DIR = './out'
 endif
 
 help: ## Display the help menu.
@@ -20,13 +20,17 @@ build: setup ## Build the resume PDF.
 build-docker: ## Build the Docker image.
 	@docker build --rm --network=host --progress=plain -t resume . --target publish --output type=local,dest=$(OUTPUT_DIR)
 
+release: ## Release the build artifacts.
+	@cp ./out/resume.md ./dist/resume.md
+	@cp ./out/resume.pdf ./dist/resume.pdf
+
 preview: ## Preview the resume in the browser.
 	@cd ./src; bun run preview
 
 update-readme-screenshot: ## Update the README screenshot.
 	@pdftoppm -png -singlefile -r 300 ./dist/resume.pdf screenshot
 
-create-social-preview: ## Generate an image to use for the github social preview
+create-social-preview: ## Generate an image to use for the github social preview.
 	@pdftoppm -singlefile -cropbox -scale-to-x 1160 -W 1200 -H 640 -png ./dist/resume.pdf | convert png:- \
 	-background white \
 	-gravity east \

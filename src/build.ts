@@ -11,21 +11,21 @@ import * as resume from "./resume/resume.json" assert { type: "json" };
 const axeSource = await readFile('./node_modules/axe-core/axe.min.js', 'utf-8');
 
 
-const filename = "../dist/resume.pdf";
-fs.mkdir("../dist").catch(() => { });
+const filename = "../out/resume.pdf";
+fs.mkdir("../out").catch(() => { });
 
 const html: string = await render(resume, {
   render: renderHtml
 });
 
-fs.writeFile("../dist/resume.html", html);
+fs.writeFile("../out/resume.html", html);
 console.log("HTML generated at", path.resolve("../dist/resume.html"));
 
 const markdown: string = await render(resume, {
   render: renderMarkdown
 });
 
-fs.writeFile("../dist/resume.md", markdown);
+fs.writeFile("../out/resume.md", markdown);
 console.log("Markdown generated at", path.resolve("../dist/resume.md"));
 
 const browser = await puppeteer.launch({
