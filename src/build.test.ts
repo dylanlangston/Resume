@@ -21,12 +21,12 @@ const MD_PATH = path.join(OUT_DIR, "resume.md");
 await fs.mkdir(OUT_DIR).catch(() => { });
 
 const html = await render(resume, { render: renderHtml });
-await fs.writeFile(HTML_PATH, html);
-
 const professionalHtml = await suppressErrors(() => render(resume, { render: professional }))
 
 const markdown = await render(resume, { render: renderMarkdown });
+
 await fs.writeFile(MD_PATH, markdown);
+await fs.writeFile(HTML_PATH, `<!--\n${markdown}\n-->${html}`);
 
 const axeSource = await readFile("./node_modules/axe-core/axe.min.js", "utf-8");
 const browser = await puppeteer.launch({
@@ -50,7 +50,6 @@ for (const file of [{ content: html, path: PDF_PATH, axe: true }, { content: pro
     });
 
   }
-
 
   await page.pdf({
     path: file.path,
