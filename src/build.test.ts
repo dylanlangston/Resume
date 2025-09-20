@@ -32,7 +32,15 @@ const axeSource = await readFile("./node_modules/axe-core/axe.min.js", "utf-8");
 const browser = await puppeteer.launch({
   headless: true,
   executablePath: "/usr/bin/chromium",
-  args: ["--headless", "--no-sandbox", "--disable-setuid-sandbox", "--enable-tagging"],
+  args: [
+    "--headless",
+    "--no-sandbox",
+    "--disable-setuid-sandbox",
+    "--enable-tagging",
+    // restrict Puppeteer/Chromium to only access localhost
+    // stops false positives from gtag analytics
+    "--proxy-server='127.0.0.1:0'",
+    "--host-resolver-rules=MAP localhost 127.0.0.1, EXCLUDE localhost"],
 });
 
 let axeResults: AxeResults;
@@ -40,9 +48,9 @@ for (const file of [{ content: html, path: PDF_PATH, axe: true }, { content: pro
   const page = await browser.newPage();
   await page.setContent(file.content, { waitUntil: "networkidle0" });
 
-  if (file.axe){
-      await page.addScriptTag({ content: axeSource });
-          axeResults = await page.evaluate(async () => {
+  if (file.axe) {
+    await page.addScriptTag({ content: axeSource });
+    axeResults = await page.evaluate(async () => {
       // @ts-ignore
       return await window.axe.run({
         runOnly: { type: "tag", values: ["wcag2a", "wcag2aa"] },
