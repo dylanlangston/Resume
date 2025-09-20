@@ -1,6 +1,6 @@
 ![A portrait of Dylan Langston](https://avatars.githubusercontent.com/u/16236219?v=4)
 
-```
+```figlet
 ┳┓  ┓      ┓             
 ┃┃┓┏┃┏┓┏┓  ┃ ┏┓┏┓┏┓┏╋┏┓┏┓
 ┻┛┗┫┗┗┻┛┗  ┗┛┗┻┛┗┗┫┛┗┗┛┛┗
