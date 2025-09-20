@@ -1,4 +1,4 @@
- *::selection {
+*::selection {
      background-color: #0969da33
  }
 
@@ -75,7 +75,7 @@
  }
 
  .name {
-     color: rgba(255, 255, 255, 0.1);
+     color: rgba(255, 255, 255, 0.01);
      font-size: 30px;
      margin-top: -30px;
      margin-bottom: 20px;
