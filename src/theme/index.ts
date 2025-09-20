@@ -4,13 +4,27 @@ import { toMarkdown, type Handle } from 'mdast-util-to-markdown';
 import { gfmToMarkdown } from 'mdast-util-gfm'
 import * as resumed from "resumed";
 import Theme, { reverseFormatTitle } from './theme.js';
+import { applyTailwindToHast } from './applyTailwind';
+import { minify, type Options } from 'minify'
 
 type Resume = Parameters<typeof resumed.render>[0];
 
 const renderHtml = async (resume: Resume): Promise<string> => {
-  const tree = await Theme(resume);
-  const html = toHtml(tree);
-  return html
+  const baseTree = await Theme(resume);
+
+  const tailwindTree = await applyTailwindToHast(baseTree);
+
+  const rawHtml = toHtml(tailwindTree);
+
+  const minifiedHtml = await minify.html(rawHtml, {
+    'html': {
+      'minifyCSS': {
+        level: 0,
+      } as Options['css']
+    }
+  })
+
+  return minifiedHtml
 };
 
 const renderMarkdown = async (resume: Resume): Promise<string> => {

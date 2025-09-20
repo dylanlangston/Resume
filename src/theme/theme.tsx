@@ -1,5 +1,5 @@
 /** @jsxImportSource hastscript */
-import { type Doctype} from 'hast';
+import { type Doctype } from 'hast';
 import { raw } from 'hast-util-raw';
 import styles from './styles.css' assert { type: 'text' };
 import * as resumed from "resumed";
@@ -7,7 +7,6 @@ import fonts from './fonts/fonts';
 import figlet from 'figlet';
 import pixel from '@iconify-json/pixel/icons.json';
 import { type Result } from 'hastscript';
-import tailwindScript from "./node_modules/@tailwindcss/browser/dist/index.global.js" assert { type: "text" };
 
 type Resume = Parameters<typeof resumed.render>[0];
 
@@ -286,39 +285,37 @@ const Theme = async (resume: Resume): Promise<Result> => {
 
     return (
         <>
-        {{type: 'doctype' } as Doctype}
-        <html lang="en">
-            <head>
-                <meta charSet="utf-8" />
-                <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:;" />
-                <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="white"/>${pixel.icons['code-solid'].body}</svg>`} />
-                <title>{basics?.name ? `${basics.name}'s Resume` : 'Resume'}</title>
-                <style>{fonts}</style>
-                <style>{styles}</style>
-                <style>{generateThemeStyles()}</style>
-                <script>{tailwindScript}</script>
-            </head>
-            <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards]">
-                <div className="mx-auto bg-canvas">
-                    <div className="md:flex">
-                        <div className="w-full md:w-[35%] md:min-w-[380px] min-w-print-0 border-l border-b border-r md:border-r-0 border-muted">{leftColumnContent}</div>
-                        <div className="w-full md:w-[65%] border-x border-b border-muted">{rightColumnContent}</div>
+            {{ type: 'doctype' } as Doctype}
+            <html lang="en">
+                <head>
+                    <meta charSet="utf-8" />
+                    <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:;" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="white"/>${pixel.icons['code-solid'].body}</svg>`} />
+                    <title>{basics?.name ? `${basics.name}'s Resume` : 'Resume'}</title>
+                    <style>{fonts}</style>
+                    <style>{styles}</style>
+                    <style>{generateThemeStyles()}</style>
+                </head>
+                <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards]">
+                    <div className="mx-auto bg-canvas">
+                        <div className="md:flex">
+                            <div className="w-full md:w-[35%] md:min-w-[380px] min-w-print-0 border-l border-b border-r md:border-r-0 border-muted">{leftColumnContent}</div>
+                            <div className="w-full md:w-[65%] border-x border-b border-muted">{rightColumnContent}</div>
+                        </div>
                     </div>
-                </div>
-                 {/*  <noscript>Your browser does not support JavaScript!</noscript> <noscript>Your browser does not support JavaScript!</noscript>  */}
-                <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QY59QNZZL"></script>
-                <script>
-                    {`
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QY59QNZZL"></script>
+                    <script>
+                        {`
                         window.dataLayer = window.dataLayer || [];
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
 
                         gtag('config', 'G-2QY59QNZZL');
                     `}
-                </script>
-            </body>
-        </html>
+                    </script>
+                </body>
+            </html>
         </>
     );
 };
