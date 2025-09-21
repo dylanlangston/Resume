@@ -238,10 +238,9 @@ const renderCertificates = (certificates: Resume['certificates']) =>
         <div className="item ml-4 mr-2">
             <div className="flex justify-between items-baseline">
                 <h3 className="title">{cert.name}</h3>
-                {cert.date && <p className=" text-muted">{cert.date}</p>}
+                {cert.url && <p><a title="View Certificate" className="link" href={cert.url} target="_blank">view_certificate</a></p>}
             </div>
             {cert.issuer && <h4 className="text-muted">{`Issuer: ${cert.issuer}`}</h4>}
-            {cert.url && <p><a title="View Certificate" className="link" href={cert.url} target="_blank">view_certificate</a></p>}
         </div>
     ));
 
@@ -291,6 +290,7 @@ const Theme = async (resume: Resume): Promise<Result> => {
                     <meta charSet="utf-8" />
                     <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com; font-src 'self' data:;" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="description" content={basics?.summary ?? 'Resume'} />
                     <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="white"/>${pixel.icons['code-solid'].body}</svg>`} />
                     <title>{basics?.name ? `${basics.name}'s Resume` : 'Resume'}</title>
                     <style>{fonts}</style>
