@@ -9,9 +9,9 @@
 
 # Dylan Langston
 
-#### Full Stack Developer & Aspiring Game Developer
+#### Full Stack Developer
 
-Alexandria, Virgina
+Alexandria, Virginia
 
 [mail\@dylanlangston.com](mailto:mail@dylanlangston.com)
 
@@ -25,207 +25,143 @@ Alexandria, Virgina
 
 ## Skills
 
-### Game Development
+### Languages
 
-#### Level: Beginner/Intermediate
+#### Level: Expert
 
-* Game Engines
-* Unity
-* Unreal Engine
-* Godot
-* Game Logic
-* Gameplay Programming
-* Shader Programming (GLSL)
-* 3D Modeling (Basic)
-* Level Design
-* Animation (Basic)
-* Game Testing
-* Performance Optimization
-* Cross-Platform Development
+* C#
+* TypeScript
+* JavaScript
+* Python
+* Java
+* C++
+* HTML/CSS
+* Shell Script (bash)
+* PowerShell
+* Mermaid
+* Rust
+* Zig
 
-### Concepts and Methodologies
+### Frameworks & Libraries
 
-#### Level: Intermediate/Advanced
+#### Level: Expert
 
-* Agile Methodologies
-* Continuous Integration/Deployment (CI/CD)
-* DevOps
-* Databases
-* IT Operations
-* Object-Oriented Programming (OOP)
-* Pair Programming
-* Scrum
-* Technical Support
-* Test-driven Development
-* Troubleshooting
-* Unit Testing
-* Version Control
+* .NET
+* ASP.NET
+* React
+* Angular
+* Node.js
+* WPF
+* Entity Framework
+* Avalonia
+* Svelte
 
-### Development and Design
+### Cloud & DevOps
 
 #### Level: Advanced
 
-* API Development
-* Command Line Application
-* Front-End Development
-* Full-Stack Development
-* Graphical User Interface Application
-* Microservice
-* Progressive Web App
-* Prototyping
-* Responsive Web Design
-* REST APIs
-* Software Development
-* Web Applications
-* Web Design
-* Web Development
-
-### Programming Languages and Frameworks
-
-#### Level: Master/Expert
-
-* ASP.NET
-* Angular
-* Avalonia
-* C
-* C#
-* C++
-* GLSL
-* HTML
-* Java
-* JavaScript
-* JSON
-* Makefile
-* Node.js
-* Objective-C
-* Powershell
-* Python
-* React.js
-* Rust
-* Shell Script (bash)
-* SQL
-* Svelte
-* TypeScript
-* XML
-* XAML/WPF
-* Zig
-
-### Technologies and Tools
-
-#### Level: Master/Expert
-
-* Amazon Web Services (AWS)
-* Android
-* Cascading Style Sheets (CSS)
+* AWS
+* Microsoft Azure
 * Docker
-* Eclipse
-* ELK Stack
-* Figma
-* Git
-* Kubernetes
-* Linux
-* Mac OS
-* Microsoft Office
+* CI/CD
+* GitHub Actions
+
+### Databases
+
+#### Level: Intermediate
+
 * Microsoft SQL Server
+* CosmosDB
+* DynamoDB
+* NoSQL
+* Relational Databases
+
+### Development Methodologies & Concepts
+
+#### Level: Advanced
+
+* Agile
+* Scrum
+* CQRS
+* MVC
+* MVVM
+* Domain-Driven Design (DDD)
+* Test-Driven Development (TDD)
+* Unit Testing
+* Object-Oriented Programming (OOP)
+* REST APIs
+
+### Tools & Platforms
+
+#### Level: Advanced
+
 * Visual Studio
-* Visual Studio Code
+* VS Code
+* GitHub Copilot
+* Claude Code
+* Gemini CLI
+* Git
+* Figma
+* Playwright
+* Vitest
+* Selenium
+* Linux
 * Windows
-* Windows Presentation Foundation (WPF)
+* macOS
+* MS Office
 
 ## About
 
-Seasoned full stack developer with proven enterprise expertise in building robust desktop and cloud applications using .NET/C# and modern web technologies. Passionate about transitioning into game development through innovative indie projects. Demonstrated leadership, mentorship, and a commitment to quality with measurable performance improvements and streamlined delivery processes.
+Deep expertise in C#, modern web development, and cloud architecture on AWS and Azure. Advocate for clean code, automated testing, and mentorship. Excited to contribute my skills to a challenging, code-centric role.
 
 ## Work Experience
 
 ### Cloudforce
 
-2024-06-01 til Present
+2024-06 til Present
 
-#### Cloud Applications Engineer
+#### Senior Cloud Applications Engineer (Promoted)
 
-Developing both frontend (React) and backend (C#) applications in a collaborative Agile & DevOps culture. Engaging with technical and business users to refine user stories, taking ownership of solutions from inception to production release, ensuring code quality through automated tests, and monitoring system health to resolve issues promptly.
+I fill a pivotal role in development of our enterprise-level Generative AI cloud application, NebulaONE. My responsibilities span the entire project, from requirements gathering to final production deployment.
 
-* Created frontend testing processes using Playwright, Vitest, and GitHub Actions.
-* Developed a marketplace deployment app using React and Azure Functions.
+* Architected and implemented a frontend testing pipeline using Playwright and Vitest, which significantly improved test coverage.
+* Delivered a mission-critical marketplace deployment application, leveraging React and C# Azure Functions to create a streamlined self-serve customer experience.
+* Championed and refined the merge and release process, empowering the team to share ownership and reduce dependency on individuals.
 
-### Maryland Department of Transportation Motor Vehicle Administration
+### Maryland Motor Vehicle Administration
 
-2023-07 til Present
+2023-07 til 2024-06
 
-#### IT Programmer Analyst Load/Advanced
+#### IT Programmer Analyst Lead/Advanced
 
-Led collaborative efforts to enhance software functionality, mentor junior developers, and ensure high-quality deliverables aligned with government standards.
+Responsible for translating complex business needs into high-quality, compliant C# solutions. A significant part of my role involved mentoring junior developers and fostering a team culture centered on technical excellence and continuous improvement.
 
-* Enhanced software functionality while aligning with critical business processes.
-* Mentored junior developers and ensured rigorous testing and documentation practices.
+* Authored comprehensive test cases while enforcing rigorous coding standards to ensure the delivery of exceptionally robust and reliable software.
+* Collaborated closely with stakeholders to strategically enhance software functionality, ensuring our technical solutions directly aligned with critical government processes and objectives.
 
 ### Digitech Systems, LLC
 
 2017-10 til 2023-07
 
-#### Software Engineer/Software Support Engineer
+#### Software Engineer (Promoted)
 
-Automated critical software tests and upgraded applications, contributing to enhanced reliability and improved user experience.
+Developed and maintained a diverse portfolio of business applications for both desktop and web platforms. My work involved a mix of greenfield development and modernization of existing systems.
 
-* Developed multiple desktop applications using .NET technologies (WinForms, WPF) integrated with SQL databases.
-* Designed and implemented AWS Lambda microservices with API Gateway and CloudFormation for scalable cloud solutions.
-* Contributed to front-end development projects using Angular and TypeScript.
-* Utilized Scrum methodology to ensure efficient development cycles and timely deliveries.
-* Automated critical software tests, significantly enhancing application reliability.
-
-### Nebraska College of Business
-
-2016-10 til 2017-08
-
-#### Technical Support Specialist
-
-Provided Tier 2 technical support, facilitated technology acquisitions, and ensured a smooth relocation process during a major campus transition.
-
-* Resolved complex issues for both Windows and Mac OS environments.
-* Played a key role in acquiring and implementing new technology solutions.
-* Supported an 84-million-dollar building relocation project by ensuring seamless computer migrations and minimizing downtime.
-
-## Projects
-
-### Asteroids Arena
-
-[View Project](https://asteroids.dylanlangston.com)
-
-#### Technologies: Raylib, Emscripten, Binaryen, Svelte, TypeScript, TailwindCSS
-
-A twist on the classic game with an expanded world where asteroids bounce off the walls and rogue aliens add to the challenge.
-
-* Achieved 3rd place in the “Implementation of the theme game” category at the 2023 Raylib Slo-Jam event.
-
-### Sys.tm
-
-[View Project](https://sys.tm)
-
-#### Technologies: C#, .NET Framework, Angular, AWS, Java, RESTful APIs, RPA, CI/CD, Selenium, API Gateway, Lambda, Apache Tika, AWS CodePipeline, InstallShield, .NET 6
-
-An intelligent information management platform designed to streamline business processes through automation and efficient data management.
-
-* Developed an Automated Testing Suite in C# using NUnit, Selenium, AWS SDK, and CDKs.
-* Built an Angular 13 Web App featuring a web worker for parallel file uploads, enhancing UI responsiveness.
-* Created a RESTful microservice in AWS (API Gateway and Lambda) using Java and Apache Tika.
-* Enhanced an RPA solution by updating to .NET 6 and compiling automations to DLLs for improved performance.
-* Developed a custom CI/CD pipeline extending AWS CodePipeline for creating InstallShield installers on EC2 instances.
-
-### MOONSHOOT
-
-[View Project](https://dylanlangston.itch.io/moonshot)
-
-#### Technologies: Raylib-cs, .NET Core
-
-An Oregon Trail clone themed for the Apollo Missions. Submitted for Game Off 2020 under the title 'MOONSHOT'. Developed using Raylib-cs and .NET Core.
-
-* Blended classic gameplay with modern game development techniques to create a unique indie game experience.
+* Designed and implemented scalable, event-driven AWS microservices utilizing Lambda and API Gateway.
+* Spearheaded the modernization of a core Robotic Process Automation (RPA) framework, successfully upgrading it from .NET Framework, WPF, and WCF to .NET Core, Avalonia, and gRPC.
+* Played a pivotal role in frontend development using Angular and TypeScript, focusing on the overall user experience.
+* Leveraging my expertise as a subject matter expert in software support, I authored comprehensive training documentation and developed internal tools.
 
 ## Certificates
 
 ### AWS Certified Cloud Practitioner
 
+[View Certificate](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
+
 #### Issuer: Amazon Web Services (AWS)
 
-[View Certificate](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
+### AI Agents Fundamentals
+
+[View Certificate](https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/317758cbd696db56b38de460f76e0081f8310ec0c9d5078949204adb72a1da36?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250921T020006Z&X-Amz-Expires=3600&X-Amz-Signature=d0cca4a0e4f996f2b0fb9aacbd73a2d2ff75285b95afd9ca15892a9a26d3dd2d&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1758423606&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1ODQyMzYwNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvMzE3NzU4Y2JkNjk2ZGI1NmIzOGRlNDYwZjc2ZTAwODFmODMxMGVjMGM5ZDUwNzg5NDkyMDRhZGI3MmExZGEzNioifV19&Signature=Ac0XDN2peMqFm78JZZBFA1yIdfOnlLR1TvSBs3BztwLupL6DZjeYBODr6pgFK9j89B-xSwMNVrLUZIrM3pbH2BV%7EhHE91StbYktD0ZxPRbj4wD5nHgsO2uEOE68JweOgvelcJH7NlLBGw%7EId33bz08TDXUur2EE00SEPan7RuzQFuar3b5woMORiZ-P1qn3rOvOAGArP84cgtsUCnb3HU65ZLxMTv0osPG8FktbRVqoygLxr0RicIaQ4eHU0g3M%7ErNHr3zQa-WM3OJgPrvV7boBi0sAnip4hiX3cZiCV3I9HwRiNkEcFEKo6lZIAigSmGd5uAqMhUMWKxF8euV64lA__&Key-Pair-Id=K2L8F4GPSG1IFC)
+
+#### Issuer: Hugging Face
