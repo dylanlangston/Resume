@@ -311,7 +311,13 @@ const Theme = async (resume: Resume): Promise<Result> => {
                         function gtag(){dataLayer.push(arguments);}
                         gtag('js', new Date());
 
-                        gtag('config', 'G-2QY59QNZZL');
+                        gtag('consent', 'default', {
+                            'client_storage': 'none',
+                            'ad_storage': 'denied',
+                            'analytics_storage': 'denied'
+                        });
+
+                        gtag('config', 'G-2QY59QNZZL', { 'anonymize_ip': true });
                     `}
                     </script>
                 </body>
