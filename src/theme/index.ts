@@ -17,10 +17,11 @@ const renderHtml = async (resume: Resume): Promise<string> => {
   const rawHtml = toHtml(tailwindTree);
 
   const minifiedHtml = await minify.html(rawHtml, {
-    'html': {
-      'minifyCSS': {
+    html: {
+      minifyCSS: {
         level: 0,
-      } as Options['css']
+      } as Options['css'],
+      removeOptionalTags: false
     }
   })
 
