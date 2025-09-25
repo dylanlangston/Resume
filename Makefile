@@ -32,7 +32,9 @@ preview: ## Preview the resume in the browser.
 	@cd ./src; bun run preview
 
 update-readme-screenshot: ## Update the README screenshot.
-	@pdftoppm -png -singlefile -r 300 ./dist/resume.pdf screenshot
+	@pdftoppm -png -singlefile -r 200 ./dist/resume.pdf screenshot
+	@convert screenshot.png -define webp:lossless=true screenshot.webp
+	@rm screenshot.png
 
 create-social-preview: ## Generate an image to use for the github social preview.
 	@pdftoppm -singlefile -cropbox -scale-to-x 1160 -W 1200 -H 640 -png ./dist/resume.pdf | convert png:- \

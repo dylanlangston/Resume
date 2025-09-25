@@ -1,8 +1,8 @@
-<h1 align="center"><a href="./dist/resume.pdf"><img alt="My Resume" src="./screenshot.png" /></a></h1>
+<h1 align="center"><a href="./dist/resume.pdf"><img alt="My Resume" src="./screenshot.webp" /></a></h1>
 <a href="https://api.github.com/repos/dylanlangston/Resume"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/dylanlangston/Resume?label=Repo%20Size"></a>
 </p>
 
-This repository contains the source code used to build my resume. The resume is generated as a PDF from a `resume.json` file that follows the [JSON Resume standard](https://jsonresume.org/) and which is hosted as a [GitHub Gist](https://gist.github.com/dylanlangston/80380ec68b970189450dd2fae4502ff1).
+This repository contains the source code used to build my resume. The resume is generated from a `resume.json` file that follows the [JSON Resume standard](https://jsonresume.org/) and which is hosted as a [GitHub Gist](https://gist.github.com/dylanlangston/80380ec68b970189450dd2fae4502ff1). The build process generates a single polyglot file that is simultaneously a valid PDF, HTML, and Markdown document and hosts it on https://resume.dylanlangston.com/
 
 This project uses [Bun](https://bun.sh/), [TypeScript](https://www.typescriptlang.org/), [resumed](https://github.com/rbardini/resumed), [hastscript](https://github.com/syntax-tree/hastscript) and [Tailwind CSS](https://tailwindcss.com/) to name a few.
 
