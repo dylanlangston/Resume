@@ -1,6 +1,5 @@
 import path from "path";
-import { promises as fs } from "fs";
-import { readFile } from "fs/promises";
+import { mkdir, readFile, stat, writeFile } from "fs/promises";
 import puppeteer from "puppeteer";
 import { render } from "resumed";
 import { render as renderHtml, renderMarkdown } from "jsonresume-theme-local";
@@ -11,22 +10,24 @@ import { test, expect } from "bun:test";
 // @ts-ignore
 import { render as professional } from "jsonresume-theme-professional"
 import { suppressErrors } from "./suppress-errors";
+import { createPolyglotPdfHtml } from "./createPolyglot";
 
 const OUT_DIR = "../out";
 const PDF_PATH = path.join(OUT_DIR, "resume.pdf");
 const PROFESSIONAL_PDF_PATH = path.join(OUT_DIR, "professional.pdf");
 const HTML_PATH = path.join(OUT_DIR, "resume.html");
 const MD_PATH = path.join(OUT_DIR, "resume.md");
+const POLYGLOT_PATH = path.join(OUT_DIR, "polyglot.pdf.html");
 
-await fs.mkdir(OUT_DIR).catch(() => { });
+await mkdir(OUT_DIR).catch(() => { });
 
 const html = await render(resume, { render: renderHtml });
 const professionalHtml = await suppressErrors(() => render(resume, { render: professional }))
 
 const markdown = await render(resume, { render: renderMarkdown });
 
-await fs.writeFile(MD_PATH, markdown);
-await fs.writeFile(HTML_PATH, `<!--\n${markdown}\n-->${html}`);
+await writeFile(MD_PATH, markdown);
+await writeFile(HTML_PATH, `<!--\n${markdown}\n-->${html}`);
 
 const axeSource = await readFile("./node_modules/axe-core/axe.min.js", "utf-8");
 const browser = await puppeteer.launch({
@@ -71,7 +72,7 @@ for (const file of [{ content: html, path: PDF_PATH, axe: true }, { content: pro
 await browser.close();
 
 for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH]) {
-  const rawPdf = await fs.readFile(file);
+  const rawPdf = await readFile(file);
   const pdf = await PDFDocument.load(rawPdf, { updateMetadata: true });
   pdf.setTitle("Dylan Langston's Resume");
   pdf.setProducer("https://github.com/dylanlangston/resume");
@@ -90,23 +91,25 @@ for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH]) {
   });
 
   const optimized = await pdf.save({ useObjectStreams: true, addDefaultPage: false });
-  await fs.writeFile(file, optimized);
+  await writeFile(file, optimized);
 }
 
+await createPolyglotPdfHtml(PDF_PATH, html, POLYGLOT_PATH)
+
 test("HTML generated successfully", async () => {
-  const exists = await fs.stat(HTML_PATH).then(() => true).catch(() => false);
+  const exists = await stat(HTML_PATH).then(() => true).catch(() => false);
   expect(exists).toBe(true);
 });
 
 test("Markdown generated successfully", async () => {
-  const exists = await fs.stat(MD_PATH).then(() => true).catch(() => false);
+  const exists = await stat(MD_PATH).then(() => true).catch(() => false);
   expect(exists).toBe(true);
 });
 
 test("PDF generated successfully", async () => {
-  for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH]) {
+  for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH, POLYGLOT_PATH]) {
 
-    const exists = await fs.stat(file).then(() => true).catch(() => false);
+    const exists = await stat(file).then(() => true).catch(() => false);
     expect(exists).toBe(true);
   }
 });
@@ -116,8 +119,8 @@ test("Accessibility violations should be zero", () => {
 });
 
 test("PDF metadata is correct", async () => {
-  for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH]) {
-    const doc = await PDFDocument.load(await fs.readFile(file));
+  for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH, POLYGLOT_PATH]) {
+    const doc = await PDFDocument.load(await readFile(file));
     expect(doc.getTitle()).toBe("Dylan Langston's Resume");
     expect(doc.getAuthor()).toBe("Dylan Langston");
   }
