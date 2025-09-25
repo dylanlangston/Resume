@@ -26,8 +26,10 @@ const professionalHtml = await suppressErrors(() => render(resume, { render: pro
 
 const markdown = await render(resume, { render: renderMarkdown });
 
+const htmlCombinedMarkdown = `<!--\n${markdown}\n-->${html}`;
+
 await writeFile(MD_PATH, markdown);
-await writeFile(HTML_PATH, `<!--\n${markdown}\n-->${html}`);
+await writeFile(HTML_PATH, htmlCombinedMarkdown);
 
 const axeSource = await readFile("./node_modules/axe-core/axe.min.js", "utf-8");
 const browser = await puppeteer.launch({
@@ -94,7 +96,7 @@ for (const file of [PDF_PATH, PROFESSIONAL_PDF_PATH]) {
   await writeFile(file, optimized);
 }
 
-await createPolyglotPdfHtml(PDF_PATH, html, POLYGLOT_PATH)
+await createPolyglotPdfHtml(PDF_PATH, htmlCombinedMarkdown, POLYGLOT_PATH)
 
 test("HTML generated successfully", async () => {
   const exists = await stat(HTML_PATH).then(() => true).catch(() => false);

@@ -26,6 +26,7 @@ release: ## Release the build artifacts.
 	@cp ./out/resume.pdf ./dist/resume.pdf
 	@cp ./out/professional.pdf ./dist/professional.pdf
 	@cp ./out/resume.html ./dist/resume.html
+	@cp ./out/polyglot.pdf.html ./dist/polyglot.pdf.html
 
 preview: ## Preview the resume in the browser.
 	@cd ./src; bun run preview
