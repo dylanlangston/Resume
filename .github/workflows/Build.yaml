@@ -59,7 +59,7 @@ jobs:
           git push origin main
       - name: Prepare Github Pages artifact
         id: rename
-        run: mkdir --parents ./publish; mv ./dist/polyglot.pdf.html $_/index.html
+        run: mkdir --parents ./publish; mv ./dist/polyglot.md.html.pdf $_/index.html
       - name: Upload GitGub Pages artifact
         id: upload-html
         uses: actions/upload-pages-artifact@v4
