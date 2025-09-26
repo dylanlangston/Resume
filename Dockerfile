@@ -23,5 +23,5 @@ RUN make update-readme-screenshot
 FROM scratch AS publish
 COPY --from=build /root/dist /
 
-FROM scratch as update_screenshot
-COPY --from=take_screenshot /root/dist /
+FROM scratch AS update_screenshot
+COPY --from=take_screenshot /root/screenshot.webp /screenshot.webp
