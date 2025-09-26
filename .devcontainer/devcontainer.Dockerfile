@@ -2,7 +2,7 @@ FROM mcr.microsoft.com/devcontainers/base:debian as base
 
 # Install General Dependencies
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-     && apt-get -y install --no-install-recommends ca-certificates bash curl unzip xz-utils git make zip chromium poppler-utils imagemagick
+     && apt-get -y install --no-install-recommends ca-certificates bash curl unzip xz-utils git make zip git-lfs chromium poppler-utils imagemagick
 
 # GIT LFS
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash \
