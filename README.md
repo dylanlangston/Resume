@@ -21,7 +21,7 @@ A `Makefile` is included to streamline common tasks.
 
 | Command | Description |
 | ---- | ---- |
-| `build-docker` | Build the Docker image. | 
+| `build-docker` | Build the resume using docker. | 
 | `build` | Build the resume PDF. | 
 | `create-social-preview` | Generate an image to use for the github social preview. |
 | `help` | Display the help menu. | 
@@ -30,6 +30,7 @@ A `Makefile` is included to streamline common tasks.
 | `setup-git-clone` | Clone git submodules. |
 | `setup` | Setup the development environment. |
 | `update-readme-screenshot` | Update the README screenshot. |
+| `update-readme-screenshot-docker` | Update the README screenshot using docker. |
 
 ### Dev Container
 

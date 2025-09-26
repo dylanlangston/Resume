@@ -4,7 +4,7 @@ USER root
 WORKDIR /root/
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-     && apt-get -y install --no-install-recommends ca-certificates bash curl unzip xz-utils git make zip chromium fonts-liberation
+     && apt-get -y install --no-install-recommends ca-certificates bash curl unzip xz-utils git make zip chromium fonts-liberation poppler-utils imagemagick
 
 COPY ./src/package.json /root/src/package.json
 COPY ./src/bun.lock /root/src/bun.lock
@@ -17,5 +17,11 @@ FROM base AS build
 COPY . /root/
 RUN make build release
 
+FROM build AS take_screenshot
+RUN make update-readme-screenshot
+
 FROM scratch AS publish
 COPY --from=build /root/dist /
+
+FROM scratch as update_screenshot
+COPY --from=take_screenshot /root/dist /

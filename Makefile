@@ -14,10 +14,10 @@ setup: setup-git-clone ## Setup the development environment.
 setup-git-clone: ## Clone git submodules.
 	@git submodule update --init --recursive
 
-build: setup ## Build the resume PDF.
+build: setup ## Build the resume.
 	@bun --cwd ./src build
 
-build-docker: ## Build the Docker image.
+build-docker: ## Build the resume using docker.
 	@docker build --rm --network=host --progress=plain -t resume . --target publish --output type=local,dest=$(OUTPUT_DIR)
 
 release: ## Release the build artifacts.
@@ -35,6 +35,10 @@ update-readme-screenshot: ## Update the README screenshot.
 	@pdftoppm -png -singlefile -r 200 ./dist/resume.pdf screenshot
 	@convert screenshot.png -define webp:lossless=true screenshot.webp
 	@rm screenshot.png
+
+update-readme-screenshot-docker: ## Update the README screenshot using docker.
+	@docker build --rm --network=host --progress=plain -t resume . --target update_screenshot --output type=local,dest=$(OUTPUT_DIR)
+	@cp -f $(OUTPUT_DIR)/screenshot.webp ./screenshot.webp
 
 create-social-preview: ## Generate an image to use for the github social preview.
 	@pdftoppm -singlefile -cropbox -scale-to-x 1160 -W 1200 -H 640 -png ./dist/resume.pdf | convert png:- \
