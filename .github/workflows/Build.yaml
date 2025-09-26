@@ -45,7 +45,7 @@ jobs:
         id: screenshot
         run: |
           sudo apt-get update
-          sudo apt-get -y install --no-install-recommends poppler-utils
+          sudo apt-get -y install --no-install-recommends poppler-utils imagemagick
           make update-readme-screenshot
       - name: Commit Changes to Repository
         if: github.ref == 'refs/heads/main' && github.repository == 'dylanlangston/resume'
