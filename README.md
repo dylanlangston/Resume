@@ -1,4 +1,4 @@
-<h1 align="center"><a href="./dist/resume.pdf"><img alt="My Resume" src="./screenshot.webp" /></a></h1>
+<h1 align="center"><a href="./dist/resume.md.html.pdf"><img alt="My Resume" src="./screenshot.webp" /></a></h1>
 <a href="https://api.github.com/repos/dylanlangston/Resume"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/dylanlangston/Resume?label=Repo%20Size"></a>
 </p>
 
