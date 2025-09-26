@@ -30,3 +30,6 @@ WORKDIR /home/vscode
 
 # Install Bun
 RUN curl -L --proto '=https' --tlsv1.3 -sSf https://bun.sh/install | bash
+
+# Install git lfs
+RUN git lfs install
