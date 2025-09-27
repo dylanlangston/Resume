@@ -64,7 +64,6 @@ const generateThemeStyles = (): string => `
     }
     body {
       color: var(--color-fg-default);
-      background-color: var(--color-canvas-default);
     }
   }
 `;
@@ -339,21 +338,23 @@ const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> 
                     <style>{styles}</style>
                     <style>{generateThemeStyles()}</style>
                 </head>
-                <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards]">
-                    <div className="mx-auto bg-canvas grid-container border-l border-b border-r border-muted">
-                        <div className="left-column">
-                            {basicSection}
-                            {skillsSection}
-                            {footerSection}
-                        </div>
-                        <div className="right-column">
-                            {aboutSection}
-                            {workSection}
-                            {projectsSection}
-                            {awardsSection}
-                            {certificatesSection}
-                            {publicationsSection}
-                        </div>
+                <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards] bg-canvas">
+                    <div className="mx-auto max-w-screen-2xl border-l border-b border-r border-muted">
+                        <main className="grid-container">
+                            <div className="left-column">
+                                {basicSection}
+                                {skillsSection}
+                                {footerSection}
+                            </div>
+                            <div className="right-column">
+                                {aboutSection}
+                                {workSection}
+                                {projectsSection}
+                                {awardsSection}
+                                {certificatesSection}
+                                {publicationsSection}
+                            </div>
+                        </main>
                     </div>
                 </body>
             </html>
