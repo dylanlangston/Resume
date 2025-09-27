@@ -1,39 +1,37 @@
-![A portrait of Dylan Langston](https://avatars.githubusercontent.com/u/16236219?v=4)
+https://avatars.githubusercontent.com/u/16236219?v=4 - A portrait of Dylan Langston
 
-```figlet
 ┳┓  ┓      ┓             
 ┃┃┓┏┃┏┓┏┓  ┃ ┏┓┏┓┏┓┏╋┏┓┏┓
 ┻┛┗┫┗┗┻┛┗  ┗┛┗┻┛┗┗┫┛┗┗┛┛┗
    ┛              ┛      
-```
 
-# Dylan Langston
+Dylan Langston
 
-#### Full Stack Developer
+Full Stack Developer
 
 Alexandria, Virginia
 
-[mail\@dylanlangston.com](mailto:mail@dylanlangston.com)
+mailto:mail@dylanlangston.com
 
-[https\://dylanlangston.com/](https://dylanlangston.com/)
+https://dylanlangston.com/
 
-[linkedin.com/in/dylan-langston](https://www.linkedin.com/in/dylan-langston)
+https://www.linkedin.com/in/dylan-langston
 
-[github.com/dylanlangston](https://github.com/dylanlangston)
+https://github.com/dylanlangston
 
-[dylanlangston.itch.io](https://dylanlangston.itch.io)
+https://dylanlangston.itch.io
 
-## About
+About
 
 Deep expertise in C#, modern web development, and cloud architecture on AWS and Azure. Advocate for clean code, automated testing, and mentorship. Excited to contribute my skills to a challenging, code-centric role.
 
-## Work Experience
+Work Experience
 
-### Cloudforce
+Cloudforce
 
 2024-06 til Present
 
-#### Senior Cloud Applications Engineer (Promoted)
+Senior Cloud Applications Engineer (Promoted)
 
 I fill a pivotal role in development of our enterprise-level Generative AI cloud application, NebulaONE. My responsibilities span the entire project, from requirements gathering to final production deployment.
 
@@ -41,22 +39,22 @@ I fill a pivotal role in development of our enterprise-level Generative AI cloud
 * Delivered a mission-critical marketplace deployment application, leveraging React and C# Azure Functions to create a streamlined self-serve customer experience.
 * Championed and refined the merge and release process, empowering the team to share ownership and reduce dependency on individuals.
 
-### Maryland Motor Vehicle Administration
+Maryland Motor Vehicle Administration
 
 2023-07 til 2024-06
 
-#### IT Programmer Analyst Lead/Advanced
+IT Programmer Analyst Lead/Advanced
 
 Responsible for translating complex business needs into high-quality, compliant C# solutions. A significant part of my role involved mentoring junior developers and fostering a team culture centered on technical excellence and continuous improvement.
 
 * Authored comprehensive test cases while enforcing rigorous coding standards to ensure the delivery of exceptionally robust and reliable software.
 * Collaborated closely with stakeholders to strategically enhance software functionality, ensuring our technical solutions directly aligned with critical government processes and objectives.
 
-### Digitech Systems, LLC
+Digitech Systems, LLC
 
 2017-10 til 2023-07
 
-#### Software Engineer (Promoted)
+Software Engineer (Promoted)
 
 Developed and maintained a diverse portfolio of business applications for both desktop and web platforms. My work involved a mix of greenfield development and modernization of existing systems.
 
@@ -65,25 +63,25 @@ Developed and maintained a diverse portfolio of business applications for both d
 * Played a pivotal role in frontend development using Angular and TypeScript, focusing on the overall user experience.
 * Leveraging my expertise as a subject matter expert in software support, I authored comprehensive training documentation and developed internal tools.
 
-## Certificates
+Certificates
 
-### AWS Certified Cloud Practitioner
+AWS Certified Cloud Practitioner
 
-[View Certificate](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
+View Certificate: https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0
 
-#### Issuer: Amazon Web Services (AWS)
+Issuer: Amazon Web Services (AWS)
 
-### AI Agents Fundamentals
+AI Agents Fundamentals
 
-[View Certificate](https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/317758cbd696db56b38de460f76e0081f8310ec0c9d5078949204adb72a1da36?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250921T020006Z&X-Amz-Expires=3600&X-Amz-Signature=d0cca4a0e4f996f2b0fb9aacbd73a2d2ff75285b95afd9ca15892a9a26d3dd2d&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1758423606&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1ODQyMzYwNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvMzE3NzU4Y2JkNjk2ZGI1NmIzOGRlNDYwZjc2ZTAwODFmODMxMGVjMGM5ZDUwNzg5NDkyMDRhZGI3MmExZGEzNioifV19&Signature=Ac0XDN2peMqFm78JZZBFA1yIdfOnlLR1TvSBs3BztwLupL6DZjeYBODr6pgFK9j89B-xSwMNVrLUZIrM3pbH2BV%7EhHE91StbYktD0ZxPRbj4wD5nHgsO2uEOE68JweOgvelcJH7NlLBGw%7EId33bz08TDXUur2EE00SEPan7RuzQFuar3b5woMORiZ-P1qn3rOvOAGArP84cgtsUCnb3HU65ZLxMTv0osPG8FktbRVqoygLxr0RicIaQ4eHU0g3M%7ErNHr3zQa-WM3OJgPrvV7boBi0sAnip4hiX3cZiCV3I9HwRiNkEcFEKo6lZIAigSmGd5uAqMhUMWKxF8euV64lA__&Key-Pair-Id=K2L8F4GPSG1IFC)
+View Certificate: https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/317758cbd696db56b38de460f76e0081f8310ec0c9d5078949204adb72a1da36?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250921T020006Z&X-Amz-Expires=3600&X-Amz-Signature=d0cca4a0e4f996f2b0fb9aacbd73a2d2ff75285b95afd9ca15892a9a26d3dd2d&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1758423606&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1ODQyMzYwNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvMzE3NzU4Y2JkNjk2ZGI1NmIzOGRlNDYwZjc2ZTAwODFmODMxMGVjMGM5ZDUwNzg5NDkyMDRhZGI3MmExZGEzNioifV19&Signature=Ac0XDN2peMqFm78JZZBFA1yIdfOnlLR1TvSBs3BztwLupL6DZjeYBODr6pgFK9j89B-xSwMNVrLUZIrM3pbH2BV%7EhHE91StbYktD0ZxPRbj4wD5nHgsO2uEOE68JweOgvelcJH7NlLBGw%7EId33bz08TDXUur2EE00SEPan7RuzQFuar3b5woMORiZ-P1qn3rOvOAGArP84cgtsUCnb3HU65ZLxMTv0osPG8FktbRVqoygLxr0RicIaQ4eHU0g3M%7ErNHr3zQa-WM3OJgPrvV7boBi0sAnip4hiX3cZiCV3I9HwRiNkEcFEKo6lZIAigSmGd5uAqMhUMWKxF8euV64lA__&Key-Pair-Id=K2L8F4GPSG1IFC
 
-#### Issuer: Hugging Face
+Issuer: Hugging Face
 
-## Skills
+Skills
 
-### Languages
+Languages
 
-#### Level: Expert
+Level: Expert
 
 * C#
 * TypeScript
@@ -98,9 +96,9 @@ Developed and maintained a diverse portfolio of business applications for both d
 * Rust
 * Zig
 
-### Frameworks & Libraries
+Frameworks & Libraries
 
-#### Level: Expert
+Level: Expert
 
 * .NET
 * ASP.NET
@@ -112,9 +110,9 @@ Developed and maintained a diverse portfolio of business applications for both d
 * Avalonia
 * Svelte
 
-### Cloud & DevOps
+Cloud & DevOps
 
-#### Level: Advanced
+Level: Advanced
 
 * AWS
 * Microsoft Azure
@@ -122,9 +120,9 @@ Developed and maintained a diverse portfolio of business applications for both d
 * CI/CD
 * GitHub Actions
 
-### Databases
+Databases
 
-#### Level: Intermediate
+Level: Intermediate
 
 * Microsoft SQL Server
 * CosmosDB
@@ -132,9 +130,9 @@ Developed and maintained a diverse portfolio of business applications for both d
 * NoSQL
 * Relational Databases
 
-### Development Methodologies & Concepts
+Development Methodologies & Concepts
 
-#### Level: Advanced
+Level: Advanced
 
 * Agile
 * Scrum
@@ -147,9 +145,9 @@ Developed and maintained a diverse portfolio of business applications for both d
 * Object-Oriented Programming (OOP)
 * REST APIs
 
-### Tools & Platforms
+Tools & Platforms
 
-#### Level: Advanced
+Level: Advanced
 
 * Visual Studio
 * VS Code
@@ -166,4 +164,4 @@ Developed and maintained a diverse portfolio of business applications for both d
 * macOS
 * MS Office
 
-This resume was generated from code [available here](https://github.com/dylanlangston/Resume)
+This resume was generated from code available here: https://github.com/dylanlangston/Resume
