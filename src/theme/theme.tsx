@@ -329,7 +329,7 @@ const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> 
             <html lang="en">
                 <head>
                     <meta charSet="utf-8" />
-                    <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:;" />
+                    <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:;" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="description" content={basics?.summary ?? 'Resume'} />
                     <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="white"/>${pixel.icons['code-solid'].body}</svg>`} />
