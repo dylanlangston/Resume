@@ -10,11 +10,13 @@ import { render as professional } from "jsonresume-theme-professional"
 import { suppressErrors } from "./suppress-errors";
 import { createPolyglot } from "./createPolyglot";
 import { Configuration } from "./config";
+import { renderHtmlDark } from "./theme";
 
 class ResumeBuilder {
     public axeResults!: AxeResults;
     private text: string = "";
     private html: string = "";
+    private htmlDark: string = "";
     private professionalHtml: string = "";
     private markdown: string = "";
     private htmlCombinedMarkdown: string = "";
@@ -34,6 +36,7 @@ class ResumeBuilder {
     private async generateSourceFiles() {
         this.text = await render(resume, { render: renderText });
         this.html = await render(resume, { render: renderHtml });
+        this.htmlDark = await render(resume, { render: renderHtmlDark });
         this.professionalHtml = await suppressErrors(() => render(resume, { render: professional }));
         this.markdown = await render(resume, { render: renderMarkdown });
         this.htmlCombinedMarkdown = `<!--\n${this.markdown}\n-->${this.html}`;
@@ -60,6 +63,7 @@ class ResumeBuilder {
 
         const filesToProcess = [
             { content: this.html, path: Configuration.PDF_PATH, runAxe: true },
+            { content: this.htmlDark, path: Configuration.PDF_DARK_PATH, runAxe: true },
             { content: this.professionalHtml, path: Configuration.PROFESSIONAL_PDF_PATH, runAxe: false },
         ];
 
@@ -90,7 +94,7 @@ class ResumeBuilder {
     }
 
     private async addPdfMetadata() {
-        for (const filePath of [Configuration.PDF_PATH, Configuration.PROFESSIONAL_PDF_PATH]) {
+        for (const filePath of [Configuration.PDF_PATH, Configuration.PDF_DARK_PATH, Configuration.PROFESSIONAL_PDF_PATH]) {
             const rawPdf = await readFile(filePath);
             const pdf = await PDFDocument.load(rawPdf, { updateMetadata: true });
 
@@ -123,6 +127,7 @@ class ResumeBuilder {
 
     private async createPolyglotFile() {
         await createPolyglot(Configuration.PDF_PATH, this.htmlCombinedMarkdown, Configuration.POLYGLOT_PATH);
+        await createPolyglot(Configuration.PDF_DARK_PATH, this.htmlCombinedMarkdown, Configuration.POLYGLOT_DARK_PATH);
     }
 }
 

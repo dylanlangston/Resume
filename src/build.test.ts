@@ -28,7 +28,7 @@ test("Markdown generated successfully", async () => {
 });
 
 test("PDFs generated successfully", async () => {
-    for (const file of [Configuration.PDF_PATH, Configuration.PROFESSIONAL_PDF_PATH, Configuration.POLYGLOT_PATH]) {
+    for (const file of [Configuration.PDF_PATH, Configuration.PDF_DARK_PATH, Configuration.PROFESSIONAL_PDF_PATH, Configuration.POLYGLOT_PATH, Configuration.POLYGLOT_DARK_PATH]) {
         const exists = await stat(file).then(() => true).catch(() => false);
         expect(exists).toBe(true);
     }
@@ -44,7 +44,7 @@ test("Accessibility violations should be zero", () => {
 });
 
 test("PDF metadata is correct", async () => {
-    for (const file of [Configuration.PDF_PATH, Configuration.PROFESSIONAL_PDF_PATH]) {
+    for (const file of [Configuration.PDF_PATH, Configuration.PDF_DARK_PATH, Configuration.PROFESSIONAL_PDF_PATH, Configuration.POLYGLOT_PATH, Configuration.POLYGLOT_DARK_PATH]) {
         const doc = await PDFDocument.load(await readFile(file), { updateMetadata: false });
         expect(doc.getTitle()).toBe("Dylan Langston's Resume");
         expect(doc.getAuthor()).toBe("Dylan Langston");

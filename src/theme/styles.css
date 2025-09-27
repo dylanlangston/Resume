@@ -255,7 +255,7 @@ li::marker {
 @media print {
     @page {
         size: Letter;
-        margin: 16px;
+        padding: 16px;
     }
 
     html {

@@ -25,3 +25,4 @@ COPY --from=build /root/dist /
 
 FROM scratch AS update_screenshot
 COPY --from=take_screenshot /root/screenshot.webp /screenshot.webp
+COPY --from=take_screenshot /root/screenshot_dark.webp /screenshot_dark.webp

@@ -9,9 +9,11 @@ import { minify, type Options } from 'minify'
 
 type Resume = Parameters<typeof resumed.render>[0];
 
-const renderHtml = async (resume: Resume): Promise<string> => {
+const renderHtmlBase = async (resume: Resume, forceDarkMode: boolean = false): Promise<string> => {
   const text = await renderText(resume);
-  const baseTree = await Theme(resume, text);
+  const baseTree = await Theme({
+    resume, consoleMessage: text, forceDarkMode
+  });
   const tailwindTree = await applyTailwindToHast(baseTree);
 
   const rawHtml = toHtml(tailwindTree);
@@ -27,6 +29,8 @@ const renderHtml = async (resume: Resume): Promise<string> => {
 
   return minifiedHtml;
 };
+const renderHtml = async (resume: Resume) => await renderHtmlBase(resume, false);
+const renderHtmlDark = async (resume: Resume) => await renderHtmlBase(resume, true);
 
 const markdownHandler = (
   bodyFormat?: (body: string, ...args: Parameters<Handle>) => string,
@@ -39,7 +43,7 @@ const markdownHandler = (
 };
 
 const renderMarkdown = async (resume: Resume): Promise<string> => {
-  const tree = await Theme(resume);
+  const tree = await Theme({resume});
   const mdast = toMdast(tree);
 
   return toMarkdown(mdast, {
@@ -65,7 +69,7 @@ const renderMarkdown = async (resume: Resume): Promise<string> => {
 };
 
 const renderText = async (resume: Resume) => {
-  const tree = await Theme(resume);
+  const tree = await Theme({resume});
   const mdast = toMdast(tree);
 
   return toMarkdown(mdast, {
@@ -91,4 +95,4 @@ const renderText = async (resume: Resume) => {
   });
 };
 
-export { renderHtml as render, renderHtml, renderMarkdown, renderText, type Resume, Theme };
+export { renderHtml as render, renderHtml, renderHtmlDark, renderMarkdown, renderText, type Resume, Theme };

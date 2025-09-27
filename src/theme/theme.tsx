@@ -33,7 +33,26 @@ const colors = {
     },
 };
 
-const generateThemeStyles = (): string => `
+const generateThemeStyles = (forceDarkMode: boolean): string => forceDarkMode ?
+`
+  :root {
+    --color-fg-default: ${colors.dark.fg.default};
+    --color-fg-muted: ${colors.dark.fg.muted};
+    --color-canvas-default: ${colors.dark.canvas.default};
+    --color-border-default: ${colors.dark.border.default};
+    --color-border-muted: ${colors.dark.border.muted};
+    --color-accent-fg: ${colors.dark.accent.fg};
+    --color-link-fg: ${colors.dark.link.fg};
+    --color-header-title: ${colors.dark.header.title};
+    --color-header-subtitle: ${colors.dark.header.subtitle};
+    --color-neutral-subtle: ${colors.dark.neutral.subtle};
+    --color-selection-default: ${colors.dark.selection.default};
+  }
+  body {
+    color: var(--color-fg-default);
+  }
+` :
+`
   :root {
     --color-fg-default: ${colors.light.fg.default};
     --color-fg-muted: ${colors.light.fg.muted};
@@ -294,7 +313,13 @@ const renderFooter = (className: string = 'footer-area') =>
         </div>
     </footer>
 
-const Theme = async (resume: Resume, consoleMessage?: string): Promise<Result> => {
+type ThemeConfig = {
+    resume: Resume,
+    consoleMessage?: string,
+    forceDarkMode?: boolean;
+}
+
+const Theme = async (config: ThemeConfig): Promise<Result> => {
     const {
         basics,
         work,
@@ -303,7 +328,7 @@ const Theme = async (resume: Resume, consoleMessage?: string): Promise<Result> =
         publications,
         skills,
         projects,
-    } = resume;
+    } = config.resume;
 
     const headerSection = renderHeader('header-area');
     const basicSection = await renderBasics(basics, 'basics-area');
@@ -329,7 +354,7 @@ const Theme = async (resume: Resume, consoleMessage?: string): Promise<Result> =
                     <title>{basics?.name ? `${basics.name}'s Resume` : 'Resume'}</title>
                     <style>{fonts}</style>
                     <style>{styles}</style>
-                    <style>{generateThemeStyles()}</style>
+                    <style>{generateThemeStyles(Boolean(config.forceDarkMode))}</style>
                 </head>
                 <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards] bg-canvas max-w-screen-2xl border-1 border-muted rounded-lg m-auto">
                     {headerSection}
@@ -344,8 +369,8 @@ const Theme = async (resume: Resume, consoleMessage?: string): Promise<Result> =
                         {skillsSection}
                         {footerSection}
                     </main>
-                    {consoleMessage ? <script>
-                        console.log(`{consoleMessage}`)
+                    {config.consoleMessage ? <script>
+                        console.log(`{config.consoleMessage}`)
                     </script> : null}
                 </body>
             </html>
