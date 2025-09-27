@@ -11,29 +11,60 @@ import { type Result } from 'hastscript';
 type Resume = Parameters<typeof resumed.render>[0];
 
 const colors = {
-    fg: { default: '#000000', muted: '#59636e' },
-    canvas: { default: '#fff' },
-    border: { default: '#000000', muted: '#d1d9e0' },
-    accent: { fg: '#6639ba' },
-    link: { fg: '#0550ae' },
-    header: { title: '#cf222e', subtitle: '#953800' },
-    neutral: { subtle: '#f6f8fa' },
-    selection: { default: "#0969da33" }
+    light: {
+        fg: { default: '#000000', muted: '#59636e' },
+        canvas: { default: '#fff' },
+        border: { default: '#000000', muted: '#d1d9e0' },
+        accent: { fg: '#6639ba' },
+        link: { fg: '#0550ae' },
+        header: { title: '#cf222e', subtitle: '#953800' },
+        neutral: { subtle: '#f6f8fa' },
+        selection: { default: "#0969da33" }
+    },
+    dark: {
+        fg: { default: '#e6edf3', muted: '#7d8590' },
+        canvas: { default: '#0d1117' },
+        border: { default: '#000', muted: '#3d444d' },
+        accent: { fg: '#d2a8ff' },
+        link: { fg: '#a5d6ff' },
+        header: { title: '#ff7b72', subtitle: '#ffa657' },
+        neutral: { subtle: '#151b23' },
+        selection: { default: "#1f6febb3" }
+    },
 };
 
 const generateThemeStyles = (): string => `
   :root {
-    --color-fg-default: ${colors.fg.default};
-    --color-fg-muted: ${colors.fg.muted};
-    --color-canvas-default: ${colors.canvas.default};
-    --color-border-default: ${colors.border.default};
-    --color-border-muted: ${colors.border.muted};
-    --color-accent-fg: ${colors.accent.fg};
-    --color-link-fg: ${colors.link.fg};
-    --color-header-title: ${colors.header.title};
-    --color-header-subtitle: ${colors.header.subtitle};
-    --color-neutral-subtle: ${colors.neutral.subtle};
-    --color-selection-default: ${colors.selection.default};
+    --color-fg-default: ${colors.light.fg.default};
+    --color-fg-muted: ${colors.light.fg.muted};
+    --color-canvas-default: ${colors.light.canvas.default};
+    --color-border-default: ${colors.light.border.default};
+    --color-border-muted: ${colors.light.border.muted};
+    --color-accent-fg: ${colors.light.accent.fg};
+    --color-link-fg: ${colors.light.link.fg};
+    --color-header-title: ${colors.light.header.title};
+    --color-header-subtitle: ${colors.light.header.subtitle};
+    --color-neutral-subtle: ${colors.light.neutral.subtle};
+    --color-selection-default: ${colors.light.selection.default};
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-fg-default: ${colors.dark.fg.default};
+      --color-fg-muted: ${colors.dark.fg.muted};
+      --color-canvas-default: ${colors.dark.canvas.default};
+      --color-border-default: ${colors.dark.border.default};
+      --color-border-muted: ${colors.dark.border.muted};
+      --color-accent-fg: ${colors.dark.accent.fg};
+      --color-link-fg: ${colors.dark.link.fg};
+      --color-header-title: ${colors.dark.header.title};
+      --color-header-subtitle: ${colors.dark.header.subtitle};
+      --color-neutral-subtle: ${colors.dark.neutral.subtle};
+      --color-selection-default: ${colors.dark.selection.default};
+    }
+    body {
+      color: var(--color-fg-default);
+    }
   }
 `;
 
@@ -121,9 +152,9 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                 {basics.location && <p>{`${basics.location.city}, ${basics.location.region}`.trim()}</p>}
             </address>
             {basics.email && (
-                <p className="mx-2">
+                <p className="mx-2 text-accent">
                     {raw(
-                        <svg height="16" width="16" viewBox="0 0 24 24" color="#6639ba" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
+                        <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
                             {{ type: 'raw', value: pixel.icons.envelope.body }}
                         </svg>
                     )}
@@ -131,9 +162,9 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                 </p>
             )}
             {basics.url && (
-                <p className="mx-2">
+                <p className="mx-2 text-accent">
                     {raw(
-                        <svg height="16" width="16" viewBox="0 0 24 24" color="#6639ba" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
+                        <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
                             {{ type: 'raw', value: pixel.icons.globe.body }}
                         </svg>
                     )}
@@ -141,12 +172,12 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                 </p>
             )}
             {basics.profiles && (
-                <div className="mx-2">
+                <div className="mx-2 text-accent">
                     {basics.profiles.map(profile =>
                         profile.network && (
                             <p>
                                 {raw(
-                                    <svg height="16" width="16" viewBox="0 0 24 24" color="#6639ba" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
                                         {{ type: 'raw', value: profileIcons[profile.network]! }}
                                     </svg>
                                 )}
