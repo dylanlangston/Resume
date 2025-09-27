@@ -171,7 +171,7 @@ li::marker {
 @media (min-width: 768px) {
     .grid-container {
         display: grid;
-        grid-template-columns: minmax(280px, 35%) 1fr;
+        grid-template-columns: minmax(380px, 35%) 1fr;
     }
 
     .left-column,
