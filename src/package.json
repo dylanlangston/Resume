@@ -2,7 +2,6 @@
   "name": "resume",
   "devDependencies": {
     "@types/bun": "latest",
-    "@types/turndown": "^5.0.5",
     "axe-core": "^4.10.3",
     "jsonresume-theme-local": "./theme",
     "jsonresume-theme-professional": "^1.1.0",

@@ -10,8 +10,8 @@ import { minify, type Options } from 'minify'
 type Resume = Parameters<typeof resumed.render>[0];
 
 const renderHtml = async (resume: Resume): Promise<string> => {
-  const baseTree = await Theme(resume, false);
-
+  const text = await renderText(resume);
+  const baseTree = await Theme(resume, text);
   const tailwindTree = await applyTailwindToHast(baseTree);
 
   const rawHtml = toHtml(tailwindTree);
@@ -23,38 +23,40 @@ const renderHtml = async (resume: Resume): Promise<string> => {
       } as Options['css'],
       removeOptionalTags: false
     }
-  })
+  });
 
-  return minifiedHtml
+  return minifiedHtml;
+};
+
+const markdownHandler = (
+  bodyFormat?: (body: string, ...args: Parameters<Handle>) => string,
+  joinWith: string = ""
+): Handle => (...args) => {
+  const [node, _, state, info] = args;
+  const children: any[] = node?.children ?? [];
+  const body = children.map(child => state.handle(child, node, state, info)).filter(Boolean).join(joinWith);
+  return bodyFormat?.(body, ...args) ?? body;
 };
 
 const renderMarkdown = async (resume: Resume): Promise<string> => {
-  const tree = await Theme(resume, true);
+  const tree = await Theme(resume);
   const mdast = toMdast(tree);
-  
-  const handler = (bodyFormat?: (body: string, ...args: Parameters<Handle>) => string, joinWith: string = ""): Handle => (...args) => {
-    const [node, _, state, info] = args;
-    const children: any[] = node?.children ?? [];
-    const body = children.map(child => state.handle(child, node, state, info)).filter(Boolean).join(joinWith);
-    return bodyFormat?.(body, ...args) ?? body;
-  };
+
   return toMarkdown(mdast, {
-    extensions: [gfmToMarkdown({
-      tableCellPadding: false
-    })],
+    extensions: [gfmToMarkdown({ tableCellPadding: false })],
     handlers: {
-      table: handler(),
-      tableRow: handler(),
-      tableCell: handler(),
-      heading: handler((body, node) => {
+      table: markdownHandler(),
+      tableRow: markdownHandler(),
+      tableCell: markdownHandler(),
+      heading: markdownHandler((body, node) => {
         const { depth } = node;
-        return `${"#".repeat(depth)} ${reverseFormatTitle(body)}`
+        return `${"#".repeat(depth)} ${reverseFormatTitle(body)}`;
       }),
-      link: handler((body, node) => {
+      link: markdownHandler((body, node) => {
         const { url, title } = node;
-        return `[${(title ?? body)}](${url})`
+        return `[${(title ?? body)}](${url})`;
       }),
-      code: handler((body, node, _, state, info) => {
+      code: markdownHandler((body, node) => {
         const { value }: { value: string } = node;
         return `\`\`\`figlet\n${value}\n\`\`\``;
       }),
@@ -62,4 +64,31 @@ const renderMarkdown = async (resume: Resume): Promise<string> => {
   });
 };
 
-export { renderHtml as render, renderHtml, renderMarkdown, type Resume, Theme };
+const renderText = async (resume: Resume) => {
+  const tree = await Theme(resume);
+  const mdast = toMdast(tree);
+
+  return toMarkdown(mdast, {
+    handlers: {
+      table: markdownHandler(),
+      tableRow: markdownHandler(),
+      tableCell: markdownHandler(),
+      image: markdownHandler((body, node) => {
+        const { url, alt } = node;
+        return `${url} - ${alt}`;
+      }),
+      heading: markdownHandler((body) => reverseFormatTitle(body)),
+      link: markdownHandler((body, node) => {
+        const { url, title }: { url: string, title: string } = node;
+        if (url.endsWith(title ?? body)) return url;
+        return `${title ?? body}: ${url}`;
+      }),
+      code: markdownHandler((body, node) => {
+        const { value }: { value: string } = node;
+        return value;
+      }),
+    }
+  });
+};
+
+export { renderHtml as render, renderHtml, renderMarkdown, renderText, type Resume, Theme };

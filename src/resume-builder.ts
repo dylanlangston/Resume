@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "fs/promises";
 import puppeteer from "puppeteer";
 import { render } from "resumed";
-import { render as renderHtml, renderMarkdown } from "jsonresume-theme-local";
+import { renderHtml, renderMarkdown, renderText } from "jsonresume-theme-local";
 import { AFRelationship, PDFDocument } from "pdf-lib";
 import type { AxeResults } from "axe-core";
 import * as resume from "./resume/resume.json" assert { type: "json" };
@@ -13,6 +13,7 @@ import { Configuration } from "./config";
 
 class ResumeBuilder {
     public axeResults!: AxeResults;
+    private text: string = "";
     private html: string = "";
     private professionalHtml: string = "";
     private markdown: string = "";
@@ -27,15 +28,17 @@ class ResumeBuilder {
     }
 
     private async setupDirectories() {
-        await mkdir(Configuration.OUT_DIR).catch(() => {});
+        await mkdir(Configuration.OUT_DIR).catch(() => { });
     }
 
     private async generateSourceFiles() {
+        this.text = await render(resume, { render: renderText });
         this.html = await render(resume, { render: renderHtml });
         this.professionalHtml = await suppressErrors(() => render(resume, { render: professional }));
         this.markdown = await render(resume, { render: renderMarkdown });
         this.htmlCombinedMarkdown = `<!--\n${this.markdown}\n-->${this.html}`;
 
+        await writeFile(Configuration.TXT_PATH, this.text);
         await writeFile(Configuration.MD_PATH, this.markdown);
         await writeFile(Configuration.HTML_PATH, this.html);
     }
@@ -108,12 +111,16 @@ class ResumeBuilder {
                 modificationDate: new Date(resume.meta.lastModified),
                 afRelationship: AFRelationship.Alternative
             });
+            pdf.addJavaScript(
+                "log_resume",
+                `console.println(\`\n${this.text}\`)`
+            )
 
             const optimized = await pdf.save({ useObjectStreams: true, addDefaultPage: false });
             await writeFile(filePath, optimized);
         }
     }
-    
+
     private async createPolyglotFile() {
         await createPolyglot(Configuration.PDF_PATH, this.htmlCombinedMarkdown, Configuration.POLYGLOT_PATH);
     }

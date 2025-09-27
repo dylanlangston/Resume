@@ -2,7 +2,6 @@
   "private": true,
   "devDependencies": {
     "@iconify-json/pixel": "^1.2.1",
-    "@tailwindcss/browser": "^4.1.13",
     "@types/minify": "^9.1.4",
     "figlet": "^1.9.1",
     "hast-util-raw": "^9.1.0",

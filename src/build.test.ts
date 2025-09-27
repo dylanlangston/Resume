@@ -12,6 +12,11 @@ beforeAll(async () => {
     await builder.build();
 });
 
+test("Text generated successfully", async () => {
+    const exists = await stat(Configuration.TXT_PATH).then(() => true).catch(() => false);
+    expect(exists).toBe(true);
+});
+
 test("HTML generated successfully", async () => {
     const exists = await stat(Configuration.HTML_PATH).then(() => true).catch(() => false);
     expect(exists).toBe(true);
@@ -31,6 +36,10 @@ test("PDFs generated successfully", async () => {
 
 test("Accessibility violations should be zero", () => {
     expect(builder.axeResults).toBeDefined();
+    for (const violation of builder.axeResults.violations)
+    {
+        console.error(violation)
+    }
     expect(builder.axeResults.violations.length).toBe(0);
 });
 

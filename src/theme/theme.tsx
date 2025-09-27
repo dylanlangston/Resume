@@ -80,7 +80,7 @@ const renderSection = (title: string, content: (Result | string)[] | undefined |
     if (!content || content.length === 0) return null;
     return (
         <section className={`pb-2 border-t-1 border-muted ${className}`}>
-            <div className="flex  pl-1 hidden-open-bracket">
+            <div className="flex pl-1 hidden-open-bracket">
                 <h2 className="hidden-equal subtitle" title={title}>
                     {formatTitle(title)}
                 </h2>
@@ -134,7 +134,7 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                         />
                     </picture>
                 )}
-                <div className="px-1 text-center m-auto">
+                <div className="px-1 text-center m-auto overflow-hidden">
                     {basics.name && (
                         <span style="font: italic 12px monospace;line-height: 12px;" aria-label={basics.name} className="text-accent whitespace-pre mt-1">
                             <pre aria-hidden="true" style="user-select: none;">
@@ -280,14 +280,21 @@ const renderPublications = (publications: Resume['publications']) =>
         </div>
     ));
 
-const renderFooter = (className: string = '') =>
+const renderHeader = (className: string = 'header-area') =>
+    <header className={`h-[32px] pt-[4px] bg-subtle rounded-t-lg border-muted ${className}`}>
+        {raw(
+            <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{{ type: 'raw', value: pixel.icons['code-solid'].body }}</svg>
+        )}
+    </header>
+
+const renderFooter = (className: string = 'footer-area') =>
     <footer className={`pb-2 border-t-1 border-muted ${className}`}>
         <div className="flex pl-2">
             <p className="text-muted">This resume was generated from code <a className="link" href="https://github.com/dylanlangston/Resume" target="_blank">available here</a></p>
         </div>
     </footer>
 
-const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> => {
+const Theme = async (resume: Resume, consoleMessage?: string): Promise<Result> => {
     const {
         basics,
         work,
@@ -298,6 +305,7 @@ const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> 
         projects,
     } = resume;
 
+    const headerSection = renderHeader('header-area');
     const basicSection = await renderBasics(basics, 'basics-area');
     const aboutSection = basics?.summary ? renderSection('About', [<p className="ml-4 mr-2">{basics.summary}</p>], 'about-area') : null;
     const workSection = renderSection('Work Experience', renderWork(work), 'work-area');
@@ -308,25 +316,10 @@ const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> 
     const skillsSection = renderSection('Skills', renderSkills(skills), 'skills-area');
     const footerSection = renderFooter('footer-area');
 
-    // This ensures the markdown version of the resume can reuse the existing code but has the correct layout.
-    if (markdownVersion) {
-        return <>{[
-            basicSection,
-            aboutSection,
-            workSection,
-            projectsSection,
-            awardsSection,
-            certificatesSection,
-            publicationsSection,
-            skillsSection,
-            footerSection
-        ]}</>
-    }
-
     return (
         <>
             {{ type: 'doctype' } as Doctype}
-            <html lang="en">
+            <html lang="en" className="p-2">
                 <head>
                     <meta charSet="utf-8" />
                     <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:;" />
@@ -338,24 +331,22 @@ const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> 
                     <style>{styles}</style>
                     <style>{generateThemeStyles()}</style>
                 </head>
-                <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards] bg-canvas">
-                    <div className="mx-auto max-w-screen-2xl border-l border-b border-r border-muted">
-                        <main className="grid-container">
-                            <div className="left-column">
-                                {basicSection}
-                                {skillsSection}
-                                {footerSection}
-                            </div>
-                            <div className="right-column">
-                                {aboutSection}
-                                {workSection}
-                                {projectsSection}
-                                {awardsSection}
-                                {certificatesSection}
-                                {publicationsSection}
-                            </div>
-                        </main>
-                    </div>
+                <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards] bg-canvas max-w-screen-2xl border-1 border-muted rounded-lg m-auto">
+                    {headerSection}
+                    <main className="grid-container rounded-lg">
+                        {basicSection}
+                        {aboutSection}
+                        {workSection}
+                        {projectsSection}
+                        {awardsSection}
+                        {certificatesSection}
+                        {publicationsSection}
+                        {skillsSection}
+                        {footerSection}
+                    </main>
+                    {consoleMessage ? <script>
+                        console.log(`{consoleMessage}`)
+                    </script> : null}
                 </body>
             </html>
         </>

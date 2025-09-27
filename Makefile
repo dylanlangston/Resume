@@ -22,6 +22,7 @@ build-docker: ## Build the resume using docker.
 
 release: ## Release the build artifacts.
 	@mkdir -p ./dist
+	@cp ./out/resume.txt ./dist/resume.txt
 	@cp ./out/resume.md ./dist/resume.md
 	@cp ./out/resume.pdf ./dist/resume.pdf
 	@cp ./out/professional.pdf ./dist/professional.pdf

@@ -89,20 +89,47 @@ h6 {
 }
 
 /* Area ordering for mobile-first layout */
-.basics-area { order: 1; }
-.about-area { order: 2; }
-.work-area { order: 3; }
-.projects-area { order: 4; }
-.awards-area { order: 5; }
-.certificates-area { order: 6; }
-.publications-area { order: 7; }
-.skills-area { order: 8; }
-.footer-area { order: 9; }
+.basics-area {
+    order: 1;
+}
+
+.about-area {
+    order: 2;
+}
+
+.work-area {
+    order: 3;
+}
+
+.projects-area {
+    order: 4;
+}
+
+.awards-area {
+    order: 5;
+}
+
+.certificates-area {
+    order: 6;
+}
+
+.publications-area {
+    order: 7;
+}
+
+.skills-area {
+    order: 8;
+}
+
+.footer-area {
+    order: 9;
+}
 
 
 /* Components */
 .name {
-    color: rgba(255, 255, 255, 0.01); /* hidden text overlay for the figlet, making it selectable */
+    color: rgba(255, 255, 255, 0.01);
+    /* hidden text overlay for the figlet, making it selectable */
     font-size: 30px;
     margin-top: -30px;
     margin-bottom: 20px;
@@ -156,11 +183,11 @@ li::marker {
 
 
 /* Animations */
-
 @keyframes fadeIn {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -171,29 +198,56 @@ li::marker {
 @media (min-width: 768px) {
     .grid-container {
         display: grid;
+        grid-auto-flow: column dense;
         grid-template-columns: minmax(380px, 35%) 1fr;
+        grid-auto-rows: min-content;
+        gap: 0px 0px;
+        grid-template-areas:
+            "basic about about"
+            "basic work work"
+            "skills work work"
+            "skills work work"
+            "skills certificates certificates"
+            "footer certificates certificates";
     }
 
-    .left-column,
-    .right-column {
-        display: block;
-    }
-
-    .left-column {
+    .basics-area {
+        grid-area: basic;
         border-right: 1px solid var(--color-border-muted);
     }
 
-    /* Reset order for grid layout */
-    .basics-area,
-    .about-area,
-    .work-area,
-    .projects-area,
-    .awards-area,
-    .certificates-area,
-    .publications-area,
-    .skills-area,
+    .about-area {
+        grid-area: about;
+    }
+
+    .work-area {
+        grid-area: work;
+    }
+
+    .projects-area {
+        grid-area: projects;
+    }
+
+    .awards-area {
+        grid-area: awards;
+    }
+
+    .certificates-area {
+        grid-area: certificates;
+    }
+
+    .publications-area {
+        grid-area: publications;
+    }
+
+    .skills-area {
+        grid-area: skills;
+        border-right: 1px solid var(--color-border-muted);
+    }
+
     .footer-area {
-        order: 0;
+        grid-area: footer;
+        border-right: 1px solid var(--color-border-muted);
     }
 }
 
@@ -204,9 +258,15 @@ li::marker {
         margin: 16px;
     }
 
+    html {
+        padding: 0;
+    }
+
     body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        border-top: 0;
+        border-radius: 0;
     }
 
     *,
@@ -215,8 +275,13 @@ li::marker {
         font-size: 12px;
     }
 
+    .header-area {
+        height: 0;
+        padding: 0;
+        border: 0;
+    }
+
     .grid-container {
-        display: grid;
         grid-template-columns: 280px 1fr !important;
     }
 

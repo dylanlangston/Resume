@@ -5,7 +5,6 @@
       "name": "resume",
       "devDependencies": {
         "@types/bun": "latest",
-        "@types/turndown": "^5.0.5",
         "axe-core": "^4.10.3",
         "jsonresume-theme-local": "./theme",
         "jsonresume-theme-professional": "^1.1.0",
@@ -46,8 +45,6 @@
     "@types/react": ["@types/react@19.1.13", "", { "dependencies": { "csstype": "^3.0.2" } }, ""],
 
     "@types/stylis": ["@types/stylis@4.2.5", "", {}, "sha512-1Xve+NMN7FWjY14vLoY5tL3BVEQ/n42YLwaqJIPYhotZ9uBHt87VceMwWQpzmdEt2TNXIorIFG+YeCUUW7RInw=="],
-
-    "@types/turndown": ["@types/turndown@5.0.5", "", {}, "sha512-TL2IgGgc7B5j78rIccBtlYAnkuv8nUQqhQc+DSYV5j9Be9XOcm/SKOVRuA47xAVI3680Tk9B1d8flK2GWT2+4w=="],
 
     "@types/yauzl": ["@types/yauzl@2.10.3", "", { "dependencies": { "@types/node": "*" } }, ""],
 
