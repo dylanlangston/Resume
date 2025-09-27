@@ -10,7 +10,7 @@ import { minify, type Options } from 'minify'
 type Resume = Parameters<typeof resumed.render>[0];
 
 const renderHtml = async (resume: Resume): Promise<string> => {
-  const baseTree = await Theme(resume);
+  const baseTree = await Theme(resume, false);
 
   const tailwindTree = await applyTailwindToHast(baseTree);
 
@@ -29,8 +29,9 @@ const renderHtml = async (resume: Resume): Promise<string> => {
 };
 
 const renderMarkdown = async (resume: Resume): Promise<string> => {
-  const tree = await Theme(resume);
+  const tree = await Theme(resume, true);
   const mdast = toMdast(tree);
+  
   const handler = (bodyFormat?: (body: string, ...args: Parameters<Handle>) => string, joinWith: string = ""): Handle => (...args) => {
     const [node, _, state, info] = args;
     const children: any[] = node?.children ?? [];

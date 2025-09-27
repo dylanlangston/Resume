@@ -18,6 +18,7 @@ const colors = {
     link: { fg: '#0550ae' },
     header: { title: '#cf222e', subtitle: '#953800' },
     neutral: { subtle: '#f6f8fa' },
+    selection: { default: "#0969da33" }
 };
 
 const generateThemeStyles = (): string => `
@@ -32,17 +33,8 @@ const generateThemeStyles = (): string => `
     --color-header-title: ${colors.header.title};
     --color-header-subtitle: ${colors.header.subtitle};
     --color-neutral-subtle: ${colors.neutral.subtle};
+    --color-selection-default: ${colors.selection.default};
   }
-  .bg-canvas { background-color: var(--color-canvas-default) !important; }
-  .text-muted { color: var(--color-fg-muted) !important; }
-  .text-accent { color: var(--color-accent-fg) !important; }
-  .border-muted { border-color: var(--color-border-muted) !important; }
-  .bg-subtle { background-color: var(--color-neutral-subtle) !important; }
-  .title{ color: var(--color-header-title) !important; }
-  .subtitle { color: var(--color-header-subtitle) !important; }
-  .link { color: var(--color-link-fg) !important; text-decoration: underline; }
-  .link:hover { text-decoration: none; }
-  td { vertical-align: top; }
 `;
 
 const formatTitle = (val: string): string => {
@@ -53,10 +45,10 @@ export const reverseFormatTitle = (val: string): string => {
     return val.split('_').map(s => String(s).charAt(0).toUpperCase() + String(s).slice(1)).join(' ')
 }
 
-const renderSection = (title: string, content: (Result | string)[] | undefined | null): Result | null => {
+const renderSection = (title: string, content: (Result | string)[] | undefined | null, className: string = ''): Result | null => {
     if (!content || content.length === 0) return null;
     return (
-        <section className="pb-2 border-t-1 border-muted">
+        <section className={`pb-2 border-t-1 border-muted ${className}`}>
             <div className="flex  pl-1 hidden-open-bracket">
                 <h2 className="hidden-equal subtitle" title={title}>
                     {formatTitle(title)}
@@ -85,7 +77,7 @@ const embedImage = async (uri: string): Promise<string> => {
     return `data:${mimeType};base64,${buffer.toString('base64')}`;
 };
 
-const renderBasics = async (basics: Resume['basics']): Promise<Result> => {
+const renderBasics = async (basics: Resume['basics'], className: string = ''): Promise<Result> => {
     const profileIcons: Record<string, string> = {
         'LinkedIn': pixel.icons.linkedin.body,
         'GitHub': pixel.icons.github.body,
@@ -97,9 +89,9 @@ const renderBasics = async (basics: Resume['basics']): Promise<Result> => {
         'Itch.io': (name: string) => `${name}.itch.io`,
     }
 
-    if (!basics) return <section className="pb-2 border-t-1 border-muted"></section>;
+    if (!basics) return <section className={`pb-2 border-t-1 border-muted ${className}`}></section>;
     return (
-        <section className="pb-2 border-t-1 border-muted">
+        <section className={`pb-2 border-t-1 border-muted ${className}`}>
             <div className="flex">
                 {basics.image && (
                     <picture>
@@ -208,7 +200,7 @@ const renderSkills = (skills: Resume['skills']) =>
     skills?.map(skill => (
         <div className="item ml-4 mr-2">
             {skill.name && <h3 className="title">{skill.name}</h3>}
-            {skill.level && <h4 className=" text-muted">{`Level: ${skill.level}`}</h4>}
+            {skill.level && <h4 className="text-muted">{`Level: ${skill.level}`}</h4>}
             {skill.keywords && (
                 <ul className="flex flex-wrap gap-1 hidden-open-bracket-square hidden-close-bracket-square">
                     {skill.keywords.map(keyword => (
@@ -257,7 +249,14 @@ const renderPublications = (publications: Resume['publications']) =>
         </div>
     ));
 
-const Theme = async (resume: Resume): Promise<Result> => {
+const renderFooter = (className: string = '') =>
+    <footer className={`pb-2 border-t-1 border-muted ${className}`}>
+        <div className="flex pl-2">
+            <p className="text-muted">This resume was generated from code <a className="link" href="https://github.com/dylanlangston/Resume" target="_blank">available here</a></p>
+        </div>
+    </footer>
+
+const Theme = async (resume: Resume, markdownVersion: boolean): Promise<Result> => {
     const {
         basics,
         work,
@@ -268,19 +267,30 @@ const Theme = async (resume: Resume): Promise<Result> => {
         projects,
     } = resume;
 
-    const leftColumnContent = [
-        await renderBasics(basics),
-        renderSection('Skills', renderSkills(skills))
-    ].filter(Boolean) as (Result | string)[];
+    const basicSection = await renderBasics(basics, 'basics-area');
+    const aboutSection = basics?.summary ? renderSection('About', [<p className="ml-4 mr-2">{basics.summary}</p>], 'about-area') : null;
+    const workSection = renderSection('Work Experience', renderWork(work), 'work-area');
+    const projectsSection = renderSection('Projects', renderProjects(projects), 'projects-area');
+    const awardsSection = renderSection('Awards', renderAwards(awards), 'awards-area');
+    const certificatesSection = renderSection('Certificates', renderCertificates(certificates), 'certificates-area');
+    const publicationsSection = renderSection('Publications', renderPublications(publications), 'publications-area');
+    const skillsSection = renderSection('Skills', renderSkills(skills), 'skills-area');
+    const footerSection = renderFooter('footer-area');
 
-    const rightColumnContent = [
-        basics?.summary ? renderSection('About', [<p className="ml-4 mr-2">{basics.summary}</p>]) : null,
-        renderSection('Work Experience', renderWork(work)),
-        renderSection('Projects', renderProjects(projects)),
-        renderSection('Awards', renderAwards(awards)),
-        renderSection('Certificates', renderCertificates(certificates)),
-        renderSection('Publications', renderPublications(publications)),
-    ].filter(Boolean) as (Result | string)[];
+    // This ensures the markdown version of the resume can reuse the existing code but has the correct layout.
+    if (markdownVersion) {
+        return <>{[
+            basicSection,
+            aboutSection,
+            workSection,
+            projectsSection,
+            awardsSection,
+            certificatesSection,
+            publicationsSection,
+            skillsSection,
+            footerSection
+        ]}</>
+    }
 
     return (
         <>
@@ -298,28 +308,21 @@ const Theme = async (resume: Resume): Promise<Result> => {
                     <style>{generateThemeStyles()}</style>
                 </head>
                 <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards]">
-                    <div className="mx-auto bg-canvas">
-                        <div className="md:flex">
-                            <div className="w-full md:w-[35%] md:min-w-[380px] min-w-print-0 border-l border-b border-r md:border-r-0 border-muted">{leftColumnContent}</div>
-                            <div className="w-full md:w-[65%] border-x border-b border-muted">{rightColumnContent}</div>
+                    <div className="mx-auto bg-canvas grid-container border-l border-b border-r border-muted">
+                        <div className="left-column">
+                            {basicSection}
+                            {skillsSection}
+                            {footerSection}
+                        </div>
+                        <div className="right-column">
+                            {aboutSection}
+                            {workSection}
+                            {projectsSection}
+                            {awardsSection}
+                            {certificatesSection}
+                            {publicationsSection}
                         </div>
                     </div>
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QY59QNZZL"></script>
-                    <script>
-                        {`
-                        window.dataLayer = window.dataLayer || [];
-                        function gtag(){dataLayer.push(arguments);}
-                        gtag('js', new Date());
-
-                        gtag('consent', 'default', {
-                            'client_storage': 'none',
-                            'ad_storage': 'denied',
-                            'analytics_storage': 'denied'
-                        });
-
-                        gtag('config', 'G-2QY59QNZZL', { 'anonymize_ip': true });
-                    `}
-                    </script>
                 </body>
             </html>
         </>
