@@ -64,6 +64,7 @@ const generateThemeStyles = (): string => `
     }
     body {
       color: var(--color-fg-default);
+      background-color: var(--color-canvas-default);
     }
   }
 `;
