@@ -15,7 +15,7 @@ RUN curl -L --proto '=https' --tlsv1.3 -sSf https://bun.sh/install | bash
 
 FROM base AS build
 COPY . /root/
-RUN make build release
+RUN make build
 
 FROM scratch AS publish
-COPY --from=build /root/dist /
+COPY --from=build /root/out /
