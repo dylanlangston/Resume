@@ -317,7 +317,7 @@ const renderHeader = (className: string = 'header-area') =>
                 </div>
             </label>
             <label htmlFor="menu-toggle" class="page-overlay"></label>
-            <ul className="menu absolute -right-2 py-2 w-48 bg-canvas rounded-lg border-muted border-1 shadow-2xl z-20 hidden">
+            <ul className="menu absolute -right-2 py-2 w-48 bg-canvas rounded-lg border-muted border-1 shadow-2xl z-20 hidden select-none">
                 <a href="/" type="application/pdf" download="resume.pdf"><li className="pl-1">Download PDF</li></a>
                 <a href="/" type="text/html" download="resume.html"><li className="pl-1">Download HTML</li></a>
                 {/* <a href="/" type="text/markdown" download="resume.md"><li className="pl-1">Download Markdown</li></a> */}
