@@ -24,13 +24,39 @@ class ResumeBuilder {
     private htmlCombinedMarkdown: string = "";
 
     public async build() {
+        let stepStart = performance.now();
+        
+        console.log("  Build Step 1: Setting up directories...");
         await this.setupDirectories();
+        console.log(`✓ Build Step 1 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
+        stepStart = performance.now();
+
+        console.log("  Build Step 2: Generating source files...");
         await this.generateSourceFiles();
+        console.log(`✓ Build Step 2 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
+        stepStart = performance.now();
+
+        console.log("  Build Step 3: Generating PDFs...");
         await this.generatePdfs();
+        console.log(`✓ Build Step 3 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
+        stepStart = performance.now();
+
+        console.log("  Build Step 4: Generating screenshots...");
         await this.generateScreenshots();
+        console.log(`✓ Build Step 4 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
+        stepStart = performance.now();
+
+        console.log("  Build Step 5: Adding PDF metadata...");
         await this.addPdfMetadata();
+        console.log(`✓ Build Step 5 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
+        stepStart = performance.now();
+
+        console.log("  Build Step 6: Creating polyglot file...");
         await this.createPolyglotFile();
+        console.log(`✓ Build Step 6 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
+        console.log();
     }
+
 
     private async setupDirectories() {
         await mkdir(Configuration.OUT_DIR).catch(() => { });
