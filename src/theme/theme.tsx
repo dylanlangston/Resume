@@ -34,7 +34,7 @@ const colors = {
 };
 
 const generateThemeStyles = (forceDarkMode: boolean): string => forceDarkMode ?
-`
+    `
   :root {
     --color-fg-default: ${colors.dark.fg.default};
     --color-fg-muted: ${colors.dark.fg.muted};
@@ -52,7 +52,7 @@ const generateThemeStyles = (forceDarkMode: boolean): string => forceDarkMode ?
     color: var(--color-fg-default);
   }
 ` :
-`
+    `
   :root {
     --color-fg-default: ${colors.light.fg.default};
     --color-fg-muted: ${colors.light.fg.muted};
@@ -300,10 +300,29 @@ const renderPublications = (publications: Resume['publications']) =>
     ));
 
 const renderHeader = (className: string = 'header-area') =>
-    <header className={`h-[32px] pt-[4px] bg-subtle rounded-t-lg border-muted ${className}`}>
-        {raw(
-            <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{{ type: 'raw', value: pixel.icons['code-solid'].body }}</svg>
-        )}
+    <header className={`h-[32px] pt-[4px] bg-subtle rounded-t-lg border-muted flex items-center justify-between ${className}`}>
+        <div className="flex items-center">
+            {raw(
+                <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{{ type: 'raw', value: pixel.icons['code-solid'].body }}</svg>
+            )}
+            <p className="ml-2 select-none">Resume</p>
+        </div>
+        <div className="relative inline-block mr-2">
+            <input type="checkbox" id="menu-toggle" className="hidden" />
+            <label htmlFor="menu-toggle" className="cursor-pointer">
+                <div className="w-6 h-6 mb-1 pl-2 flex flex-col justify-center rounded-md items-center border-muted border-1 inset-shadow-sm">
+                    {raw(
+                        <svg className="mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{{ type: 'raw', value: pixel.icons['ellipses-horizontal-solid'].body }}</svg>
+                    )}
+                </div>
+            </label>
+            <label htmlFor="menu-toggle" class="page-overlay"></label>
+            <ul className="menu absolute -right-2 py-2 w-48 bg-canvas rounded-lg border-muted border-1 shadow-2xl z-20 hidden">
+                <a href="/" download="resume.pdf"><li className="pl-1">Download PDF</li></a>
+                <a href="/" download="resume.html"><li className="pl-1">Download HTML</li></a>
+                <a href="/" download="resume.md"><li className="pl-1">Download Markdown</li></a>
+            </ul>
+        </div>
     </header>
 
 const renderFooter = (className: string = 'footer-area') =>
@@ -317,6 +336,7 @@ type ThemeConfig = {
     resume: Resume,
     consoleMessage?: string,
     forceDarkMode?: boolean;
+    hideHeader?: boolean;
 }
 
 const Theme = async (config: ThemeConfig): Promise<Result> => {
@@ -357,7 +377,7 @@ const Theme = async (config: ThemeConfig): Promise<Result> => {
                     <style>{generateThemeStyles(Boolean(config.forceDarkMode))}</style>
                 </head>
                 <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards] bg-canvas max-w-screen-2xl border-1 border-muted rounded-lg m-auto">
-                    {headerSection}
+                    {Boolean(config.hideHeader) ?  null : headerSection}
                     <main className="grid-container rounded-lg">
                         {basicSection}
                         {aboutSection}

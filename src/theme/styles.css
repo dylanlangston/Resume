@@ -181,6 +181,43 @@ li::marker {
     content: "";
 }
 
+/* menu */
+#menu-toggle:hover + label > div,
+#menu-toggle:checked + label > div {
+    background: var(--color-canvas-default);
+}
+
+.page-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 10;
+}
+
+.menu {
+    display: none;
+    position: absolute;
+    z-index: 20;
+}
+
+.menu a {
+    margin: 2px;
+    display: block;
+    border-radius: 10px;
+}
+
+.menu a:hover {
+    background: var(--color-neutral-subtle);
+}
+
+#menu-toggle:checked ~ .page-overlay,
+#menu-toggle:checked ~ .menu {
+    display: block;
+}
 
 /* Animations */
 @keyframes fadeIn {
@@ -277,6 +314,7 @@ li::marker {
 
     .header-area {
         height: 0;
+        display: none;
         padding: 0;
         border: 0;
     }

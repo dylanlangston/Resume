@@ -43,7 +43,7 @@ const markdownHandler = (
 };
 
 const renderMarkdown = async (resume: Resume): Promise<string> => {
-  const tree = await Theme({resume});
+  const tree = await Theme({resume, hideHeader: true});
   const mdast = toMdast(tree);
 
   return toMarkdown(mdast, {
@@ -69,7 +69,7 @@ const renderMarkdown = async (resume: Resume): Promise<string> => {
 };
 
 const renderText = async (resume: Resume) => {
-  const tree = await Theme({resume});
+  const tree = await Theme({resume, hideHeader: true});
   const mdast = toMdast(tree);
 
   return toMarkdown(mdast, {
