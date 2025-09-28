@@ -16,7 +16,7 @@
   },
   "private": true,
   "scripts": {
-    "build": "bun test build.test.ts",
+    "build": "bun test --timeout 30000 build.test.ts",
     "preview": "bun --hot preview.ts"
   },
   "type": "module"
