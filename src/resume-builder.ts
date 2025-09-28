@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from "fs/promises";
+import { mkdir, readFile, writeFile, unlink } from "fs/promises";
 import puppeteer from "puppeteer";
 import { render } from "resumed";
 import { renderHtml, renderMarkdown, renderText } from "jsonresume-theme-local";
@@ -11,6 +11,8 @@ import { suppressErrors } from "./suppress-errors";
 import { createPolyglot } from "./createPolyglot";
 import { Configuration } from "./config";
 import { renderHtmlDark } from "./theme";
+import { Poppler } from "node-poppler";
+import sharp from "sharp";
 
 class ResumeBuilder {
     public axeResults!: AxeResults;
@@ -25,6 +27,7 @@ class ResumeBuilder {
         await this.setupDirectories();
         await this.generateSourceFiles();
         await this.generatePdfs();
+        await this.generateScreenshots();
         await this.addPdfMetadata();
         await this.createPolyglotFile();
     }
@@ -91,6 +94,48 @@ class ResumeBuilder {
         }
 
         await browser.close();
+    }
+
+    private async generateScreenshots() {
+        const poppler = new Poppler()
+        for (const config of [
+            { image: Configuration.SCREENSHOT_PATH, pdf: Configuration.PDF_PATH },
+            { image: Configuration.SCREENSHOT_DARK_PATH, pdf: Configuration.PDF_DARK_PATH }
+        ]) {
+            const png = await poppler.pdfToCairo(config.pdf, undefined!, {
+                singleFile: true,
+                pngFile: true,
+                resolutionXYAxis: 200
+            })
+
+            await sharp(Buffer.from(png, 'binary'))
+                .webp({
+                    lossless: true
+                })
+                .toFile(config.image);
+        }
+
+        // Create social preview
+        const socialPreviewPng = await poppler.pdfToCairo(Configuration.PDF_PATH, undefined!, {
+            singleFile: true,
+            cropBox: true,
+            scalePageToXAxis: 1160,
+            cropWidth: 1200,
+            cropHeight: 640,
+            pngFile: true
+        });
+        await sharp(Buffer.from(socialPreviewPng, 'binary'))
+            .extend({
+                top: 0,
+                bottom: 0,
+                left: 60,
+                right: 60,
+                background: { r: 255, g: 255, b: 255, alpha: 1 }
+            })
+            .png({
+                quality: 80
+            })
+            .toFile(Configuration.SOCIAL_PREVIEW_PATH);
     }
 
     private async addPdfMetadata() {

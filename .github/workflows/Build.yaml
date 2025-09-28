@@ -32,18 +32,9 @@ jobs:
       - name: Checkout Submodules
         id: submodules
         run: make setup-git-clone
-      - name: Build PDF
+      - name: Build Resume
         id: build
         run: make build-docker release
-      - name: Upload PDF artifact
-        id: upload-pdf
-        uses: actions/upload-artifact@v4
-        with:
-          name: Resume
-          path: './dist/resume.pdf'
-      - name: Update screenshot
-        id: screenshot
-        run: make update-readme-screenshot-docker
       - name: Commit Changes to Repository
         if: github.ref == 'refs/heads/main' && github.repository == 'dylanlangston/resume'
         id: commit
@@ -56,7 +47,7 @@ jobs:
           git push origin main
       - name: Prepare Github Pages artifact
         id: rename
-        run: mkdir --parents ./publish; mv ./dist/resume.md.html.pdf $_/index.html
+        run: mkdir --parents ./publish; mv ./out/resume.md.html.pdf ./publish/index.html; mv ./out/social-preview.png ./publish/social-preview.png
       - name: Upload GitGub Pages artifact
         id: upload-html
         uses: actions/upload-pages-artifact@v4

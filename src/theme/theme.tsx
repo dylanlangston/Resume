@@ -370,6 +370,11 @@ const Theme = async (config: ThemeConfig): Promise<Result> => {
                     <meta http-equiv="Content-Security-Policy" content="default-src 'self' mailto:; style-src 'self' 'unsafe-inline'; script-src 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self' data:;" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="description" content={basics?.summary ?? 'Resume'} />
+                    <meta property="og:title" content={basics?.name ? `${basics.name}'s Resume` : 'Resume'} />
+                    <meta property="og:description" content={basics?.summary ?? 'Resume'} />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" content="https://resume.dylanlangston.com/" />
+                    <meta property="og:image" content="https://resume.dylanlangston.com/social-preview.png" />
                     <link rel="icon" type="image/svg+xml" href={`data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/>${pixel.icons['code-solid'].body}<style> circle { fill: white; } path { fill: black; } @media (prefers-color-scheme: dark) { circle { fill: black; } path { fill: white; } } </style></svg>`} />
                     <title>{basics?.name ? `${basics.name}'s Resume` : 'Resume'}</title>
                     <style>{fonts}</style>

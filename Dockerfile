@@ -17,12 +17,5 @@ FROM base AS build
 COPY . /root/
 RUN make build release
 
-FROM build AS take_screenshot
-RUN make update-readme-screenshot
-
 FROM scratch AS publish
 COPY --from=build /root/dist /
-
-FROM scratch AS update_screenshot
-COPY --from=take_screenshot /root/screenshot.webp /screenshot.webp
-COPY --from=take_screenshot /root/screenshot_dark.webp /screenshot_dark.webp
