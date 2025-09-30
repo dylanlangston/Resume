@@ -47,7 +47,7 @@ jobs:
           git push origin main
       - name: Prepare Github Pages artifact
         id: rename
-        run: mkdir --parents ./publish; mv ./out/resume.md.html.pdf ./publish/index.html; mv ./out/social-preview.png ./publish/social-preview.png
+        run: mkdir --parents ./publish; mv ./out/resume.md.html.pdf ./publish/index.html;cp ./publish/404.html; mv ./out/social-preview.png ./publish/social-preview.png
       - name: Upload GitGub Pages artifact
         id: upload-html
         uses: actions/upload-pages-artifact@v4
