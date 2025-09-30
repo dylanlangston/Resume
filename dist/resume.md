@@ -9,7 +9,7 @@
 
 # Dylan Langston
 
-#### Full Stack Developer
+*Full Stack Developer*
 
 Alexandria, Virginia
 
@@ -33,137 +33,137 @@ Deep expertise in C#, modern web development, and cloud architecture on AWS and 
 
 2024-06 til Present
 
-#### Senior Cloud Applications Engineer (Promoted)
+*Senior Cloud Applications Engineer (Promoted)*
 
 I fill a pivotal role in development of our enterprise-level Generative AI cloud application, NebulaONE. My responsibilities span the entire project, from requirements gathering to final production deployment.
 
-* Architected and implemented a frontend testing pipeline using Playwright and Vitest, which significantly improved test coverage.
-* Delivered a mission-critical marketplace deployment application, leveraging React and C# Azure Functions to create a streamlined self-serve customer experience.
-* Championed and refined the merge and release process, empowering the team to share ownership and reduce dependency on individuals.
+- Architected and implemented a frontend testing pipeline using Playwright and Vitest, which significantly improved test coverage.
+- Delivered a mission-critical marketplace deployment application, leveraging React and C# Azure Functions to create a streamlined self-serve customer experience.
+- Championed and refined the merge and release process, empowering the team to share ownership and reduce dependency on individuals.
 
 ### Maryland Motor Vehicle Administration
 
 2023-07 til 2024-06
 
-#### IT Programmer Analyst Lead/Advanced
+*IT Programmer Analyst Lead/Advanced*
 
 Responsible for translating complex business needs into high-quality, compliant C# solutions. A significant part of my role involved mentoring junior developers and fostering a team culture centered on technical excellence and continuous improvement.
 
-* Authored comprehensive test cases while enforcing rigorous coding standards to ensure the delivery of exceptionally robust and reliable software.
-* Collaborated closely with stakeholders to strategically enhance software functionality, ensuring our technical solutions directly aligned with critical government processes and objectives.
+- Authored comprehensive test cases while enforcing rigorous coding standards to ensure the delivery of exceptionally robust and reliable software.
+- Collaborated closely with stakeholders to strategically enhance software functionality, ensuring our technical solutions directly aligned with critical government processes and objectives.
 
 ### Digitech Systems, LLC
 
 2017-10 til 2023-07
 
-#### Software Engineer (Promoted)
+*Software Engineer (Promoted)*
 
 Developed and maintained a diverse portfolio of business applications for both desktop and web platforms. My work involved a mix of greenfield development and modernization of existing systems.
 
-* Designed and implemented scalable, event-driven AWS microservices utilizing Lambda and API Gateway.
-* Spearheaded the modernization of a core Robotic Process Automation (RPA) framework, successfully upgrading it from .NET Framework, WPF, and WCF to .NET Core, Avalonia, and gRPC.
-* Played a pivotal role in frontend development using Angular and TypeScript, focusing on the overall user experience.
-* Leveraging my expertise as a subject matter expert in software support, I authored comprehensive training documentation and developed internal tools.
+- Designed and implemented scalable, event-driven AWS microservices utilizing Lambda and API Gateway.
+- Spearheaded the modernization of a core Robotic Process Automation (RPA) framework, successfully upgrading it from .NET Framework, WPF, and WCF to .NET Core, Avalonia, and gRPC.
+- Played a pivotal role in frontend development using Angular and TypeScript, focusing on the overall user experience.
+- Leveraging my expertise as a subject matter expert in software support, I authored comprehensive training documentation and developed internal tools.
 
 ## Certificates
 
 ### AWS Certified Cloud Practitioner
 
-[View Certificate](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
+[View](https://www.credly.com/badges/7be86b7c-c5c0-4887-80ef-ebc2876a3ab0)
 
-#### Issuer: Amazon Web Services (AWS)
+*Issuer: Amazon Web Services (AWS)*
 
 ### AI Agents Fundamentals
 
-[View Certificate](https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/317758cbd696db56b38de460f76e0081f8310ec0c9d5078949204adb72a1da36?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250921T020006Z&X-Amz-Expires=3600&X-Amz-Signature=d0cca4a0e4f996f2b0fb9aacbd73a2d2ff75285b95afd9ca15892a9a26d3dd2d&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1758423606&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1ODQyMzYwNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvMzE3NzU4Y2JkNjk2ZGI1NmIzOGRlNDYwZjc2ZTAwODFmODMxMGVjMGM5ZDUwNzg5NDkyMDRhZGI3MmExZGEzNioifV19&Signature=Ac0XDN2peMqFm78JZZBFA1yIdfOnlLR1TvSBs3BztwLupL6DZjeYBODr6pgFK9j89B-xSwMNVrLUZIrM3pbH2BV%7EhHE91StbYktD0ZxPRbj4wD5nHgsO2uEOE68JweOgvelcJH7NlLBGw%7EId33bz08TDXUur2EE00SEPan7RuzQFuar3b5woMORiZ-P1qn3rOvOAGArP84cgtsUCnb3HU65ZLxMTv0osPG8FktbRVqoygLxr0RicIaQ4eHU0g3M%7ErNHr3zQa-WM3OJgPrvV7boBi0sAnip4hiX3cZiCV3I9HwRiNkEcFEKo6lZIAigSmGd5uAqMhUMWKxF8euV64lA__&Key-Pair-Id=K2L8F4GPSG1IFC)
+[View](https://cas-bridge.xethub.hf.co/xet-bridge-us/67a47037749ea2c4b9fafd4b/317758cbd696db56b38de460f76e0081f8310ec0c9d5078949204adb72a1da36?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cas%2F20250921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250921T020006Z&X-Amz-Expires=3600&X-Amz-Signature=d0cca4a0e4f996f2b0fb9aacbd73a2d2ff75285b95afd9ca15892a9a26d3dd2d&X-Amz-SignedHeaders=host&X-Xet-Cas-Uid=public&response-content-disposition=inline%3B+filename*%3DUTF-8%27%272025-02-11.png%3B+filename%3D%222025-02-11.png%22%3B&response-content-type=image%2Fpng&x-id=GetObject&Expires=1758423606&Policy=eyJTdGF0ZW1lbnQiOlt7IkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc1ODQyMzYwNn19LCJSZXNvdXJjZSI6Imh0dHBzOi8vY2FzLWJyaWRnZS54ZXRodWIuaGYuY28veGV0LWJyaWRnZS11cy82N2E0NzAzNzc0OWVhMmM0YjlmYWZkNGIvMzE3NzU4Y2JkNjk2ZGI1NmIzOGRlNDYwZjc2ZTAwODFmODMxMGVjMGM5ZDUwNzg5NDkyMDRhZGI3MmExZGEzNioifV19&Signature=Ac0XDN2peMqFm78JZZBFA1yIdfOnlLR1TvSBs3BztwLupL6DZjeYBODr6pgFK9j89B-xSwMNVrLUZIrM3pbH2BV%7EhHE91StbYktD0ZxPRbj4wD5nHgsO2uEOE68JweOgvelcJH7NlLBGw%7EId33bz08TDXUur2EE00SEPan7RuzQFuar3b5woMORiZ-P1qn3rOvOAGArP84cgtsUCnb3HU65ZLxMTv0osPG8FktbRVqoygLxr0RicIaQ4eHU0g3M%7ErNHr3zQa-WM3OJgPrvV7boBi0sAnip4hiX3cZiCV3I9HwRiNkEcFEKo6lZIAigSmGd5uAqMhUMWKxF8euV64lA__&Key-Pair-Id=K2L8F4GPSG1IFC)
 
-#### Issuer: Hugging Face
+*Issuer: Hugging Face*
 
 ## Skills
 
 ### Languages
 
-#### Level: Expert
+*Level: Expert*
 
-* C#
-* TypeScript
-* JavaScript
-* Python
-* Java
-* C++
-* HTML/CSS
-* Shell Script (bash)
-* PowerShell
-* Mermaid
-* Rust
-* Zig
+- C#
+- TypeScript
+- JavaScript
+- Python
+- Java
+- C++
+- HTML/CSS
+- Shell Script (bash)
+- PowerShell
+- Mermaid
+- Rust
+- Zig
 
 ### Frameworks & Libraries
 
-#### Level: Expert
+*Level: Expert*
 
-* .NET
-* ASP.NET
-* React
-* Angular
-* Node.js
-* WPF
-* Entity Framework
-* Avalonia
-* Svelte
+- .NET
+- ASP.NET
+- React
+- Angular
+- Node.js
+- WPF
+- Entity Framework
+- Avalonia
+- Svelte
 
 ### Cloud & DevOps
 
-#### Level: Advanced
+*Level: Advanced*
 
-* AWS
-* Microsoft Azure
-* Docker
-* CI/CD
-* GitHub Actions
+- AWS
+- Microsoft Azure
+- Docker
+- CI/CD
+- GitHub Actions
 
 ### Databases
 
-#### Level: Intermediate
+*Level: Intermediate*
 
-* Microsoft SQL Server
-* CosmosDB
-* DynamoDB
-* NoSQL
-* Relational Databases
+- Microsoft SQL Server
+- CosmosDB
+- DynamoDB
+- NoSQL
+- Relational Databases
 
 ### Development Methodologies & Concepts
 
-#### Level: Advanced
+*Level: Advanced*
 
-* Agile
-* Scrum
-* CQRS
-* MVC
-* MVVM
-* Domain-Driven Design (DDD)
-* Test-Driven Development (TDD)
-* Unit Testing
-* Object-Oriented Programming (OOP)
-* REST APIs
+- Agile
+- Scrum
+- CQRS
+- MVC
+- MVVM
+- Domain-Driven Design (DDD)
+- Test-Driven Development (TDD)
+- Unit Testing
+- Object-Oriented Programming (OOP)
+- REST APIs
 
 ### Tools & Platforms
 
-#### Level: Advanced
+*Level: Advanced*
 
-* Visual Studio
-* VS Code
-* GitHub Copilot
-* Claude Code
-* Gemini CLI
-* Git
-* Figma
-* Playwright
-* Vitest
-* Selenium
-* Linux
-* Windows
-* macOS
-* MS Office
+- Visual Studio
+- VS Code
+- GitHub Copilot
+- Claude Code
+- Gemini CLI
+- Git
+- Figma
+- Playwright
+- Vitest
+- Selenium
+- Linux
+- Windows
+- macOS
+- MS Office
 
 This resume was generated from code [available here](https://github.com/dylanlangston/Resume)
