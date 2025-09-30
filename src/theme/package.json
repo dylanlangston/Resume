@@ -12,6 +12,7 @@
     "mdast-util-to-markdown": "^2.1.2",
     "minify": "^14.1.0",
     "tailwindcss": "^4.1.13",
+    "unist-util-remove": "^4.0.0",
     "unist-util-visit": "^5.0.0"
   }
 }

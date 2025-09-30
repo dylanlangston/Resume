@@ -4,11 +4,9 @@
 *::after {
     font-family: "Source Code Pro", "DejaVu Sans Mono", monospace;
     font-optical-sizing: auto;
-    font-style: normal;
     font-size: 16px;
     box-sizing: border-box;
 }
-
 
 h1,
 h2,
@@ -121,14 +119,14 @@ h6 {
     order: 8;
 }
 
-.footer-area {
+.source-area {
     order: 9;
 }
 
 
 /* Components */
 .name {
-    color: rgba(255, 255, 255, 0.01);
+    color: transparent;
     /* hidden text overlay for the figlet, making it selectable */
     font-size: 30px;
     margin-top: -30px;
@@ -148,36 +146,40 @@ li::marker {
 }
 
 /* "Hidden" pseudo-elements for decorative purposes */
-.hidden-equal::after {
+hr {
+    display: none;
+}
+
+.equal::after {
     content: "=";
     color: var(--color-accent-fg);
     margin-left: 0.5rem;
 }
 
-.hidden-open-bracket::after {
+.open-bracket::after {
     content: "{";
     color: var(--color-fg-default);
     margin-left: 0.5rem;
 }
 
-.hidden-close-bracket::after {
+.close-bracket::after {
     content: "}";
     color: var(--color-fg-default);
 }
 
-.hidden-open-bracket-square::before {
+.open-bracket-square::before {
     content: "[";
 }
 
-.hidden-close-bracket-square::after {
+.close-bracket-square::after {
     content: "]";
 }
 
-.hidden-comma::after {
+.comma::after {
     content: ",";
 }
 
-.hidden-comma:last-child::after {
+.comma:last-child::after {
     content: "";
 }
 
@@ -282,7 +284,7 @@ li::marker {
         border-right: 1px solid var(--color-border-muted);
     }
 
-    .footer-area {
+    .source-area {
         grid-area: footer;
         border-right: 1px solid var(--color-border-muted);
     }
@@ -324,9 +326,13 @@ li::marker {
     }
 
     .name {
-        font-size: 20px;
+        color: rgba(255, 255, 255, 0.01);
+        font-size: 40px;
+        word-spacing: 5px;
+        letter-spacing: -12px;
         line-height: 0;
-        margin-top: -25px;
-        margin-bottom: 25px;
+        margin-top: -30px;
+        margin-left: -10px;
+        height: 5px;
     }
 }

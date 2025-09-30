@@ -87,25 +87,23 @@ const generateThemeStyles = (forceDarkMode: boolean): string => forceDarkMode ?
   }
 `;
 
-const formatTitle = (val: string): string => {
-    return val.split(' ').map(s => String(s).charAt(0).toLowerCase() + String(s).slice(1)).join('_')
-}
-
-export const reverseFormatTitle = (val: string): string => {
-    return val.split('_').map(s => String(s).charAt(0).toUpperCase() + String(s).slice(1)).join(' ')
-}
-
 const renderSection = (title: string, content: (Result | string)[] | undefined | null, className: string = ''): Result | null => {
     if (!content || content.length === 0) return null;
     return (
         <section className={`pb-2 border-t-1 border-muted ${className}`}>
-            <div className="flex pl-1 hidden-open-bracket">
-                <h2 className="hidden-equal subtitle" title={title}>
-                    {formatTitle(title)}
+            <header className="flex pl-1 open-bracket">
+                <h2 className="equal subtitle lowercase" title={title}>
+                    {title.split(' ').map((word, index) => (
+                        <>
+                            {word}
+                            {index < title.split(' ').length - 1 ? <span className="space underline decoration-2"> </span> : null}
+                        </>
+                    ))}
                 </h2>
-            </div>
+            </header>
+            <hr />
             {content}
-            <span aria-hidden="true" className="hidden-close-bracket"></span>
+            <span aria-hidden="true" className="close-bracket"></span>
         </section>
     );
 };
@@ -144,27 +142,30 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
         <section className={`pb-2 border-t-1 border-muted ${className}`}>
             <div className="flex">
                 {basics.image && (
-                    <picture>
-                        <source srcset={await embedImage(basics.image)} />
-                        <img
-                            className="w-30 min-w-30 h-30 rounded-2xl ml-1 my-1"
-                            src={basics.image}
-                            alt={`A portrait of ${basics.name}`}
-                        />
-                    </picture>
+                    <figure className="w-30">
+                        <picture>
+                            <source srcset={await embedImage(basics.image)} />
+                            <img
+                                className="w-30 min-w-30 h-30 rounded-2xl ml-1 my-1"
+                                src={basics.image}
+                                alt={`A portrait of ${basics.name}`}
+                            />
+                        </picture>
+                        <figcaption id="figCapture" className="opacity-0 leading-0 select-none">A portrait of {basics.name}</figcaption>
+                    </figure>
                 )}
                 <div className="px-1 text-center m-auto overflow-hidden">
                     {basics.name && (
-                        <span style="font: italic 12px monospace;line-height: 12px;" aria-label={basics.name} className="text-accent whitespace-pre mt-1">
+                        <span style="font: italic 12px monospace;line-height: 12px;font-style:normal" className="text-accent whitespace-pre mt-1">
                             <pre aria-hidden="true" style="user-select: none;">
                                 <code className="language-figlet">
                                     {await figlet.text(basics.name, { font: "Tmplr" })}
                                 </code>
                             </pre>
-                            <h1 className="name">{basics.name}</h1>
+                            <h1 aria-hidden="false" className='name'>{basics.name}<h aria-hidden="true" className="select-none hidden">_</h></h1>
                         </span>
                     )}
-                    {basics.label && <h4 className="text-muted -mt-1">{basics.label}</h4>}
+                    {basics.label && <i className="italic text-muted -mt-1">{basics.label}</i>}
                 </div>
             </div>
             <address className="not-italic mx-2">
@@ -190,25 +191,21 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                     <a className="link" href={basics.url} target="_blank">{basics.url}</a>
                 </p>
             )}
-            {basics.profiles && (
-                <div className="mx-2 text-accent">
-                    {basics.profiles.map(profile =>
-                        profile.network && (
-                            <p>
-                                {raw(
-                                    <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
-                                        {{ type: 'raw', value: profileIcons[profile.network]! }}
-                                    </svg>
-                                )}
-                                {profile.url ? (
-                                    <a className="link" href={profile.url} target="_blank">{`${profileName[profile.network]!(profile.username!)}`}</a>
-                                ) : (
-                                    `${profileName[profile.network]!(profile.username!)}`
-                                )}
-                            </p>
-                        )
-                    )}
-                </div>
+            {basics.profiles && basics.profiles.map(profile =>
+                profile.network && (
+                    <p className="mx-2 text-accent">
+                        {raw(
+                            <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
+                                {{ type: 'raw', value: profileIcons[profile.network]! }}
+                            </svg>
+                        )}
+                        {profile.url ? (
+                            <a className="link" href={profile.url} target="_blank">{`${profileName[profile.network]!(profile.username!)}`}</a>
+                        ) : (
+                            `${profileName[profile.network]!(profile.username!)}`
+                        )}
+                    </p>
+                )
             )}
         </section>
     );
@@ -220,14 +217,14 @@ const renderWork = (work: Resume['work']) =>
             <div className="flex justify-between items-baseline">
                 <h3 className="title">{job.name}</h3>
                 {(job.startDate || job.endDate) && (
-                    <p className=" min-w-fit ml-6">
+                    <p className="min-w-fit ml-6">
                         <time dateTime={job.startDate} className="text-accent">{job.startDate}</time>
                         <span className="text-muted"> til </span>
                         <time dateTime={job.endDate} className="text-accent">{job.endDate ?? 'Present'}</time>
                     </p>
                 )}
             </div>
-            {job.position && <h4 className="text-muted">{job.position}</h4>}
+            {job.position && <i className="italic text-muted">{job.position}</i>}
             {job.summary && <p>{job.summary}</p>}
             {renderHighlights(job.highlights)}
         </div>
@@ -240,7 +237,7 @@ const renderProjects = (projects: Resume['projects']) =>
                 <h3 className="title">{project.name}</h3>
                 {project.url && <a title="View Project" className="link " href={project.url} target="_blank">view_project</a>}
             </div>
-            {project.keywords && <h4 className=" text-muted">{`Technologies: ${project.keywords.join(', ')}`}</h4>}
+            {project.keywords && <i className="italic text-muted">{`Technologies: ${project.keywords.join(', ')}`}</i>}
             {project.description && <p>{project.description}</p>}
             {renderHighlights(project.highlights)}
         </div>
@@ -250,11 +247,11 @@ const renderSkills = (skills: Resume['skills']) =>
     skills?.map(skill => (
         <div className="item ml-4 mr-2">
             {skill.name && <h3 className="title">{skill.name}</h3>}
-            {skill.level && <h4 className="text-muted">{`Level: ${skill.level}`}</h4>}
+            {skill.level && <i className="italic text-muted">{`Level: ${skill.level}`}</i>}
             {skill.keywords && (
-                <ul className="flex flex-wrap gap-1 hidden-open-bracket-square hidden-close-bracket-square">
+                <ul className="flex flex-wrap gap-1 open-bracket-square close-bracket-square">
                     {skill.keywords.map(keyword => (
-                        <li className="hidden-comma">
+                        <li className="comma">
                             <span className="bg-subtle  font-medium px-2 rounded">{keyword}</span>
                         </li>
                     ))}
@@ -278,13 +275,13 @@ const renderAwards = (awards: Resume['awards']) =>
 const renderCertificates = (certificates: Resume['certificates']) =>
     certificates?.map(cert => (
         <div className="item ml-4 mr-2">
-            <div className="flex justify-between items-baseline">
+            <div className="flex justify-between">
                 <h3 className="title">{cert.name}</h3>
-                {cert.url && <p><a title="View Certificate" className="link" href={cert.url} target="_blank">view_certificate</a></p>}
+                {cert.url && <a title="View" className="link lowercase" href={cert.url} target="_blank">View</a>}
             </div>
-            {cert.issuer && <h4 className="text-muted">{`Issuer: ${cert.issuer}`}</h4>}
+            {cert.issuer && <i className="italic text-muted">{`Issuer: ${cert.issuer}`}</i>}
         </div>
-    ));
+    ))
 
 const renderPublications = (publications: Resume['publications']) =>
     publications?.map(pub => (
@@ -300,7 +297,7 @@ const renderPublications = (publications: Resume['publications']) =>
     ));
 
 const renderHeader = (className: string = 'header-area') =>
-    <header className={`h-[32px] pt-[4px] bg-subtle rounded-t-lg border-muted flex items-center justify-between ${className}`}>
+    <menu className={`h-[32px] pt-[4px] bg-subtle rounded-t-lg border-muted flex items-center justify-between ${className}`}>
         <div className="flex items-center">
             {raw(
                 <svg className="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">{{ type: 'raw', value: pixel.icons['code-solid'].body }}</svg>
@@ -323,20 +320,17 @@ const renderHeader = (className: string = 'header-area') =>
                 {/* <a href="/" type="text/markdown" download="resume.md"><li className="pl-1">Download Markdown</li></a> */}
             </ul>
         </div>
-    </header>
+    </menu>
 
-const renderFooter = (className: string = 'footer-area') =>
-    <footer className={`pb-2 border-t-1 border-muted ${className}`}>
-        <div className="flex pl-2">
-            <p className="text-muted">This resume was generated from code <a className="link" href="https://github.com/dylanlangston/Resume" target="_blank">available here</a></p>
-        </div>
-    </footer>
+const renderSource = (className: string = 'source-area') =>
+    <section className={`pb-2 border-t-1 border-muted ${className} `}>
+        <p className="text-muted">This resume was generated from code <a className="link" href="https://github.com/dylanlangston/Resume" target="_blank">available here</a></p>
+    </section>
 
 type ThemeConfig = {
     resume: Resume,
     consoleMessage?: string,
     forceDarkMode?: boolean;
-    hideHeader?: boolean;
 }
 
 const Theme = async (config: ThemeConfig): Promise<Result> => {
@@ -359,7 +353,7 @@ const Theme = async (config: ThemeConfig): Promise<Result> => {
     const certificatesSection = renderSection('Certificates', renderCertificates(certificates), 'certificates-area');
     const publicationsSection = renderSection('Publications', renderPublications(publications), 'publications-area');
     const skillsSection = renderSection('Skills', renderSkills(skills), 'skills-area');
-    const footerSection = renderFooter('footer-area');
+    const sourceSection = renderSource('source-area');
 
     return (
         <>
@@ -382,17 +376,19 @@ const Theme = async (config: ThemeConfig): Promise<Result> => {
                     <style>{generateThemeStyles(Boolean(config.forceDarkMode))}</style>
                 </head>
                 <body className="leading-normal opacity-0 animate-[fadeIn_500ms_ease-out_forwards] bg-canvas max-w-screen-2xl border-1 border-muted rounded-lg m-auto">
-                    {Boolean(config.hideHeader) ?  null : headerSection}
-                    <main className="grid-container rounded-lg">
-                        {basicSection}
-                        {aboutSection}
-                        {workSection}
-                        {projectsSection}
-                        {awardsSection}
-                        {certificatesSection}
-                        {publicationsSection}
-                        {skillsSection}
-                        {footerSection}
+                    <main>
+                        {headerSection}
+                        <article className="grid-container rounded-lg">
+                            {basicSection}
+                            {aboutSection}
+                            {workSection}
+                            {projectsSection}
+                            {awardsSection}
+                            {certificatesSection}
+                            {publicationsSection}
+                            {skillsSection}
+                            {sourceSection}
+                        </article>
                     </main>
                     {config.consoleMessage ? <script>
                         console.log(`{config.consoleMessage}`)
