@@ -8,7 +8,7 @@
     "node-poppler": "^8.0.4",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.20.0",
-    "resumed": "^6.0.0",
+    "resumed": "^6.1.0",
     "sharp": "^0.34.4"
   },
   "peerDependencies": {

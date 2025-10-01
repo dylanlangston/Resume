@@ -11,7 +11,7 @@
         "node-poppler": "^8.0.4",
         "pdf-lib": "^1.17.1",
         "puppeteer": "^24.20.0",
-        "resumed": "^6.0.0",
+        "resumed": "^6.1.0",
         "sharp": "^0.34.4",
       },
       "peerDependencies": {
@@ -278,7 +278,7 @@
 
     "resolve-from": ["resolve-from@4.0.0", "", {}, ""],
 
-    "resumed": ["resumed@6.0.0", "", { "dependencies": { "@jsonresume/schema": "^1.0.0", "sade": "^1.7.0", "strip-json-comments": "^5.0.0" }, "peerDependencies": { "puppeteer": "^24.0.0" }, "bin": "bin/resumed.js" }, ""],
+    "resumed": ["resumed@6.1.0", "", { "dependencies": { "@jsonresume/schema": "^1.0.0", "sade": "^1.7.0", "strip-json-comments": "^5.0.0" }, "peerDependencies": { "puppeteer": "^24.0.0" }, "optionalPeers": ["puppeteer"], "bin": { "resumed": "bin/resumed.js" } }, "sha512-VZbgG+auJZkpSKIzeDibu1q9w/XgMNNzGC8NLU9P3fH0YjiY4V2hq0knFemoBer1xR2wW8B3SagVkhHTpcBI7Q=="],
 
     "sade": ["sade@1.8.1", "", { "dependencies": { "mri": "^1.1.0" } }, ""],
 
