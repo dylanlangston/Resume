@@ -45,7 +45,7 @@ const markdownHandler = (
 };
 
 const renderMarkdown = async (resume: Resume): Promise<string> => {
-  const tree = await Theme({ resume });
+  const tree = await Theme({ resume, includeFigletCodeblock: true });
   removeUnusedElements(tree);
   const mdast = toMdast(tree);
 
@@ -79,7 +79,7 @@ const renderMarkdown = async (resume: Resume): Promise<string> => {
 };
 
 const renderText = async (resume: Resume) => {
-  const tree = await Theme({ resume });
+  const tree = await Theme({ resume, includeFigletCodeblock: true });
   removeUnusedElements(tree);
   const mdast = toMdast(tree);
 

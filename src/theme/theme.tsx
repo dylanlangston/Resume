@@ -7,6 +7,8 @@ import fonts from './fonts/fonts';
 import figlet from 'figlet';
 import pixel from '@iconify-json/pixel/icons.json';
 import { type Result } from 'hastscript';
+import dejaVu from "./fonts/DejaVuSansMono-Bold.ttf";
+import { textToSVGPaths } from './fonts/textToSVGPaths';
 
 type Resume = Parameters<typeof resumed.render>[0];
 
@@ -125,7 +127,7 @@ const embedImage = async (uri: string): Promise<string> => {
     return `data:${mimeType};base64,${buffer.toString('base64')}`;
 };
 
-const renderBasics = async (basics: Resume['basics'], className: string = ''): Promise<Result> => {
+const renderBasics = async (basics: Resume['basics'], className: string = '', includeFigletCodeblock: boolean = false): Promise<Result> => {
     const profileIcons: Record<string, string> = {
         'LinkedIn': pixel.icons.linkedin.body,
         'GitHub': pixel.icons.github.body,
@@ -156,14 +158,30 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                 )}
                 <div className="px-1 text-center m-auto overflow-hidden">
                     {basics.name && (
-                        <span style="font: italic 12px monospace;line-height: 12px;font-style:normal" className="text-accent whitespace-pre mt-1">
-                            <pre aria-hidden="true" style="user-select: none;">
-                                <code className="language-figlet">
-                                    {await figlet.text(basics.name, { font: "Tmplr" })}
-                                </code>
-                            </pre>
-                            <h1 aria-hidden="false" className='name'>{basics.name}<h aria-hidden="true" className="select-none hidden">_</h></h1>
-                        </span>
+                        <>
+                            {includeFigletCodeblock ?
+                                <span style="font: italic 12px monospace;line-height: 12px;font-style:normal" className="text-accent whitespace-pre mt-1">
+                                    <pre aria-hidden="true">
+                                        <code className="language-figlet">
+                                            {await figlet.text(basics.name, { font: "Tmplr" })}
+                                        </code>
+                                    </pre>
+                                    <h1 aria-hidden="false" className='name'>{basics.name}<h aria-hidden="true" className="select-none hidden">_</h></h1>
+                                </span> : null
+                            }
+                            <span className="text-accent whitespace-pre mt-1">
+                                <div className="flex justify-center">
+                                    {await textToSVGPaths(
+                                        await figlet.text(basics.name, { font: "Tmplr" }),
+                                        dejaVu,
+                                        16,
+                                        { width: 240, height: 48 },
+                                        .8
+                                    )}
+                                </div>
+                                <h1 aria-hidden="false" className='name'>{basics.name}<h aria-hidden="true" className="select-none hidden">_</h></h1>
+                            </span>
+                        </>
                     )}
                     {basics.label && <i className="italic text-muted -mt-1">{basics.label}</i>}
                 </div>
@@ -175,7 +193,10 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                 <p className="mx-2 text-accent">
                     {raw(
                         <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
-                            {{ type: 'raw', value: pixel.icons.envelope.body }}
+                            <>
+                                <title>Mail Icon</title>
+                                {{ type: 'raw', value: pixel.icons.envelope.body }}
+                            </>
                         </svg>
                     )}
                     <a className="link" href={`mailto:${basics.email}`}>{basics.email}</a>
@@ -185,7 +206,10 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                 <p className="mx-2 text-accent">
                     {raw(
                         <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
-                            {{ type: 'raw', value: pixel.icons.globe.body }}
+                            <>
+                                <title>Internet Icon</title>
+                                {{ type: 'raw', value: pixel.icons.globe.body }}
+                            </>
                         </svg>
                     )}
                     <a className="link" href={basics.url} target="_blank">{basics.url}</a>
@@ -196,7 +220,10 @@ const renderBasics = async (basics: Resume['basics'], className: string = ''): P
                     <p className="mx-2 text-accent">
                         {raw(
                             <svg height="16" width="16" viewBox="0 0 24 24" color="currentColor" className="inline mr-1" xmlns="http://www.w3.org/2000/svg">
-                                {{ type: 'raw', value: profileIcons[profile.network]! }}
+                                <>
+                                    <title>{profile.network} Icon</title>
+                                    {{ type: 'raw', value: profileIcons[profile.network]! }}
+                                </>
                             </svg>
                         )}
                         {profile.url ? (
@@ -330,7 +357,8 @@ const renderSource = (className: string = 'source-area') =>
 type ThemeConfig = {
     resume: Resume,
     consoleMessage?: string,
-    forceDarkMode?: boolean;
+    forceDarkMode?: boolean,
+    includeFigletCodeblock?: boolean
 }
 
 const Theme = async (config: ThemeConfig): Promise<Result> => {
@@ -345,7 +373,7 @@ const Theme = async (config: ThemeConfig): Promise<Result> => {
     } = config.resume;
 
     const headerSection = renderHeader('header-area');
-    const basicSection = await renderBasics(basics, 'basics-area');
+    const basicSection = await renderBasics(basics, 'basics-area', Boolean(config.includeFigletCodeblock));
     const aboutSection = basics?.summary ? renderSection('About', [<p className="ml-4 mr-2">{basics.summary}</p>], 'about-area') : null;
     const workSection = renderSection('Work Experience', renderWork(work), 'work-area');
     const projectsSection = renderSection('Projects', renderProjects(projects), 'projects-area');
