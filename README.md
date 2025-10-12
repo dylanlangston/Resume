@@ -1,8 +1,10 @@
 <div align="center">
   <a href="./dist/">
     <picture alt="My Resume">
+      <source media="(prefers-color-scheme: dark) and (prefers-contrast: more)" srcset="screenshot_dark.webp">
+      <source media="(prefers-color-scheme: light) and ((prefers-contrast: no-preference) or (prefers-contrast: less))" srcset="screenshot_transparent.webp">
       <source media="(prefers-color-scheme: dark)" srcset="screenshot_transparent_dark.webp">
-      <img src="screenshot_transparent.webp" alt="My Resume">
+      <img src="screenshot.webp" alt="My Resume">
     </picture>
   </a>
 </div>
