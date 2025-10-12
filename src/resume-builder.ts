@@ -179,7 +179,7 @@ class ResumeBuilder {
             pdf.setKeywords(
                 resume.skills?.flatMap((s) => s.keywords).filter((kw): kw is string => typeof kw === "string") ?? []
             );
-            pdf.attach(this.markdown, "resume.md", {
+            pdf.attach(Buffer.from(this.markdown).toString("base64"), "resume.md", {
                 mimeType: "text/markdown",
                 description: "Markdown version of the resume",
                 creationDate: new Date("1998-03-22T00:00:00Z"),
