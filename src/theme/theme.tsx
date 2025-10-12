@@ -170,7 +170,7 @@ const renderBasics = async (basics: Resume['basics'], className: string = '', in
                                 </span> : null
                             }
                             <span className="text-accent whitespace-pre mt-1">
-                                <div className="flex justify-center">
+                                <div className="flex justify-center ml-1">
                                     {await textToSVGPaths(
                                         await figlet.text(basics.name, { font: "Tmplr" }),
                                         dejaVu,

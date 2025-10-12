@@ -154,29 +154,35 @@ hr {
     content: "=";
     color: var(--color-accent-fg);
     margin-left: 0.5rem;
+    filter: blur(0);
 }
 
 .open-bracket::after {
     content: "{";
     color: var(--color-fg-default);
     margin-left: 0.5rem;
+    filter: blur(0);
 }
 
 .close-bracket::after {
     content: "}";
     color: var(--color-fg-default);
+    filter: blur(0);
 }
 
 .open-bracket-square::before {
     content: "[";
+    filter: blur(0);
 }
 
 .close-bracket-square::after {
     content: "]";
+    filter: blur(0);
 }
 
 .comma::after {
     content: ",";
+    filter: blur(0);
 }
 
 .comma:last-child::after {
