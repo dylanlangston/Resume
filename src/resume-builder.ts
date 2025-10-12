@@ -25,7 +25,7 @@ class ResumeBuilder {
 
     public async build() {
         let stepStart = performance.now();
-        
+
         console.log("  Build Step 1: Setting up directories...");
         await this.setupDirectories();
         console.log(`✓ Build Step 1 completed in [${(performance.now() - stepStart).toFixed(2)}ms]`);
@@ -125,6 +125,8 @@ class ResumeBuilder {
     private async generateScreenshots() {
         const poppler = new Poppler()
         for (const config of [
+            { image: Configuration.SCREENSHOT_TRANSPARENT_PATH, pdf: Configuration.PDF_PATH, backgroundColorDropout: { r: 254, g: 254, b: 254 } /* #fff */ },
+            { image: Configuration.SCREENSHOT_TRANSPARENT_DARK_PATH, pdf: Configuration.PDF_DARK_PATH, backgroundColorDropout: { r: 13, g: 17, b: 23 } /* #0d1117 */ },
             { image: Configuration.SCREENSHOT_PATH, pdf: Configuration.PDF_PATH },
             { image: Configuration.SCREENSHOT_DARK_PATH, pdf: Configuration.PDF_DARK_PATH }
         ]) {
@@ -134,11 +136,47 @@ class ResumeBuilder {
                 resolutionXYAxis: 200
             })
 
-            await sharp(Buffer.from(png, 'binary'))
-                .webp({
-                    lossless: true
+            const backgroundColor = config.backgroundColorDropout;
+
+            if (backgroundColor) {
+                const input = await sharp(Buffer.from(png, 'binary'))
+                    .ensureAlpha()
+                    .toColourspace('srgb')
+                    .toBuffer();
+
+                const { data, info } = await sharp(input)
+                    .raw()
+                    .toBuffer({ resolveWithObject: true });
+
+                for (let i = 0; i < data.length; i += 4) {
+                    const r = data[i]!;
+                    const g = data[i + 1]!;
+                    const b = data[i + 2]!;
+
+                    if (
+                        Math.abs(r - backgroundColor.r) < 10 &&
+                        Math.abs(g - backgroundColor.g) < 10 &&
+                        Math.abs(b - backgroundColor.b) < 10
+                    ) {
+                        data[i + 3] = 0;
+                    }
+                }
+
+                await sharp(data, {
+                    raw: {
+                        width: info.width,
+                        height: info.height,
+                        channels: 4
+                    }
                 })
-                .toFile(config.image);
+                    .webp({ lossless: true })
+                    .toFile(config.image);
+            }
+            else {
+                await sharp(Buffer.from(png, 'binary'))
+                    .webp({ lossless: true })
+                    .toFile(config.image);
+            }
         }
 
         // Create social preview

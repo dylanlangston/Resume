@@ -32,6 +32,9 @@ release: ## Release the build artifacts.
 	@cp ./out/resume_dark.md.html.pdf ./dist/resume_dark.md.html.pdf
 	@cp ./out/screenshot.webp ./screenshot.webp
 	@cp ./out/screenshot_dark.webp ./screenshot_dark.webp
+	@cp ./out/screenshot_transparent.webp ./screenshot_transparent.webp
+	@cp ./out/screenshot_transparent_dark.webp ./screenshot_transparent_dark.webp
+
 
 preview: ## Preview the resume in the browser.
 	@cd ./src; bun run preview
