@@ -166,7 +166,6 @@ const renderBasics = async (basics: Resume['basics'], className: string = '', in
                                             {await figlet.text(basics.name, { font: "Tmplr" })}
                                         </code>
                                     </pre>
-                                    <h1 aria-hidden="false" className='name'>{basics.name}<h aria-hidden="true" className="select-none hidden">_</h></h1>
                                 </span> : null
                             }
                             <span className="text-accent whitespace-pre mt-1">
