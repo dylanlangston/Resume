@@ -125,10 +125,8 @@ class ResumeBuilder {
     private async generateScreenshots() {
         const poppler = new Poppler()
         for (const config of [
-            { image: Configuration.SCREENSHOT_TRANSPARENT_PATH, pdf: Configuration.PDF_PATH, backgroundColorDropout: { r: 254, g: 254, b: 254 } /* #fff */ },
-            { image: Configuration.SCREENSHOT_TRANSPARENT_DARK_PATH, pdf: Configuration.PDF_DARK_PATH, backgroundColorDropout: { r: 13, g: 17, b: 23 } /* #0d1117 */ },
-            { image: Configuration.SCREENSHOT_PATH, pdf: Configuration.PDF_PATH },
-            { image: Configuration.SCREENSHOT_DARK_PATH, pdf: Configuration.PDF_DARK_PATH }
+            { image: Configuration.SCREENSHOT_PATH, pdf: Configuration.PDF_PATH, dark: false },
+            { image: Configuration.SCREENSHOT_DARK_PATH, pdf: Configuration.PDF_DARK_PATH, dark: true }
         ]) {
             const png = await poppler.pdfToCairo(config.pdf, undefined!, {
                 singleFile: true,
@@ -136,47 +134,31 @@ class ResumeBuilder {
                 resolutionXYAxis: 200
             })
 
-            const backgroundColor = config.backgroundColorDropout;
+            await sharp(Buffer.from(png, 'binary'))
+                .webp({ lossless: true })
+                .toFile(config.image);
+        }
 
-            if (backgroundColor) {
-                const input = await sharp(Buffer.from(png, 'binary'))
-                    .ensureAlpha()
-                    .toColourspace('srgb')
-                    .toBuffer();
+        // Create a mask from the screenshot
+        const screenshotMask = await sharp(Configuration.SCREENSHOT_PATH)
+            .toColorspace('b-w') // make grayscale mask
+            .negate()            // invert so white → 0
+            .threshold(254)      // almost-white → transparent
+            .toBuffer();
 
-                const { data, info } = await sharp(input)
-                    .raw()
-                    .toBuffer({ resolveWithObject: true });
-
-                for (let i = 0; i < data.length; i += 4) {
-                    const r = data[i]!;
-                    const g = data[i + 1]!;
-                    const b = data[i + 2]!;
-
-                    if (
-                        Math.abs(r - backgroundColor.r) < 10 &&
-                        Math.abs(g - backgroundColor.g) < 10 &&
-                        Math.abs(b - backgroundColor.b) < 10
-                    ) {
-                        data[i + 3] = 0;
-                    }
-                }
-
-                await sharp(data, {
-                    raw: {
-                        width: info.width,
-                        height: info.height,
-                        channels: 4
-                    }
+        // Create transparent versions of the screenshots using the mask above
+        for (const config of [
+            { image: Configuration.SCREENSHOT_TRANSPARENT_PATH, source: Configuration.SCREENSHOT_PATH },
+            { image: Configuration.SCREENSHOT_TRANSPARENT_DARK_PATH, source: Configuration.SCREENSHOT_DARK_PATH }
+        ]) {
+            await sharp(config.source)
+                .toColorspace('rgba') // ensure 4 channels
+                .ensureAlpha()
+                .joinChannel(screenshotMask)
+                .webp({
+                    lossless: true
                 })
-                    .webp({ lossless: true })
-                    .toFile(config.image);
-            }
-            else {
-                await sharp(Buffer.from(png, 'binary'))
-                    .webp({ lossless: true })
-                    .toFile(config.image);
-            }
+                .toFile(config.image);
         }
 
         // Create social preview

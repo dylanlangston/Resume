@@ -35,7 +35,7 @@ describe("Build Resume Process", () => {
     });
 
     it("Screenshots generated successfully", async () => {
-        for (const file of [Configuration.SCREENSHOT_PATH, Configuration.SCREENSHOT_DARK_PATH, Configuration.SOCIAL_PREVIEW_PATH]) {
+        for (const file of [Configuration.SCREENSHOT_PATH, Configuration.SCREENSHOT_DARK_PATH, Configuration.SCREENSHOT_TRANSPARENT_PATH, Configuration.SCREENSHOT_TRANSPARENT_DARK_PATH, Configuration.SOCIAL_PREVIEW_PATH]) {
             const exists = await stat(file).then(() => true).catch(() => false);
             expect(exists).toBe(true);
         }
