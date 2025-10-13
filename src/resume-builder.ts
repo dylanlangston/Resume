@@ -144,6 +144,7 @@ class ResumeBuilder {
             .toColorspace('b-w') // make grayscale mask
             .negate()            // invert so white → 0
             .threshold(254)      // almost-white → transparent
+            .extract({ top: 32, left: 32, width: 1636, height: 2130 })
             .toBuffer();
 
         // Create transparent versions of the screenshots using the mask above
@@ -155,6 +156,7 @@ class ResumeBuilder {
                 .toColorspace('rgba') // ensure 4 channels
                 .ensureAlpha()
                 .joinChannel(screenshotMask)
+                .extract({ top: 32, left: 32, width: 1636, height: 2130 })
                 .webp({
                     lossless: true
                 })
