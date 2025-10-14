@@ -301,10 +301,10 @@ const renderAwards = (awards: Resume['awards']) =>
 const renderCertificates = (certificates: Resume['certificates']) =>
     certificates?.map(cert => (
         <div className="item ml-4 mr-2">
-            <div className="flex justify-between">
+            <header className="flex justify-between">
                 <h3 className="title">{cert.name}</h3>
-                {cert.url && <a title="View" className="link lowercase" href={cert.url} target="_blank">View</a>}
-            </div>
+                {cert.url && <a title="View Cert" className="link lowercase" href={cert.url} target="_blank">View Cert</a>}
+            </header>
             {cert.issuer && <i className="italic text-muted">{`Issuer: ${cert.issuer}`}</i>}
         </div>
     ))
@@ -360,7 +360,9 @@ type ThemeConfig = {
     includeFigletCodeblock?: boolean
 }
 
-const Theme = async (config: ThemeConfig): Promise<Result> => {
+type ThemeType = (config: ThemeConfig) => Promise<Result>;
+
+const Theme: ThemeType = async (config: ThemeConfig): Promise<Result> => {
     const {
         basics,
         work,
