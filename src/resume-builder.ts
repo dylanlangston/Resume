@@ -8,7 +8,7 @@ import * as resume from "./resume/resume.json" assert { type: "json" };
 // @ts-ignore
 import { render as professional } from "jsonresume-theme-professional"
 import { suppressErrors } from "./suppress-errors";
-import { createPolyglot } from "./createPolyglot";
+import { createPolyglot } from "./create-polyglot";
 import { Configuration } from "./config";
 import { renderHtmlDark } from "./theme";
 import { Poppler } from "node-poppler";
