@@ -9,7 +9,16 @@
   </a>
 </div>
 
-<h2>Downloads</h2>
+## About This Project
+
+This repository contains the source code for my personal resume, available at [resume.dylanlangston.com](https://resume.dylanlangston.com).
+
+This project is more than just a resume; it's a demonstration of my skills in automation, web development, and software engineering. It's a showcase of how I approach building a project iteratively with modern tools, focusing on maintainability and automation.
+
+## Downloads
+
+The resume is available in multiple formats. Please choose the one that best suits your needs.
+
 <table>
    <tr>
       <td align="right">
@@ -60,12 +69,21 @@
    </tr>
 </table>
 
+## Key Features
 
-## Information
+-   **Polyglot PDF/HTML File**: The primary build artifact is a single file that is simultaneously a valid PDF and a fully-featured HTML document. This is generated and hosted automatically on GitHub Pages.
+-   **Single Source of Truth**: The resume is generated from a single `resume.json` file hosted as a [GitHub Gist](https://gist.github.com/dylanlangston/80380ec68b970189450dd2fae4502ff1) that follows the [JSON Resume standard](https://jsonresume.org/). This ensures content consistency across all formats and allows for easy updates.
+-   **Multiple Formats**: The build process generates the resume in several formats, including light and dark mode PDFs, a professional PDF version, Markdown, HTML, and plain text.
+-   **Automated Build Process**: The entire process is automated. Docker is used to create a consistent build environment, ensuring that the resume generates the same way every time.
 
-This repository contains the source code used to build my resume. The resume is generated from a `resume.json` file that follows the [JSON Resume standard](https://jsonresume.org/) and which is hosted as a [GitHub Gist](https://gist.github.com/dylanlangston/80380ec68b970189450dd2fae4502ff1). The build process generates a single polyglot file that is simultaneously a valid PDF and HTML document and hosts it on https://resume.dylanlangston.com/
+## Skills Demonstrated
 
-This project uses [Bun](https://bun.sh/), [TypeScript](https://www.typescriptlang.org/), [resumed](https://github.com/rbardini/resumed), [hastscript](https://github.com/syntax-tree/hastscript) and [Tailwind CSS](https://tailwindcss.com/) to name a few.
+This project showcases my skills in:
+
+-   **Automation**: Using `Makefile` and `Docker` for a reproducible build process.
+-   **Web Development**: Using tools like [Bun](https://bun.sh/), [TypeScript](https://www.typescriptlang.org/), [resumed](https://github.com/rbardini/resumed), [hastscript](https://github.com/syntax-tree/hastscript) and [Tailwind CSS](https://tailwindcss.com/) to build the HTML resume.
+-   **Software Architecture**: Designing a system where a single source of data (`resume.json`) is used to generate multiple output formats.
+-   **Attention to Detail**: Providing light and dark mode versions of the resume.
 
 ## Getting Started
 
@@ -73,8 +91,9 @@ This project uses [Bun](https://bun.sh/), [TypeScript](https://www.typescriptlan
 
 To build and run this project locally, you will need to have the following installed:
 
+-   [Make](https://www.gnu.org/software/make/)
 -   [Bun](https://bun.sh/)
--   [Docker](https://www.docker.com/) or equivalent (for the Docker-based build)
+-   [Docker](https://www.docker.com/) or an equivalent containerization tool.
 
 ### Makefile Commands
 
