@@ -5,7 +5,7 @@
     "axe-core": "^4.11.0",
     "jsonresume-theme-local": "./theme",
     "jsonresume-theme-professional": "^1.1.0",
-    "node-poppler": "^8.0.4",
+    "node-poppler": "^9.0.1",
     "pdf-lib": "^1.17.1",
     "puppeteer": "^24.27.0",
     "resumed": "^6.1.0",

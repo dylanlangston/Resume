@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "resume",
@@ -8,7 +9,7 @@
         "axe-core": "^4.11.0",
         "jsonresume-theme-local": "./theme",
         "jsonresume-theme-professional": "^1.1.0",
-        "node-poppler": "^8.0.4",
+        "node-poppler": "^9.0.1",
         "pdf-lib": "^1.17.1",
         "puppeteer": "^24.27.0",
         "resumed": "^6.1.0",
@@ -230,7 +231,9 @@
 
     "netmask": ["netmask@2.0.2", "", {}, ""],
 
-    "node-poppler": ["node-poppler@8.0.4", "", { "dependencies": { "camelcase": "^6.3.0", "semver": "^7.7.2" } }, "sha512-8bp200rELOX72mHv0cfnuDs7LWmd3jr3Y9pxgaysjeSxnUiZxhTA0Pg+SaXkTplIK+r4CfIVAfrla4omNq6UtA=="],
+    "node-poppler": ["node-poppler@9.0.1", "", { "dependencies": { "camelcase": "^6.3.0", "semver": "^7.7.2" }, "optionalDependencies": { "node-poppler-win32": "^1.0.1" } }, "sha512-lcfk/3cnUABmwpH3pOrjV1zieb+Wyh9hbEeVWTFusWBbVJBuFOBZquR8CuN4xP74eeYljq97O1GXP6TaZI/D3Q=="],
+
+    "node-poppler-win32": ["node-poppler-win32@1.0.2", "", { "os": "win32", "cpu": "x64" }, "sha512-U2YVdM7EEXNE21TD4ajJxfd1pKx7yEF2tcuHc4eCa7uxmw+mfSNPB+yHRtNrdxJqV6dKoz4Rvhuyy5rn6mg3ZA=="],
 
     "once": ["once@1.4.0", "", { "dependencies": { "wrappy": "1" } }, ""],
 
@@ -284,7 +287,7 @@
 
     "scheduler": ["scheduler@0.26.0", "", {}, "sha512-NlHwttCI/l5gCPR3D1nNXtWABUmBwvZpEQiD4IXSbIDq8BzLIK/7Ir5gTFSGZDUu37K5cMNp0hFtzO38sC7gWA=="],
 
-    "semver": ["semver@7.7.2", "", { "bin": "bin/semver.js" }, ""],
+    "semver": ["semver@7.7.3", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q=="],
 
     "shallowequal": ["shallowequal@1.1.0", "", {}, "sha512-y0m1JoUZSlPAjXVtPPW70aZWfIL/dSP7AFkRnniLCrK/8MDKog3TySTBmckD+RObVxH0v4Tox67+F14PdED2oQ=="],
 
@@ -346,9 +349,9 @@
 
     "@emnapi/runtime/tslib": ["tslib@2.8.1", "", {}, ""],
 
-    "@puppeteer/browsers/semver": ["semver@7.7.3", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-SdsKMrI9TdgjdweUSR9MweHA4EJ8YxHn8DFaDisvhVlUOe4BF1tLD7GAj0lIqWVl+dPb/rExr0Btby5loQm20Q=="],
-
     "ast-types/tslib": ["tslib@2.8.1", "", {}, ""],
+
+    "sharp/semver": ["semver@7.7.2", "", { "bin": "bin/semver.js" }, ""],
 
     "styled-components/tslib": ["tslib@2.6.2", "", {}, "sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q=="],
   }
