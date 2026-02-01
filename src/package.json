@@ -2,7 +2,7 @@
   "name": "resume",
   "devDependencies": {
     "@types/bun": "latest",
-    "axe-core": "^4.11.0",
+    "axe-core": "^4.11.1",
     "jsonresume-theme-local": "./theme",
     "jsonresume-theme-professional": "^1.1.0",
     "node-poppler": "^8.0.4",
